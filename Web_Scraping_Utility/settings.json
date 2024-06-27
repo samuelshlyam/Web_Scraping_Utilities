@@ -1,0 +1,58 @@
+{
+  "Alexander Mcqueen": {
+    "METHOD" : "Click",
+    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Alexander_McQueen",
+    "ELEMENT_LOCATOR" : "//button[contains(text(), \"Load more\")]",
+    "POPUP_TEXT":["No thank you","OK"],
+    "POPUP_ID" :[],
+    "POPUP_CLASS" : []
+  },
+    "Balenciaga": {
+      "METHOD" : "Scroll",
+    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Balenciaga",
+    "ELEMENT_LOCATOR" : null,
+    "POPUP_TEXT":["No, stay on the United States site"],
+    "POPUP_ID" :[],
+    "POPUP_CLASS" : []
+    },
+  "Balmain": {
+      "METHOD" : "Click",
+    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Balmain",
+    "ELEMENT_LOCATOR" : "button.load-more-link",
+    "POPUP_TEXT":["No, stay on the United States site"],
+    "POPUP_ID" :[],
+    "POPUP_CLASS" : ["btn-hide js-save-geoloc"]
+    },
+  "Brunello Cucinelli" :{
+      "METHOD" : "Click",
+      "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Brunello_Cucinelli",
+        "ELEMENT_LOCATOR": "a.cc-load-more-button",
+        "POPUP_TEXT": [],
+        "POPUP_ID": [],
+        "POPUP_CLASS": []
+    },
+  "Givenchy": {
+    "METHOD" : "Click",
+    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Givenchy",
+    "ELEMENT_LOCATOR": "a.js-pager-view-more",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": []
+  },
+  "Kenzo": {
+    "METHOD" : "Click",
+    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Kenzo",
+    "ELEMENT_LOCATOR": "button.importance-secondary",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": []
+  },
+  "Saint Laurent": {
+    "METHOD" : "Scroll",
+    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Saint_Laurent",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": []
+  }
+}
