@@ -1,58 +1,143 @@
 {
   "Alexander Mcqueen": {
     "METHOD" : "Click",
-    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Alexander_McQueen",
-    "ELEMENT_LOCATOR" : "//button[contains(text(), \"Load more\")]",
-    "POPUP_TEXT":["No thank you","OK"],
-    "POPUP_ID" :[],
-    "POPUP_CLASS" : []
+    "DIRECTORY" : "Alexander_McQueen",
+    "ELEMENT_LOCATOR" : "//button[contains(text(), 'Load more')]",
+    "POPUP_TEXT": ["No thank you", "OK"],
+    "POPUP_ID": [null,null],
+    "POPUP_CLASS": [null,null],
+    "BY_XPATH": true,
+    "DOMAIN" : "alexandermcqueen.com"
   },
-    "Balenciaga": {
-      "METHOD" : "Scroll",
-    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Balenciaga",
-    "ELEMENT_LOCATOR" : null,
-    "POPUP_TEXT":["No, stay on the United States site"],
-    "POPUP_ID" :[],
-    "POPUP_CLASS" : []
-    },
+  "Balenciaga": {
+    "METHOD" : "Scroll",
+    "DIRECTORY" : "Balenciaga",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": ["No, stay on the United States site"],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": [null],
+    "BY_XPATH": false,
+    "DOMAIN" : "balenciaga.com"
+  },
   "Balmain": {
-      "METHOD" : "Click",
-    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Balmain",
-    "ELEMENT_LOCATOR" : "button.load-more-link",
-    "POPUP_TEXT":["No, stay on the United States site"],
-    "POPUP_ID" :[],
-    "POPUP_CLASS" : ["btn-hide js-save-geoloc"]
-    },
-  "Brunello Cucinelli" :{
-      "METHOD" : "Click",
-      "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Brunello_Cucinelli",
-        "ELEMENT_LOCATOR": "a.cc-load-more-button",
-        "POPUP_TEXT": [],
-        "POPUP_ID": [],
-        "POPUP_CLASS": []
-    },
+    "METHOD" : "Click",
+    "DIRECTORY" : "Balmain",
+    "ELEMENT_LOCATOR": "button.load-more-link",
+    "POPUP_TEXT": ["No, stay on the United States site"],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": ["btn-hide js-save-geoloc"],
+    "POPUP_XPATH":[null],
+    "BY_XPATH": false,
+    "DOMAIN" : "balmain.com"
+  },
+  "Brunello Cucinelli": {
+    "METHOD" : "Click",
+    "DIRECTORY" : "Brunello_Cucinelli",
+    "ELEMENT_LOCATOR": "a.cc-load-more-button",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "shop.brunellocucinelli.com"
+  },
   "Givenchy": {
     "METHOD" : "Click",
-    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Givenchy",
+    "DIRECTORY" : "Givenchy",
     "ELEMENT_LOCATOR": "a.js-pager-view-more",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
-    "POPUP_CLASS": []
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "givenchy.com"
   },
   "Kenzo": {
     "METHOD" : "Click",
-    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Kenzo",
+    "DIRECTORY" : "Kenzo",
     "ELEMENT_LOCATOR": "button.importance-secondary",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
-    "POPUP_CLASS": []
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "kenzo.com"
   },
   "Saint Laurent": {
     "METHOD" : "Scroll",
-    "DIRECTORY" : "/Users/samuelshlyam/Python Projects Personal/Brand_URLS/Saint_Laurent",
+    "DIRECTORY" : "Saint_Laurent",
     "ELEMENT_LOCATOR": null,
     "POPUP_TEXT": [],
     "POPUP_ID": [],
-    "POPUP_CLASS": []
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "ysl.com"
+  },
+  "Fendi": {
+    "METHOD" : "Click",
+    "DIRECTORY" : "Fendi",
+    "ELEMENT_LOCATOR": "button.c-search-results__product-grid-show-more.show-more.btn.btn-primary.btn-primary--small-pd-ar.more",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN": "fendi.com"
+  },
+  "Bottega Veneta": {
+    "METHOD" : "Scroll",
+    "DIRECTORY" : "Bottega_Veneta",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "bottegaveneta.com"
+  },
+  "Dolce Gabbana": {
+    "METHOD" : "Click",
+    "DIRECTORY" : "Dolce_Gabbana",
+    "ELEMENT_LOCATOR": "button.Button__btn--secondary--Tpjc0.CategoryPaginationLoadMore__category-pagination__load-more--SOwaX",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "dolcegabbana.com"
+  },
+  "Burberry": {
+    "METHOD": "Click",
+    "DIRECTORY": "Burberry",
+    "ELEMENT_LOCATOR": "button.product-listing-shelf__view-more-new.css-o1bmk2.e6yz8z0",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN": "burberry.com"
+  },
+  "Ferragamo": {
+    "METHOD": "Click",
+    "DIRECTORY": "Ferragamo",
+    "ELEMENT_LOCATOR": "button.see-more.btn.cmp-button.cmp-button--fill",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH":[],
+    "BY_XPATH": false,
+    "DOMAIN" : "ferragamo.com"
+  },
+  "Versace": {
+    "METHOD": "Click",
+    "DIRECTORY": "Versace",
+    "ELEMENT_LOCATOR": "button.more.desktop-load-more",
+    "POPUP_TEXT": [null],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": ["//div[@role=\"button\" and @aria-label=\"close\"]"],
+    "BY_XPATH": false,
+    "DOMAIN": "versace.com"
   }
 }
