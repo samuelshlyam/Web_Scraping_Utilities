@@ -3,12 +3,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-
+import threading
+import queue
+import time
+from bs4 import BeautifulSoup
 import json
 import time
 import re
 import os
-
+import datetime
 
 class PageExpander:
 
@@ -17,40 +20,40 @@ class PageExpander:
         options.add_argument("--auto-open-devtools-for-tabs")
         self.driver = webdriver.Chrome( options=options)
 
-    def close_popup(self, popup_text=None, popup_id=None, popup_class=None, popup_xpath=None, wait_time=10):
+    def close_popup(self, popup_text=None, popup_id=None, popup_class=None, popup_xpath=None, wait_time=3):
         if not popup_text and not popup_id and not popup_class and not popup_xpath:
             return
         print("I made it in here")
         popup_closed = False
         retries = 0
-        max_retries = 5
-
+        max_retries = 12
+        count=0
         while not popup_closed and retries < max_retries:
             try:
-                if popup_text:
+                count+=1
+                if popup_text and count%4==0:
                     print(f"Trying to close popup with text: {popup_text}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.XPATH, f'//button[contains(text(), "{popup_text}")]'))
                     )
-                elif popup_id:
+                elif popup_id and count%4==1:
                     print(f"Trying to close popup with ID: {popup_id}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.ID, popup_id))
                     )
-                elif popup_class:
+                elif popup_class and count%4==2:
                     print(f"Trying to close popup with class: {popup_class}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.CLASS_NAME, popup_class))
                     )
                     print(close_button)
-                else:
+                elif popup_xpath and count%4==3:
                     # Handle specific popup structure
                     print(f"Trying to close popup with XPATH: {popup_xpath}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.XPATH, popup_xpath))
                     )
                     print(close_button)
-
                 # Scroll the button into view
                 self.driver.execute_script("arguments[0].scrollIntoView(true);", close_button)
                 time.sleep(1)  # Wait for scrolling to complete
@@ -60,9 +63,11 @@ class PageExpander:
                 time.sleep(2)  # Wait for the popup to close
                 popup_closed = True
                 print("Popup closed successfully")
+                return popup_closed
             except Exception as e:
                 print(f"Popup not found or not clickable: {e}")
                 retries += 1
+                print(f"Attempt {retries}/{max_retries}")
                 time.sleep(2)  # Wait a bit before retrying
 
         if not popup_closed:
@@ -71,16 +76,19 @@ class PageExpander:
     def expand_page_click(self, urls, element_locator, brand_name, locator_type=By.CSS_SELECTOR, wait_time=3, popup_id=None, popup_text=None,popup_class=None,popup_xpath=None):
         current_directory
         new_path = current_directory + "\\Outputs\\" + brand_name
+        page_sources=[]
         for url in urls:
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body")))  # Wait for the page to load
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
                 print(text, id_, class_, xpath)
-                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
+                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
+                    break
 
             wait = WebDriverWait(self.driver, wait_time)
-            count=0
+            retries=0
+            max_retries=5
             while True:
                 try:
                     # Scroll to the bottom in order to allow items to load
@@ -100,29 +108,101 @@ class PageExpander:
 
                     # Wait a bit for the page to load more content
                     time.sleep(1)
-                    count=0
+                    retries=0
 
                 except Exception as e:
                         print(f"Error occurred: {e}")
                         time.sleep(2)
-                        count+=1
+                        retries+=1
+                        print(f"Attempt {retries}/{max_retries}")
                         #If button not exist 10 times give up
-                        if count>=5:
+                        if retries>=max_retries:
                             break
-
-            page_source = self.driver.page_source
+            
+            page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
             save_html_file(url, page_source, new_path)
+            page_sources.append(page_source)
+        return page_sources
+
+    def expand_page_hybrid(self, urls, brand_name, element_locator, locator_type=By.CSS_SELECTOR, 
+                       wait_time=3, scroll_pause_time=2, max_time=300, max_retries=5,
+                       popup_text=None, popup_id=None, popup_class=None, popup_xpath=None,initial_scroll_back_amount=500):
+        current_directory
+        new_path = os.path.join(current_directory, "Outputs", brand_name)
+        page_sources=[]
+        for url in urls:
+            self.driver.get(url)
+            WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+            
+            # Handle popups
+            for text, id_, class_, xpath in zip(popup_text or [], popup_id or [], popup_class or [], popup_xpath or []):
+                print(text, id_, class_, xpath)
+                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
+                    break
 
 
-    def expand_page_scroll(self, urls, brand_name, initial_scroll_back_amount=500, wait_time=3, scroll_pause_time=2, max_time=6000, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
+            start_time = time.time()
+            last_height = self.driver.execute_script("return document.body.scrollHeight")
+            no_changes_count = 0
+            scroll_back_amount = initial_scroll_back_amount
+
+            while True:
+                # Check if max time has been exceeded
+                if time.time() - start_time > max_time:
+                    print("Maximum time limit reached.")
+                    break
+
+                # Try to click the "load more" button if it exists
+                try:
+                    load_more_button = WebDriverWait(self.driver, 5).until(
+                        EC.element_to_be_clickable((locator_type, element_locator))
+                    )
+                    self.driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
+                    time.sleep(1)
+                    self.driver.execute_script("arguments[0].click();", load_more_button)
+                    time.sleep(wait_time)  # Wait for new content to load
+                    print("Clicked 'load more' button")
+                    no_changes_count = 0  # Reset no changes count
+                except Exception as e:
+                    print(f"No 'load more' button found or not clickable: {e}")
+                    
+                    # If button not found, scroll to bottom
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                    time.sleep(scroll_pause_time)
+                    self.driver.execute_script("window.scrollBy(0, -arguments[0]);", scroll_back_amount)
+                    time.sleep(scroll_pause_time)
+
+                    new_height = self.driver.execute_script("return document.body.scrollHeight")
+                    if new_height == last_height:
+                        no_changes_count += 1
+                        scroll_back_amount += 200
+                        print(f"No change in height. Attempt {no_changes_count}/{max_retries}")
+                        if no_changes_count >= max_retries:
+                            print("Reached the bottom of the page or no more content loading")
+                            break
+                    else:
+                        no_changes_count = 0  # Reset count if height changed
+                        print("Successfully scrolled to bottom loading new items.")
+                    
+                    last_height = new_height
+
+
+            page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
+            save_html_file(url, page_source, new_path)
+            page_sources.append(page_source)
+        return page_sources
+    def expand_page_scroll(self, urls, brand_name, initial_scroll_back_amount=500, wait_time=3, scroll_pause_time=3, max_time=6000, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
         current_directory
         new_path = current_directory + "\\Outputs\\" + brand_name
+        max_retries = 5
+        page_sources=[]
         for url in urls:
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
                 print(text, id_, class_, xpath)
-                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
+                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
+                    break
 
             last_height = self.driver.execute_script("return document.body.scrollHeight")
             retry_count = 0
@@ -153,16 +233,18 @@ class PageExpander:
                 if new_height == last_height:
                     retry_count += 1
                     scroll_back_amount += 200  # Increase scroll back amount to ensure it's not missing content
-                    print("Couldn't Scroll")
-                    if retry_count >= 5:
+                    print(f"No change in height. Attempt {retry_count}/{max_retries}")
+                    if retry_count >= max_retries:
                         break
                 else:
                     retry_count = 0  # Reset retry count if new content is loaded
                     print("Successfully Scrolled")
                 last_height = new_height
 
-            page_source = self.driver.page_source
+            page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
             save_html_file(url, page_source, new_path)
+            page_sources.append(page_source)
+        return page_sources
 
 def read_file_to_list(file_path):
     with open(file_path, 'r') as file:
@@ -174,9 +256,9 @@ def save_html_file(url, html_content, base_directory):
     # Extract the path from the URL
     path = url.split("//")[-1].split("/", 1)[-1]  # Remove protocol and get the path
     path_parts = path.split("/")
-
+    time_stamp=datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
     # Construct the full directory path
-    full_dir_path = os.path.join(base_directory, *path_parts[:-1])
+    full_dir_path = os.path.join(base_directory, time_stamp, *path_parts[:-1])
 
     # Create the directory if it doesn't exist
     os.makedirs(full_dir_path, exist_ok=True)
@@ -193,38 +275,124 @@ def save_html_file(url, html_content, base_directory):
 
 current_directory = os.getcwd()
 print(current_directory)
-# Example usage:
-if __name__ == "__main__":
-    expander = PageExpander()
 
+import threading
+import queue
+import time
+import csv
+from bs4 import BeautifulSoup
+
+def count_products(html_content, tag):
+    if not tag:
+        return 0
+    soup = BeautifulSoup(html_content, 'html.parser')
+    products = soup.find_all(class_=tag)
+    print(f"Number of products found: {len(products)}")
+    return len(products)
+
+
+def save_to_csv(brand_name, url_product_counts):
+    filename = os.path.join(current_directory,"Product_Counts", f"{brand_name}_product_counts.csv")
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['URL', 'Product Count'])
+        for url, count in url_product_counts:
+            writer.writerow([url, count])
+
+def process_brand(expander, brand_name, data, current_directory):
+    print(f"\nProcessing brand: {brand_name}")
+    
+    directory = os.path.join(current_directory, "Brand_URLS", f"{data['DIRECTORY']}.txt")
+    try:
+        URL_LIST = read_file_to_list(directory)
+    except FileNotFoundError:
+        print(f"URL list file not found for {brand_name}. Skipping.")
+        return
+
+    ELEMENT_LOCATOR = data.get("ELEMENT_LOCATOR")
+    POPUP_TEXT = data.get("POPUP_TEXT", [])
+    POPUP_ID = data.get("POPUP_ID", [])
+    POPUP_CLASS = data.get("POPUP_CLASS", [])
+    POPUP_XPATH = data.get("POPUP_XPATH", [])
+    BY_XPATH = data.get("BY_XPATH", False)
+    method = data.get("METHOD", "Click")
+    PRODUCTS_PER_HTML_TAG = data.get("PRODUCTS_PER_HTML_TAG", "")
+    brand_name=data.get("DIRECTORY","")
+
+    print(f"Method: {method}, Element Locator: {ELEMENT_LOCATOR}")
+    print(f"Popup Text: {POPUP_TEXT}, Popup ID: {POPUP_ID}, Popup Class: {POPUP_CLASS}, Popup XPath: {POPUP_XPATH}")
+    print(f"Products Per HTML Tag: {PRODUCTS_PER_HTML_TAG}")
+    print(f"URLs: {URL_LIST}")
+
+    LOCATOR_TYPE = By.XPATH if BY_XPATH else By.CSS_SELECTOR
+
+    url_product_counts = []
+
+    try:
+        if method == "Click":
+            html_contents = expander.expand_page_click(URL_LIST, ELEMENT_LOCATOR, brand_name, locator_type=LOCATOR_TYPE, 
+                                       popup_text=POPUP_TEXT, popup_id=POPUP_ID, popup_class=POPUP_CLASS, popup_xpath=POPUP_XPATH)
+        elif method == "Scroll":
+            html_contents = expander.expand_page_scroll(URL_LIST, brand_name, popup_text=POPUP_TEXT, popup_id=POPUP_ID, 
+                                        popup_class=POPUP_CLASS, popup_xpath=POPUP_XPATH)
+        elif method == "Hybrid":
+            html_contents = expander.expand_page_hybrid(URL_LIST, brand_name, ELEMENT_LOCATOR, locator_type=LOCATOR_TYPE, 
+                                        popup_text=POPUP_TEXT, popup_id=POPUP_ID, popup_class=POPUP_CLASS, popup_xpath=POPUP_XPATH)
+        else:
+            print(f"Unknown method '{method}' for {brand_name}. Skipping.")
+            return
+
+        for url, html_content in zip(URL_LIST, html_contents):
+            product_count = count_products(html_content, PRODUCTS_PER_HTML_TAG)
+            url_product_counts.append((url, product_count))
+            print(f"URL: {url}, Product Count: {product_count}")
+
+        save_to_csv(brand_name, url_product_counts)
+
+    except Exception as e:
+        print(f"An error occurred while processing {brand_name}: {str(e)}")
+
+def worker(task_queue, expander, current_directory):
+    while True:
+        try:
+            brand_name, data = task_queue.get(block=False)
+            process_brand(expander, brand_name, data, current_directory)
+            task_queue.task_done()
+        except queue.Empty:
+            break
+
+
+MAX_THREADS=20
+
+if __name__ == "__main__":
     with open("settings.json", "r") as file:
         jsonData = json.load(file)
-    brand_name="Versace"
-    data=jsonData[brand_name]
-    brand_name = data['DIRECTORY']
-    method=data['METHOD']
-    directory=current_directory+r"\Brand_URLS\\"+brand_name
-    URL_LIST = read_file_to_list(directory)
-    ELEMENT_LOCATOR = data["ELEMENT_LOCATOR"]
-    POPUP_TEXT=data["POPUP_TEXT"]
-    POPUP_ID = data["POPUP_ID"]
-    POPUP_CLASS=data["POPUP_CLASS"]
-    POPUP_XPATH=data["POPUP_XPATH"]
-    BY_XPATH=data["BY_XPATH"]
-    print(method,ELEMENT_LOCATOR,POPUP_TEXT,POPUP_ID,POPUP_CLASS,POPUP_XPATH)
-    print(URL_LIST)
 
-    if BY_XPATH:
-        LOCATOR_TYPE=By.XPATH
-    else:
-        LOCATOR_TYPE=By.CSS_SELECTOR
+    task_queue = queue.Queue()
+    for brand_name, data in jsonData.items():
+        task_queue.put((brand_name, data))
 
+    num_threads = min(len(jsonData), MAX_THREADS)  # Adjust the number of threads as needed
+    threads = []
 
-    if method=="Click":
-        expander.expand_page_click(URL_LIST, ELEMENT_LOCATOR,brand_name,locator_type=LOCATOR_TYPE, popup_text=POPUP_TEXT, popup_id=POPUP_ID, popup_class=POPUP_CLASS,popup_xpath=POPUP_XPATH)
-    elif method=="Scroll":
-        expander.expand_page_scroll(URL_LIST,brand_name,popup_text=POPUP_TEXT, popup_id=POPUP_ID, popup_class=POPUP_CLASS, popup_xpath=POPUP_XPATH)
+    for _ in range(num_threads):
+        expander = PageExpander()  # Create a new PageExpander instance for each thread
+        t = threading.Thread(target=worker, args=(task_queue, expander, current_directory))
+        t.start()
+        threads.append(t)
 
+    # Wait for all tasks to be completed
+    task_queue.join()
+
+    # Stop workers
+    for _ in range(num_threads):
+        task_queue.put(None)
+    for t in threads:
+        t.join()
+
+    print("\nAll brands processed.")
 
 #Issues Birkenstock popups don't close
 #Issues Versace Find More button can't be found/clicked
+#Prada not all products are grabbed consistently
+#Versace not all products are grabbed consistently

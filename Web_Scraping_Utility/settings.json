@@ -6,8 +6,10 @@
     "POPUP_TEXT": ["No thank you", "OK"],
     "POPUP_ID": [null,null],
     "POPUP_CLASS": [null,null],
+    "POPUP_XPATH":[null,null],
     "BY_XPATH": true,
-    "DOMAIN" : "alexandermcqueen.com"
+    "DOMAIN" : "alexandermcqueen.com",
+    "PRODUCTS_PER_HTML_TAG": "swiper-slide swiper-slide-active"
   },
   "Balenciaga": {
     "METHOD" : "Scroll",
@@ -16,8 +18,10 @@
     "POPUP_TEXT": ["No, stay on the United States site"],
     "POPUP_ID": [null],
     "POPUP_CLASS": [null],
+    "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "balenciaga.com"
+    "DOMAIN" : "balenciaga.com",
+    "PRODUCTS_PER_HTML_TAG": "l-productgrid__item"
   },
   "Balmain": {
     "METHOD" : "Click",
@@ -28,7 +32,8 @@
     "POPUP_CLASS": ["btn-hide js-save-geoloc"],
     "POPUP_XPATH":[null],
     "BY_XPATH": false,
-    "DOMAIN" : "balmain.com"
+    "DOMAIN" : "balmain.com",
+    "PRODUCTS_PER_HTML_TAG": "product-body"
   },
   "Brunello Cucinelli": {
     "METHOD" : "Click",
@@ -39,7 +44,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "shop.brunellocucinelli.com"
+    "DOMAIN" : "shop.brunellocucinelli.com",
+    "PRODUCTS_PER_HTML_TAG": "col-sm-4 col-md-4 grid3-tile-margin js-singleItem-plp"
   },
   "Givenchy": {
     "METHOD" : "Click",
@@ -50,7 +56,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "givenchy.com"
+    "DOMAIN" : "givenchy.com",
+    "PRODUCTS_PER_HTML_TAG": "grid-tile js-slv-elements col-sm-6 col-md-4"
   },
   "Kenzo": {
     "METHOD" : "Click",
@@ -61,7 +68,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "kenzo.com"
+    "DOMAIN" : "kenzo.com",
+    "PRODUCTS_PER_HTML_TAG": "m-product-tile"
   },
   "Saint Laurent": {
     "METHOD" : "Scroll",
@@ -72,7 +80,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "ysl.com"
+    "DOMAIN" : "ysl.com",
+    "PRODUCTS_PER_HTML_TAG": "c-product__infos"
   },
   "Fendi": {
     "METHOD" : "Click",
@@ -83,7 +92,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN": "fendi.com"
+    "DOMAIN": "fendi.com",
+    "PRODUCTS_PER_HTML_TAG": "c-tiles col-6 col-lg-3 d-flex flex-column"
   },
   "Bottega Veneta": {
     "METHOD" : "Scroll",
@@ -94,18 +104,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "bottegaveneta.com"
-  },
-  "Dolce Gabbana": {
-    "METHOD" : "Click",
-    "DIRECTORY" : "Dolce_Gabbana",
-    "ELEMENT_LOCATOR": "button.Button__btn--secondary--Tpjc0.CategoryPaginationLoadMore__category-pagination__load-more--SOwaX",
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH":[],
-    "BY_XPATH": false,
-    "DOMAIN" : "dolcegabbana.com"
+    "DOMAIN" : "bottegaveneta.com",
+    "PRODUCTS_PER_HTML_TAG": "c-product__infos"
   },
   "Burberry": {
     "METHOD": "Click",
@@ -116,7 +116,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN": "burberry.com"
+    "DOMAIN": "burberry.com",
+    "PRODUCTS_PER_HTML_TAG": "redesigned-product-card"
   },
   "Ferragamo": {
     "METHOD": "Click",
@@ -127,7 +128,8 @@
     "POPUP_CLASS": [],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
-    "DOMAIN" : "ferragamo.com"
+    "DOMAIN" : "ferragamo.com",
+    "PRODUCTS_PER_HTML_TAG": "r23-grid--list-plp__item__product-info"
   },
   "Versace": {
     "METHOD": "Click",
@@ -138,6 +140,19 @@
     "POPUP_CLASS": [null],
     "POPUP_XPATH": ["//div[@role=\"button\" and @aria-label=\"close\"]"],
     "BY_XPATH": false,
-    "DOMAIN": "versace.com"
-  }
+    "DOMAIN": "versace.com",
+    "PRODUCTS_PER_HTML_TAG": "product-tile-wrapper"
+  },
+  "Prada": {
+  "METHOD": "Hybrid",
+  "DIRECTORY": "Prada",
+  "ELEMENT_LOCATOR": "a.button-link.inline-flex.items-center[aria-label='Show more']",
+  "POPUP_TEXT": ["Continue without accepting"],
+  "POPUP_ID": [null],
+  "POPUP_CLASS": ["banner_cta cta_accept"],
+  "POPUP_XPATH": ["//div[contains(@class, 'banner_cta') and contains(@class, 'cta_accept')]"],
+  "BY_XPATH": false,
+  "DOMAIN": "prada.com",
+  "PRODUCTS_PER_HTML_TAG": "w-full h-auto lg:h-full"
+}
 }
