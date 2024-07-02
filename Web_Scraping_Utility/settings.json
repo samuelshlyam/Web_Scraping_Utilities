@@ -131,18 +131,6 @@
     "DOMAIN" : "ferragamo.com",
     "PRODUCTS_PER_HTML_TAG": "r23-grid--list-plp__item__product-info"
   },
-  "Versace": {
-    "METHOD": "Click",
-    "DIRECTORY": "Versace",
-    "ELEMENT_LOCATOR": "button.more.desktop-load-more",
-    "POPUP_TEXT": [null],
-    "POPUP_ID": [null],
-    "POPUP_CLASS": [null],
-    "POPUP_XPATH": ["//div[@role=\"button\" and @aria-label=\"close\"]"],
-    "BY_XPATH": false,
-    "DOMAIN": "versace.com",
-    "PRODUCTS_PER_HTML_TAG": "product-tile-wrapper"
-  },
   "Prada": {
   "METHOD": "Hybrid",
   "DIRECTORY": "Prada",
@@ -154,5 +142,44 @@
   "BY_XPATH": false,
   "DOMAIN": "prada.com",
   "PRODUCTS_PER_HTML_TAG": "w-full h-auto lg:h-full"
-}
+},
+  "Loewe": {
+    "METHOD": "Hybrid",
+    "DIRECTORY": "Loewe",
+    "ELEMENT_LOCATOR": "button[data-testid='load-more-button']",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "loewe.com",
+    "PRODUCTS_PER_HTML_TAG": "product-tile"
+  },
+  "Palm Angels": {
+    "METHOD": "Pages",
+    "DIRECTORY": "Palm_Angels",
+    "ELEMENT_LOCATOR": [
+      "button[data-test='full-pagination-next']",
+      "button[data-test='simple-pagination-next']"
+    ],
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "palmangels.com",
+    "PRODUCTS_PER_HTML_TAG": "\"product-card\""
+  },
+  "Veja": {
+    "METHOD": "Pages",
+    "DIRECTORY": "Veja",
+    "ELEMENT_LOCATOR": "a.action.next",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "veja-store.com",
+    "PRODUCTS_PER_HTML_TAG": "product-item-info"
+  }
 }
