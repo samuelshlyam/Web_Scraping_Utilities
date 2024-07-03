@@ -1,0 +1,41 @@
+{
+  "OffWhite": {
+    "METHOD": "Click",
+    "DIRECTORY": "Off_White",
+    "ELEMENT_LOCATOR": "div.css-1hnvvvj button.emnvohd0.css-1n21rpr.e1hob6j91",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "off---white.com",
+    "PRODUCTS_PER_HTML_TAG": "css-18srfn0 e134ay6f10"
+  },
+  "Palm Angels": {
+    "METHOD": "Pages",
+    "DIRECTORY": "Palm_Angels",
+    "ELEMENT_LOCATOR": [
+      "button[data-test='full-pagination-next']",
+      "button[data-test='simple-pagination-next']"
+    ],
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "palmangels.com",
+    "PRODUCTS_PER_HTML_TAG": "\"product-card\""
+  },
+  "Canada Goose": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Canada_Goose",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": ["dismissbutton2"],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "canadagoose.com",
+    "PRODUCTS_PER_HTML_TAG": "grid-tile col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3 pb-3 pb-md-6 pb-xl-8 "
+  }
+}

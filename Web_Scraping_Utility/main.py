@@ -12,13 +12,13 @@ import time
 import re
 import os
 import datetime
-from selenium_stealth import stealth
 
 class PageExpander:
 
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument("--auto-open-devtools-for-tabs")
+        options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
         self.driver = webdriver.Chrome( options=options)
         self.brand_name=''
 
@@ -76,7 +76,6 @@ class PageExpander:
             print("Failed to close the popup after several retries.")
 
     def expand_page_pages(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10, popup_id=None, popup_text=None,popup_class=None,popup_xpath=None):
-        current_directory
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         page_sources=[]
@@ -88,8 +87,7 @@ class PageExpander:
             #Closing Popups
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
                 print(text, id_, class_, xpath)
-                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
-                    break
+                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
             #Necessary Variables
             retries=0
             max_retries=1
@@ -108,6 +106,8 @@ class PageExpander:
                         for locator in element_locator:
                             print(locator)
                             try:
+                                for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
+                                    print(text, id_, class_, xpath)
                                 load_more_button = WebDriverWait(self.driver, wait_time).until(
                                     EC.presence_of_element_located((locator_type, element_locator))
                                 )
@@ -159,7 +159,6 @@ class PageExpander:
 
     def expand_page_click(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10,
                           popup_id=None, popup_text=None, popup_class=None, popup_xpath=None):
-        current_directory
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         page_sources = []
@@ -170,8 +169,8 @@ class PageExpander:
                 EC.presence_of_element_located((By.TAG_NAME, "body")))  # Wait for the page to load
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
                 print(text, id_, class_, xpath)
-                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
-                    break
+                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
+
 
             wait = WebDriverWait(self.driver, wait_time)
             retries = 0
@@ -223,12 +222,12 @@ class PageExpander:
             page_sources.append(page_source)
         return page_sources
     def expand_page_hybrid(self, urls, element_locator, locator_type=By.CSS_SELECTOR,
-                       wait_time=10, scroll_pause_time=2, max_time=300, max_retries=5,
-                       popup_text=None, popup_id=None, popup_class=None, popup_xpath=None,initial_scroll_back_amount=500):
-        current_directory
+                       wait_time=10, scroll_pause_time=5,
+                       popup_text=None, popup_id=None, popup_class=None, popup_xpath=None,initial_scroll_back_amount=300):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         page_sources=[]
+        max_retries = 10
         print("The hybrid method is being used")
         for url in urls:
             self.driver.get(url)
@@ -237,20 +236,14 @@ class PageExpander:
             # Handle popups
             for text, id_, class_, xpath in zip(popup_text or [], popup_id or [], popup_class or [], popup_xpath or []):
                 print(text, id_, class_, xpath)
-                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
-                    break
+                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
-            start_time = time.time()
             last_height = self.driver.execute_script("return document.body.scrollHeight")
             no_changes_count = 0
             scroll_back_amount = initial_scroll_back_amount
 
             while True:
-                # Check if max time has been exceeded
-                if time.time() - start_time > max_time:
-                    print("Maximum time limit reached.")
-                    break
 
                 # Try to click the "load more" button if it exists
                 try:
@@ -294,6 +287,7 @@ class PageExpander:
                             print("Reached the bottom of the page or no more content loading")
                             break
                     else:
+                        scroll_back_amount=initial_scroll_back_amount
                         no_changes_count = 0  # Reset count if height changed
                         print("Successfully scrolled to bottom loading new items.")
                     
@@ -304,11 +298,10 @@ class PageExpander:
             save_html_file(url, page_source, new_path)
             page_sources.append(page_source)
         return page_sources
-    def expand_page_scroll(self, urls, initial_scroll_back_amount=500, wait_time=10, scroll_pause_time=3, max_time=6000, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
-        current_directory
+    def expand_page_scroll(self, urls, initial_scroll_back_amount=300, wait_time=10, scroll_pause_time=5, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
-        max_retries = 5
+        max_retries = 10
         page_sources=[]
         print("The scroll method is being used")
         for url in urls:
@@ -316,20 +309,13 @@ class PageExpander:
             WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
                 print(text, id_, class_, xpath)
-                if self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath):
-                    break
+                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
+
 
             last_height = self.driver.execute_script("return document.body.scrollHeight")
             retry_count = 0
             scroll_back_amount = initial_scroll_back_amount
-            start_time = time.time()
-
             while True:
-                # Check if the maximum time has been exceeded
-                if time.time() - start_time > max_time:
-                    print("Maximum time limit reached.")
-                    break
-
                 # Scroll to the bottom
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 time.sleep(scroll_pause_time)
@@ -352,6 +338,7 @@ class PageExpander:
                     if retry_count >= max_retries:
                         break
                 else:
+                    scroll_back_amount = initial_scroll_back_amount
                     retry_count = 0  # Reset retry count if new content is loaded
                     print("Successfully Scrolled")
                 last_height = new_height
@@ -370,7 +357,7 @@ def read_file_to_list(file_path):
 def save_html_file(url, html_content, base_directory):
     # Extract the path from the URL
     path = url.split("//")[-1].split("/", 1)[-1]  # Remove protocol and get the path
-    path = re.sub(r'[<>:"/\\|?*]', '_', path)
+    path = re.sub(r'[<>:"\\|?*]', '_', path)
     path_parts = path.split("/")
     # Construct the full directory path
     full_dir_path = os.path.join(base_directory, *path_parts[:-1])
@@ -379,7 +366,7 @@ def save_html_file(url, html_content, base_directory):
     os.makedirs(full_dir_path, exist_ok=True)
 
     # Construct the file path
-    filename = path_parts[-1] + ".html" if path_parts[-1] else path_parts[-2]
+    filename = path_parts[-1] + ".html" if path_parts[-1] else path_parts[-2] +".html"
     filepath = os.path.join(full_dir_path, filename)
 
     # Write the HTML content to the file
@@ -484,8 +471,8 @@ def worker(task_queue, expander, current_directory):
             break
 
 
-MAX_THREADS=20
-ABS_MAX_THREADS=len(os.listdir(os.path.join(current_directory,"Brand_URLS_Testing")))
+ABS_MAX_THREADS=20
+MAX_THREADS=len(os.listdir(os.path.join(current_directory,"Brand_URLS_Testing")))
 
 if __name__ == "__main__":
     start=datetime.datetime.now()
@@ -521,3 +508,9 @@ if __name__ == "__main__":
 #Prada not all products are grabbed consistently
 #Versace not all products are grabbed consistently
 #Palm Angels has networking issues
+#Off White has networking issues
+#Recheck that Jimmy Choo is working properly
+#(taking a long time to load each time may not  get all items)
+#Canada Goose Pages do not open
+#Isabel Marant needs to be visible or doesnt scroll correctly
+#Continue working on Louboutin to make sure that the popups get properly closed

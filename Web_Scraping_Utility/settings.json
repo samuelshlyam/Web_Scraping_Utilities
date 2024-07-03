@@ -38,7 +38,7 @@
   "Brunello Cucinelli": {
     "METHOD" : "Click",
     "DIRECTORY" : "Brunello_Cucinelli",
-    "ELEMENT_LOCATOR": "a.cc-load-more-button",
+    "ELEMENT_LOCATOR": "cc-load-more-button",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
@@ -50,7 +50,7 @@
   "Givenchy": {
     "METHOD" : "Click",
     "DIRECTORY" : "Givenchy",
-    "ELEMENT_LOCATOR": "a.js-pager-view-more",
+    "ELEMENT_LOCATOR": "js-pager-view-more",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
@@ -155,21 +155,6 @@
     "DOMAIN": "loewe.com",
     "PRODUCTS_PER_HTML_TAG": "product-tile"
   },
-  "Palm Angels": {
-    "METHOD": "Pages",
-    "DIRECTORY": "Palm_Angels",
-    "ELEMENT_LOCATOR": [
-      "button[data-test='full-pagination-next']",
-      "button[data-test='simple-pagination-next']"
-    ],
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH": [],
-    "BY_XPATH": false,
-    "DOMAIN": "palmangels.com",
-    "PRODUCTS_PER_HTML_TAG": "\"product-card\""
-  },
   "Veja": {
     "METHOD": "Pages",
     "DIRECTORY": "Veja",
@@ -181,5 +166,221 @@
     "BY_XPATH": false,
     "DOMAIN": "veja-store.com",
     "PRODUCTS_PER_HTML_TAG": "product-item-info"
+  },
+  "Miu Miu": {
+    "METHOD": "Hybrid",
+    "DIRECTORY": "Miu_Miu",
+    "ELEMENT_LOCATOR": "a.button-link[aria-label='Show more']",
+    "POPUP_TEXT": ["continue without accepting"],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": ["cookie__close_text"],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "miumiu.com",
+    "PRODUCTS_PER_HTML_TAG": "h-full"
+  },
+  "Aquazzura": {
+    "METHOD": "Click",
+    "DIRECTORY": "Aquazzura",
+    "ELEMENT_LOCATOR": "div.load-more-items button.btn.btn-primary",
+    "POPUP_TEXT": ["Reject (x)"],
+    "POPUP_ID": ["CybotCookiebotDialogBodyButtonDecline"],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "aquazzura.com",
+    "PRODUCTS_PER_HTML_TAG": "card-product__info__price"
+  },
+  "Jimmy Choo": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Jimmy_Choo",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "jimmychoo.com",
+    "PRODUCTS_PER_HTML_TAG": "product-tile"
+  },
+
+  "Gianvito Rossi": {
+    "METHOD": "Click",
+    "DIRECTORY": "Gianvito_Rossi",
+    "ELEMENT_LOCATOR": "a.b-load_more-button.b-button.m-outline[data-event-click\\.prevent='loadMore']",
+    "POPUP_TEXT": ["Continue without Accepting"],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "gianvitorossi.com",
+    "PRODUCTS_PER_HTML_TAG": "b-price-item"
+  },
+  "Manolo Blahnik": {
+    "METHOD": "Click",
+    "DIRECTORY": "Manolo_Blahnik",
+    "ELEMENT_LOCATOR": "button#load-more",
+    "POPUP_TEXT": ["Reject all"],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": ["button.text-xs.lg\\:w\\[170px\\]"],
+    "POPUP_XPATH": [null],
+    "DOMAIN": "manoloblahnik.com",
+    "PRODUCTS_PER_HTML_TAG": "item product product-item flex flex-col w-full"
+  },
+  "Jimmy Choo": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Jimmy_Choo",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "jimmychoo.com",
+    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up"
+  },
+  "The Row": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "The_Row",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "therow.com",
+    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-upl"
+  },
+  "Acne Studios": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Acne_Studios",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "acnestudios.com",
+    "PRODUCTS_PER_HTML_TAG": "tile tile--span-4 tile--has-link product-tile"
+  },
+  "Moose Knuckles": {
+    "METHOD": "Click",
+    "DIRECTORY": "Moose_Knuckles",
+    "ELEMENT_LOCATOR": "div.Plp_load-more-wrapper__3HheE div.Button_secondary__xOtDg",
+    "POPUP_TEXT": ["No, thanks"],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": ["ltkpopup-close ltkpopup-close-button"],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "mooseknuckles.com",
+    "PRODUCTS_PER_HTML_TAG": "ProductTile_productitem-block__2sZ1u"
+  },
+  "Tom Ford": {
+    "METHOD": "Click",
+    "DIRECTORY": "Tom_Ford",
+    "ELEMENT_LOCATOR": "div.show-more div.text-center button.btn.btn-outline-primary.more",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "tomfordfashion.com",
+    "PRODUCTS_PER_HTML_TAG": "product-tile-wrap"
+  },
+  "Cult Gaia": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Cult_Gaia",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [null,null],
+    "POPUP_ID": [null,null],
+    "POPUP_CLASS": ["klaviyo-close-form","btn--close"],
+    "POPUP_XPATH": [null,null],
+    "BY_XPATH": false,
+    "DOMAIN": "cultgaia.com",
+    "PRODUCTS_PER_HTML_TAG": "col col--auto lazy-pag__item product-grid__item"
+  },
+  "Stella McCartney": {
+    "METHOD": "Click",
+    "DIRECTORY": "Stella_McCartney",
+    "ELEMENT_LOCATOR": ["a.btn.btn-outline-primary.more","button.btn.btn-outline-primary.more"],
+    "POPUP_TEXT": [null],
+    "POPUP_ID": ["onetrust-reject-all-handler"],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "stellamccartney.com",
+    "PRODUCTS_PER_HTML_TAG": "carousel-control_prev d-none d-md-block"
+  },
+  "DSquared2": {
+    "METHOD": "Click",
+    "DIRECTORY": "DSquared2",
+    "ELEMENT_LOCATOR": "a.b-load_more-button.b-button.m-outline",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "dsquared2.com",
+    "PRODUCTS_PER_HTML_TAG": "b-product_tile-content"
+  },
+  "Etro": {
+    "METHOD": "Click",
+    "DIRECTORY": "Etro",
+    "ELEMENT_LOCATOR": "button.productgrid-pagination-cta",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "etro.com",
+    "PRODUCTS_PER_HTML_TAG": "producttile-cover"
+  },
+  "Golden Goose": {
+    "METHOD": "Click",
+    "DIRECTORY": "Golden_Goose",
+    "ELEMENT_LOCATOR": "button.js-show-more",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "goldengoose.com",
+    "PRODUCTS_PER_HTML_TAG": "product master"
+  },
+  "Isabel Marant": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Isabel_Marant",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [null],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": ["onetrust-close-btn-handler"],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "isabelmarant.com",
+    "PRODUCTS_PER_HTML_TAG": "product-item__info"
+  },
+  "MCM": {
+    "METHOD": "Click",
+    "DIRECTORY": "MCM",
+    "ELEMENT_LOCATOR": "a.load-more",
+    "POPUP_TEXT": [null],
+    "POPUP_ID": [null],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": ["//button[@aria-label='Continue to site; close the dialog']"],
+    "BY_XPATH": false,
+    "DOMAIN": "mcmworldwide.com",
+    "PRODUCTS_PER_HTML_TAG": "grid-cell"
+  },
+  "Louboutin": {
+    "METHOD": "Pages",
+    "DIRECTORY": "Louboutin",
+    "ELEMENT_LOCATOR": "li.item.pages-item-next a.action.next",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "christianlouboutin.com",
+    "PRODUCTS_PER_HTML_TAG": "row-product"
   }
 }
