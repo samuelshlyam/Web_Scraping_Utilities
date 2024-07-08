@@ -12,16 +12,16 @@
     "PRODUCTS_PER_HTML_TAG": "swiper-slide swiper-slide-active"
   },
   "Balenciaga": {
-    "METHOD" : "Scroll",
+    "METHOD" : "Hybrid",
     "DIRECTORY" : "Balenciaga",
-    "ELEMENT_LOCATOR": null,
+    "ELEMENT_LOCATOR": "button.c-loadmore__btn.c-button--animation[data-action='loadMoreProducts']",
     "POPUP_TEXT": ["No, stay on the United States site"],
     "POPUP_ID": [null],
     "POPUP_CLASS": [null],
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "balenciaga.com",
-    "PRODUCTS_PER_HTML_TAG": "l-productgrid__item"
+    "PRODUCTS_PER_HTML_TAG": "c-product__item"
   },
   "Balmain": {
     "METHOD" : "Click",
@@ -38,7 +38,7 @@
   "Brunello Cucinelli": {
     "METHOD" : "Click",
     "DIRECTORY" : "Brunello_Cucinelli",
-    "ELEMENT_LOCATOR": "cc-load-more-button",
+    "ELEMENT_LOCATOR": "a#loadMoreButtonPLP.cc-button-secondary.cc-load-more-button",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
@@ -50,7 +50,7 @@
   "Givenchy": {
     "METHOD" : "Click",
     "DIRECTORY" : "Givenchy",
-    "ELEMENT_LOCATOR": "js-pager-view-more",
+    "ELEMENT_LOCATOR": "a.all.btn.btn-outline-primary.btn-load.js-pager-view-more",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
@@ -96,9 +96,9 @@
     "PRODUCTS_PER_HTML_TAG": "c-tiles col-6 col-lg-3 d-flex flex-column"
   },
   "Bottega Veneta": {
-    "METHOD" : "Scroll",
+    "METHOD" : "Hybrid",
     "DIRECTORY" : "Bottega_Veneta",
-    "ELEMENT_LOCATOR": null,
+    "ELEMENT_LOCATOR": "div.ab1251271-trigger",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
@@ -191,19 +191,6 @@
     "DOMAIN": "aquazzura.com",
     "PRODUCTS_PER_HTML_TAG": "card-product__info__price"
   },
-  "Jimmy Choo": {
-    "METHOD": "Scroll",
-    "DIRECTORY": "Jimmy_Choo",
-    "ELEMENT_LOCATOR": null,
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH": [],
-    "BY_XPATH": false,
-    "DOMAIN": "jimmychoo.com",
-    "PRODUCTS_PER_HTML_TAG": "product-tile"
-  },
-
   "Gianvito Rossi": {
     "METHOD": "Click",
     "DIRECTORY": "Gianvito_Rossi",
@@ -375,12 +362,75 @@
     "METHOD": "Pages",
     "DIRECTORY": "Louboutin",
     "ELEMENT_LOCATOR": "li.item.pages-item-next a.action.next",
+    "POPUP_TEXT": [null],
+    "POPUP_ID": ["onetrust-accept-btn-handler"],
+    "POPUP_CLASS": ["action-close"],
+    "POPUP_XPATH": ["//button[@class='action-close' and @data-role='closeBtn']"],
+    "BY_XPATH": false,
+    "DOMAIN": "christianlouboutin.com",
+    "PRODUCTS_PER_HTML_TAG": "item product product-item "
+  },
+  "Tods": {
+    "METHOD": "Click",
+    "DIRECTORY": "Tods",
+    "ELEMENT_LOCATOR": "div.centered-button-container a.btn.btn-dark",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": ["//button[@id='closeIconContainer' and @data-testid='closeIcon']"],
+    "BY_XPATH": false,
+    "DOMAIN": "tods.com",
+    "PRODUCTS_PER_HTML_TAG": "card display"
+  },
+  "Valentino": {
+    "METHOD": "Click",
+    "DIRECTORY": "Valentino",
+    "ELEMENT_LOCATOR": "p.vlt-cta-white[role='button']",
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
     "POPUP_XPATH": [],
     "BY_XPATH": false,
-    "DOMAIN": "christianlouboutin.com",
-    "PRODUCTS_PER_HTML_TAG": "row-product"
+    "DOMAIN": "valentino.com",
+    "PRODUCTS_PER_HTML_TAG": "productCard-wrapper"
+  },
+  "Marni": {
+    "METHOD": "Click",
+    "DIRECTORY": "Marni",
+    "ELEMENT_LOCATOR": [
+      "button.button-load-more.js_button-load-more.pointer.btn--primary",
+      "button.button-load-more.js_button-load-more.pointer.btn--secondary"
+    ],
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "marni.com",
+    "PRODUCTS_PER_HTML_TAG": "product newPLP-true"
+  },
+  "Loro Piana": {
+    "METHOD": "Click",
+    "DIRECTORY": "Loro_Piana",
+    "ELEMENT_LOCATOR": "a.main-button.t-cta[name='viewMore']",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "loropiana.com",
+    "PRODUCTS_PER_HTML_TAG": "product-result js-lpl-results scroll-animation a-show-up kl-changed animate"
+  },
+  "Celine": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Celine",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "celine.com",
+    "PRODUCTS_PER_HTML_TAG": "o-listing-grid__item o-listing-grid__item--break"
   }
 }

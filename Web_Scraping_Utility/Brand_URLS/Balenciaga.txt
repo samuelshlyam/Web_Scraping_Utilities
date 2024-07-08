@@ -1,5 +1,6 @@
-https://www.balenciaga.com/en-us/women/ready-to-wear/view-all
+https://www.balenciaga.com/en-us/men/accessories/view-all-the-accessories
 https://www.balenciaga.com/en-us/women/shoes/view-all
+https://www.balenciaga.com/en-us/women/ready-to-wear/view-all
 https://www.balenciaga.com/en-us/women/bags/view-all
 https://www.balenciaga.com/en-us/women/small-leather-goods/view-all
 https://www.balenciaga.com/en-us/women/accessories/view-all
@@ -7,4 +8,3 @@ https://www.balenciaga.com/en-us/men/ready-to-wear/view-all
 https://www.balenciaga.com/en-us/men/shoes/view-all
 https://www.balenciaga.com/en-us/men/bags/view-all
 https://www.balenciaga.com/en-us/men/small-leather-goods/view-all
-https://www.balenciaga.com/en-us/men/accessories/view-all

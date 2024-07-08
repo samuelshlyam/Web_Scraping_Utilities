@@ -12,6 +12,7 @@ import time
 import re
 import os
 import datetime
+import logging
 
 class PageExpander:
 
@@ -34,24 +35,24 @@ class PageExpander:
             try:
                 count+=1
                 if popup_text and count%4==0:
-                    print(f"Trying to close popup with text: {popup_text}")
+                    print(f"{self.brand_name}: Trying to close popup with text: {popup_text}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.XPATH, f'//button[contains(text(), "{popup_text}")]'))
                     )
                 elif popup_id and count%4==1:
-                    print(f"Trying to close popup with ID: {popup_id}")
+                    print(f"{self.brand_name}: Trying to close popup with ID: {popup_id}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.ID, popup_id))
                     )
                 elif popup_class and count%4==2:
-                    print(f"Trying to close popup with class: {popup_class}")
+                    print(f"{self.brand_name}: Trying to close popup with class: {popup_class}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.CLASS_NAME, popup_class))
                     )
                     print(close_button)
                 elif popup_xpath and count%4==3:
                     # Handle specific popup structure
-                    print(f"Trying to close popup with XPATH: {popup_xpath}")
+                    print(f"{self.brand_name}: Trying to close popup with XPATH: {popup_xpath}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.XPATH, popup_xpath))
                     )
@@ -64,12 +65,12 @@ class PageExpander:
                 close_button.click()
                 time.sleep(2)  # Wait for the popup to close
                 popup_closed = True
-                print("Popup closed successfully")
+                print(f"{self.brand_name}: Popup closed successfully")
                 return popup_closed
             except Exception as e:
-                print(f"Popup not found or not clickable: {e}")
+                print(f"{self.brand_name}: Popup not found or not clickable: {e}")
                 retries += 1
-                print(f"Attempt {retries}/{max_retries}")
+                print(f"{self.brand_name}: Attempt {retries}/{max_retries}")
                 time.sleep(2)  # Wait a bit before retrying
 
         if not popup_closed:
@@ -78,22 +79,27 @@ class PageExpander:
     def expand_page_pages(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10, popup_id=None, popup_text=None,popup_class=None,popup_xpath=None):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
+        logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
+        os.makedirs(new_path)
+        print(logging_file_path)
+        logging.basicConfig(filename=logging_file_path, level=logging.DEBUG)
+        logger = logging.getLogger()
         page_sources=[]
         print("The pages method is being used")
         for index,url in enumerate(urls):
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body")))  # Wait for the page to load
-            #Closing Popups
-            for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                print(text, id_, class_, xpath)
-                self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
             #Necessary Variables
             retries=0
-            max_retries=1
+            max_retries=5
             page_number=1
 
             while True:
+                # Closing Popups
+                for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
+                    logger.info(text, id_, class_, xpath)
+                    self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
                 page_name = f"Page_{page_number}"
                 final_path = os.path.join(new_path, page_name)
                 page_source = self.driver.page_source
@@ -104,18 +110,19 @@ class PageExpander:
                     self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                     if type(element_locator) == list:
                         for locator in element_locator:
-                            print(locator)
+                            logger.info(locator)
                             try:
                                 for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                                    print(text, id_, class_, xpath)
+                                    logger.info(text, id_, class_, xpath)
                                 load_more_button = WebDriverWait(self.driver, wait_time).until(
                                     EC.presence_of_element_located((locator_type, element_locator))
                                 )
                                 next_url = load_more_button.get_attribute('href')
                                 self.driver.get(next_url)
+                                logger.info(f"The next page has been opened for {self.brand_name}")
                                 time.sleep(2)  # Wait for the page to load
                             except Exception as e:
-                                print(e)
+                                logger.info(e)
                                 break
                     else:
                         try:
@@ -126,13 +133,13 @@ class PageExpander:
                             self.driver.get(next_url)
                             time.sleep(2)  # Wait for the page to load
                         except Exception as e:
-                            print(e)
+                            logger.info(e)
                             break
                     if not load_more_button:
                         raise Exception("No load more button found")
                     # Wait for the expand button to be present and clickable
                     if not next_url and load_more_button:
-                        print(load_more_button)
+                        logger.info(f"{self.brand_name} managed to load using:\n {load_more_button}")
                         time.sleep(1)
                         # Scroll the button into view
                         self.driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
@@ -148,27 +155,33 @@ class PageExpander:
                     page_number+=1
 
                 except Exception as e:
-                        print(f"Error occurred: {e}")
+                        logger.info(f"{self.brand_name}: Error occurred:\n{e}")
                         time.sleep(2)
                         retries+=1
-                        print(f"Attempt {retries}/{max_retries}")
+                        logger.info(f"Attempt {retries}/{max_retries}")
                         #If button not exist 10 times give up
                         if retries>=max_retries:
                             break
+        self.driver.close()
         return page_sources
 
     def expand_page_click(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10,
                           popup_id=None, popup_text=None, popup_class=None, popup_xpath=None):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
+        logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
+        os.makedirs(new_path)
+        print(logging_file_path)
+        logging.basicConfig(filename=logging_file_path, level=logging.DEBUG)
+        logger = logging.getLogger()
         page_sources = []
-        print("The click method is being used")
+        logger.info("The click method is being used")
         for url in urls:
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body")))  # Wait for the page to load
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                print(text, id_, class_, xpath)
+                logger.info(text, id_, class_, xpath)
                 self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
@@ -195,7 +208,7 @@ class PageExpander:
                         )
                     if not load_more_button:
                         raise Exception("No load more button found")
-                    print(load_more_button)
+                    logger.info(f"{self.brand_name} managed to load using:\n {load_more_button}")
                     # Wait for the expand button to be present and clickable
                     time.sleep(1)
                     # Scroll the button into view
@@ -209,10 +222,10 @@ class PageExpander:
                     retries = 0
 
                 except Exception as e:
-                    print(f"Error occurred: {e}")
+                    logger.info(f"{self.brand_name}: Error occurred:\n{e}")
                     time.sleep(2)
                     retries += 1
-                    print(f"Attempt {retries}/{max_retries}")
+                    logger.info(f"{self.brand_name} Attempt {retries}/{max_retries}")
                     # If button not exist 10 times give up
                     if retries >= max_retries:
                         break
@@ -220,22 +233,28 @@ class PageExpander:
             page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
             save_html_file(url, page_source, new_path)
             page_sources.append(page_source)
+        self.driver.close()
         return page_sources
     def expand_page_hybrid(self, urls, element_locator, locator_type=By.CSS_SELECTOR,
                        wait_time=10, scroll_pause_time=5,
                        popup_text=None, popup_id=None, popup_class=None, popup_xpath=None,initial_scroll_back_amount=300):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
+        logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
+        os.makedirs(new_path)
+        print(logging_file_path)
+        logging.basicConfig(filename=logging_file_path, level=logging.DEBUG)
+        logger = logging.getLogger()
         page_sources=[]
         max_retries = 10
-        print("The hybrid method is being used")
+        logger.info("The hybrid method is being used")
         for url in urls:
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
             
             # Handle popups
             for text, id_, class_, xpath in zip(popup_text or [], popup_id or [], popup_class or [], popup_xpath or []):
-                print(text, id_, class_, xpath)
+                logger.info(text, id_, class_, xpath)
                 self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
@@ -262,15 +281,15 @@ class PageExpander:
                         )
                     if not load_more_button:
                         raise Exception("No load more button found")
-                    print(load_more_button)
+                    logger.info(f"{self.brand_name} managed to load using: {load_more_button}")
                     self.driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
                     time.sleep(1)
                     self.driver.execute_script("arguments[0].click();", load_more_button)
                     time.sleep(wait_time)  # Wait for new content to load
-                    print("Clicked 'load more' button")
+                    logger.info(f"{self.brand_name}: Clicked 'load more' button")
                     no_changes_count = 0  # Reset no changes count
                 except Exception as e:
-                    print(f"No 'load more' button found or not clickable: {e}")
+                    logger.info(f"{self.brand_name}: No 'load more' button found or not clickable: {e}")
                     
                     # If button not found, scroll to bottom
                     self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -282,14 +301,14 @@ class PageExpander:
                     if new_height == last_height:
                         no_changes_count += 1
                         scroll_back_amount += 200
-                        print(f"No change in height. Attempt {no_changes_count}/{max_retries}")
+                        logger.info(f"{self.brand_name}: No change in height. Attempt {no_changes_count}/{max_retries}")
                         if no_changes_count >= max_retries:
-                            print("Reached the bottom of the page or no more content loading")
+                            logger.info(f"Reached the bottom of the page or no more content loading\nFor {self.brand_name}")
                             break
                     else:
                         scroll_back_amount=initial_scroll_back_amount
                         no_changes_count = 0  # Reset count if height changed
-                        print("Successfully scrolled to bottom loading new items.")
+                        logger.info(f"Successfully scrolled to bottom loading new items.\nFor {self.brand_name}")
                     
                     last_height = new_height
 
@@ -297,18 +316,24 @@ class PageExpander:
             page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
             save_html_file(url, page_source, new_path)
             page_sources.append(page_source)
+        self.driver.close()
         return page_sources
     def expand_page_scroll(self, urls, initial_scroll_back_amount=300, wait_time=10, scroll_pause_time=5, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
+        logging_file_path=os.path.join(new_path, f"{self.brand_name}.log")
+        os.makedirs(new_path)
+        print(logging_file_path)
+        logging.basicConfig(filename=logging_file_path,level=logging.DEBUG)
+        logger = logging.getLogger()
         max_retries = 10
         page_sources=[]
-        print("The scroll method is being used")
+        logger.info("The scroll method is being used")
         for url in urls:
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                print(text, id_, class_, xpath)
+                logger.info(text, id_, class_, xpath)
                 self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
@@ -334,18 +359,19 @@ class PageExpander:
                 if new_height == last_height:
                     retry_count += 1
                     scroll_back_amount += 200  # Increase scroll back amount to ensure it's not missing content
-                    print(f"No change in height. Attempt {retry_count}/{max_retries}")
+                    logger.info(f"{self.brand_name}: No change in height. Attempt {retry_count}/{max_retries}")
                     if retry_count >= max_retries:
                         break
                 else:
                     scroll_back_amount = initial_scroll_back_amount
                     retry_count = 0  # Reset retry count if new content is loaded
-                    print("Successfully Scrolled")
+                    logger.info(f"{self.brand_name}: Successfully Scrolled")
                 last_height = new_height
 
             page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
             save_html_file(url, page_source, new_path)
             page_sources.append(page_source)
+        self.driver.close()
         return page_sources
 
 def read_file_to_list(file_path):
@@ -376,6 +402,7 @@ def save_html_file(url, html_content, base_directory):
     print(f"Saved: {filepath}")
 
 current_directory = os.getcwd()
+directory_to_be_run="Brand_URLS_Testing"
 print(current_directory)
 
 import threading
@@ -404,7 +431,7 @@ def save_to_csv(brand_name, url_product_counts):
 def process_brand(expander, brand_name, data, current_directory):
     print(f"\nProcessing brand: {brand_name}")
     
-    directory = os.path.join(current_directory, "Brand_URLS_Testing", f"{data['DIRECTORY']}.txt")
+    directory = os.path.join(current_directory, directory_to_be_run, f"{data['DIRECTORY']}.txt")
     try:
         URL_LIST = read_file_to_list(directory)
     except FileNotFoundError:
@@ -471,8 +498,8 @@ def worker(task_queue, expander, current_directory):
             break
 
 
-ABS_MAX_THREADS=20
-MAX_THREADS=len(os.listdir(os.path.join(current_directory,"Brand_URLS_Testing")))
+ABS_MAX_THREADS=10
+MAX_THREADS=len(os.listdir(os.path.join(current_directory,directory_to_be_run)))
 
 if __name__ == "__main__":
     start=datetime.datetime.now()
@@ -513,4 +540,8 @@ if __name__ == "__main__":
 #(taking a long time to load each time may not  get all items)
 #Canada Goose Pages do not open
 #Isabel Marant needs to be visible or doesnt scroll correctly
-#Continue working on Louboutin to make sure that the popups get properly closed
+#Valentino has some annoying issue idk why
+#Loro Piana needs to be open and visible in order to work
+#Givenchy acts weirdly
+#Saint Laurent needs to be open
+#Write Bally Parser
