@@ -117,7 +117,7 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN": "burberry.com",
-    "PRODUCTS_PER_HTML_TAG": "redesigned-product-card"
+    "PRODUCTS_PER_HTML_TAG": "redesigned-product-card product-listing-shelf__product-card"
   },
   "Ferragamo": {
     "METHOD": "Click",
