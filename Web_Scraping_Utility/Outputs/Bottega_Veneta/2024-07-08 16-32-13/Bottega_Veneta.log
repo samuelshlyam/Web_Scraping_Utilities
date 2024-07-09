@@ -1,0 +1,6 @@
+INFO:root:The hybrid method is being used
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:60586/session/a82d5c009c0ac18bf7cb848019220456/url {'url': 'https://www.bottegaveneta.com/en-us/women/bags-2'}
+DEBUG:urllib3.connectionpool:http://localhost:60586 "POST /session/a82d5c009c0ac18bf7cb848019220456/url HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:60586/session/a82d5c009c0ac18bf7cb848019220456/element {'using': 'tag name', 'value': 'body'}

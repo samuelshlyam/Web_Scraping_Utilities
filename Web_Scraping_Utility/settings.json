@@ -108,7 +108,7 @@
     "PRODUCTS_PER_HTML_TAG": "c-product__infos"
   },
   "Burberry": {
-    "METHOD": "Click",
+    "METHOD": "Hybrid",
     "DIRECTORY": "Burberry",
     "ELEMENT_LOCATOR": "button.product-listing-shelf__view-more-new.css-o1bmk2.e6yz8z0",
     "POPUP_TEXT": [],

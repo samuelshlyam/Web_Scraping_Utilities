@@ -190,8 +190,6 @@ class PageExpander:
             max_retries = 5
             while True:
                 try:
-                    # Scroll to the bottom in order to allow items to load
-                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                     # If there is no button to click stop
                     if type(element_locator) == list:
                         for locator in element_locator:

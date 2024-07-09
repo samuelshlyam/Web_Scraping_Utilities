@@ -1,0 +1,255 @@
+INFO:root:The scroll method is being used
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/url {'url': 'https://www.bottegaveneta.com/en-us/women/bags-2'}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/url HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/element {'using': 'tag name', 'value': 'body'}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/element HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.13D87E8B5DE35E3FFE50382C149C4188.d.D11DB971285D4EBAC0501030A9FBEB91.e.6"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":4420} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [300]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":4417} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: Successfully Scrolled
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [300]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":4417} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 1/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [500]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":4417} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 2/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [700]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":4417} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 3/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [900]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: Successfully Scrolled
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [300]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 1/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [500]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 2/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [700]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 3/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [900]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 4/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [1100]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 5/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [1300]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 6/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [1500]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 7/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [1700]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 8/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollBy(0, -arguments[0]);', 'args': [1900]}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'return document.body.scrollHeight', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":10689} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Bottega_Veneta: No change in height. Attempt 9/10
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:59379/session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync {'script': 'window.scrollTo(0, document.body.scrollHeight);', 'args': []}
+DEBUG:urllib3.connectionpool:http://localhost:59379 "POST /session/ccdb59bd3c8d94459b24843bf68b3a4f/execute/sync HTTP/1.1" 200 0
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
