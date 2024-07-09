@@ -30,10 +30,10 @@
     "METHOD": "Scroll",
     "DIRECTORY": "Canada_Goose",
     "ELEMENT_LOCATOR": null,
-    "POPUP_TEXT": [],
+    "POPUP_TEXT": [null],
     "POPUP_ID": ["dismissbutton2"],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH": [],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "canadagoose.com",
     "PRODUCTS_PER_HTML_TAG": "grid-tile col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3 pb-3 pb-md-6 pb-xl-8 "

@@ -177,7 +177,7 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "miumiu.com",
-    "PRODUCTS_PER_HTML_TAG": "h-full"
+    "PRODUCTS_PER_HTML_TAG": "card__image-wrapper"
   },
   "Aquazzura": {
     "METHOD": "Click",
@@ -236,7 +236,7 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "therow.com",
-    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-upl"
+    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up"
   },
   "Acne Studios": {
     "METHOD": "Scroll",
@@ -296,7 +296,7 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "stellamccartney.com",
-    "PRODUCTS_PER_HTML_TAG": "carousel-control_prev d-none d-md-block"
+    "PRODUCTS_PER_HTML_TAG": "col-6 col-sm-4 col-md-3 product-wrapper"
   },
   "DSquared2": {
     "METHOD": "Click",
@@ -432,5 +432,17 @@
     "BY_XPATH": false,
     "DOMAIN": "celine.com",
     "PRODUCTS_PER_HTML_TAG": "o-listing-grid__item o-listing-grid__item--break"
+  },
+  "Stone Island": {
+    "METHOD": "Click",
+    "DIRECTORY": "Stone_Island",
+    "ELEMENT_LOCATOR": "button.loadMoreButton",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "stoneisland.com",
+    "PRODUCTS_PER_HTML_TAG": "itemBoxPrice"
   }
 }

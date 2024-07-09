@@ -20,6 +20,7 @@ class PageExpander:
         options = webdriver.ChromeOptions()
         options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
+        options.add_argument("start-maximized")
         self.driver = webdriver.Chrome( options=options)
         self.brand_name=''
 
@@ -98,7 +99,7 @@ class PageExpander:
             while True:
                 # Closing Popups
                 for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                    logger.info(text, id_, class_, xpath)
+                    logger.info(f"{text},{id_}, {class_}, {xpath}")
                     self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
                 page_name = f"Page_{page_number}"
                 final_path = os.path.join(new_path, page_name)
@@ -113,14 +114,14 @@ class PageExpander:
                             logger.info(locator)
                             try:
                                 for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                                    logger.info(text, id_, class_, xpath)
+                                    logger.info(f"{text},{id_}, {class_}, {xpath}")
                                 load_more_button = WebDriverWait(self.driver, wait_time).until(
                                     EC.presence_of_element_located((locator_type, element_locator))
                                 )
                                 next_url = load_more_button.get_attribute('href')
                                 self.driver.get(next_url)
                                 logger.info(f"The next page has been opened for {self.brand_name}")
-                                time.sleep(2)  # Wait for the page to load
+                                time.sleep(wait_time)  # Wait for the page to load
                             except Exception as e:
                                 logger.info(e)
                                 break
@@ -131,7 +132,7 @@ class PageExpander:
                                 )
                             next_url = load_more_button.get_attribute('href')
                             self.driver.get(next_url)
-                            time.sleep(2)  # Wait for the page to load
+                            time.sleep(wait_time)  # Wait for the page to load
                         except Exception as e:
                             logger.info(e)
                             break
@@ -140,10 +141,10 @@ class PageExpander:
                     # Wait for the expand button to be present and clickable
                     if not next_url and load_more_button:
                         logger.info(f"{self.brand_name} managed to load using:\n {load_more_button}")
-                        time.sleep(1)
+                        time.sleep(5)
                         # Scroll the button into view
                         self.driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
-                        time.sleep(1)  # Wait for scrolling to complete
+                        time.sleep(5)  # Wait for scrolling to complete
                         # Click the expand button using JavaScript to avoid interception
                         self.driver.execute_script("arguments[0].click();", load_more_button)
 
@@ -156,7 +157,7 @@ class PageExpander:
 
                 except Exception as e:
                         logger.info(f"{self.brand_name}: Error occurred:\n{e}")
-                        time.sleep(2)
+                        time.sleep(5)
                         retries+=1
                         logger.info(f"Attempt {retries}/{max_retries}")
                         #If button not exist 10 times give up
@@ -181,7 +182,7 @@ class PageExpander:
             WebDriverWait(self.driver, wait_time).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body")))  # Wait for the page to load
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                logger.info(text, id_, class_, xpath)
+                logger.info(f"{text},{id_}, {class_}, {xpath}")
                 self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
@@ -208,15 +209,15 @@ class PageExpander:
                         raise Exception("No load more button found")
                     logger.info(f"{self.brand_name} managed to load using:\n {load_more_button}")
                     # Wait for the expand button to be present and clickable
-                    time.sleep(1)
+                    time.sleep(5)
                     # Scroll the button into view
                     self.driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
-                    time.sleep(1)  # Wait for scrolling to complete
+                    time.sleep(5)  # Wait for scrolling to complete
                     # Click the expand button using JavaScript to avoid interception
                     self.driver.execute_script("arguments[0].click();", load_more_button)
 
                     # Wait a bit for the page to load more content
-                    time.sleep(1)
+                    time.sleep(wait_time)
                     retries = 0
 
                 except Exception as e:
@@ -234,7 +235,7 @@ class PageExpander:
         self.driver.close()
         return page_sources
     def expand_page_hybrid(self, urls, element_locator, locator_type=By.CSS_SELECTOR,
-                       wait_time=10, scroll_pause_time=5,
+                       wait_time=10, scroll_pause_time=10,
                        popup_text=None, popup_id=None, popup_class=None, popup_xpath=None,initial_scroll_back_amount=300):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
@@ -252,7 +253,7 @@ class PageExpander:
             
             # Handle popups
             for text, id_, class_, xpath in zip(popup_text or [], popup_id or [], popup_class or [], popup_xpath or []):
-                logger.info(text, id_, class_, xpath)
+                logger.info(f"{text},{id_}, {class_}, {xpath}")
                 self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
@@ -281,7 +282,7 @@ class PageExpander:
                         raise Exception("No load more button found")
                     logger.info(f"{self.brand_name} managed to load using: {load_more_button}")
                     self.driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
-                    time.sleep(1)
+                    time.sleep(2)
                     self.driver.execute_script("arguments[0].click();", load_more_button)
                     time.sleep(wait_time)  # Wait for new content to load
                     logger.info(f"{self.brand_name}: Clicked 'load more' button")
@@ -316,7 +317,7 @@ class PageExpander:
             page_sources.append(page_source)
         self.driver.close()
         return page_sources
-    def expand_page_scroll(self, urls, initial_scroll_back_amount=300, wait_time=10, scroll_pause_time=5, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
+    def expand_page_scroll(self, urls, initial_scroll_back_amount=300, wait_time=10, scroll_pause_time=10, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         logging_file_path=os.path.join(new_path, f"{self.brand_name}.log")
@@ -331,7 +332,7 @@ class PageExpander:
             self.driver.get(url)
             WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
             for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
-                logger.info(text, id_, class_, xpath)
+                logger.info(f"{text},{id_}, {class_}, {xpath}")
                 self.close_popup(popup_text=text, popup_id=id_, popup_class=class_, popup_xpath=xpath)
 
 
@@ -345,11 +346,11 @@ class PageExpander:
 
                 # Scroll back up by the set amount
                 self.driver.execute_script("window.scrollBy(0, -arguments[0]);", scroll_back_amount)
-                time.sleep(scroll_pause_time)
+                time.sleep(2)
 
                 # Scroll to the bottom again
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                time.sleep(scroll_pause_time)
+                time.sleep(2)
 
                 # Check if the page height has changed
                 new_height = self.driver.execute_script("return document.body.scrollHeight")
@@ -540,6 +541,6 @@ if __name__ == "__main__":
 #Isabel Marant needs to be visible or doesnt scroll correctly
 #Valentino has some annoying issue idk why
 #Loro Piana needs to be open and visible in order to work
-#Givenchy acts weirdly
 #Saint Laurent needs to be open
-#Write Bally Parser
+#Jacquemus doesn't work due to infinite ability to scroll
+#Stone Island button can not be clicked it disappears after the first click attempt
