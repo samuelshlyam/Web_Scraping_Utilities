@@ -374,10 +374,14 @@
     "METHOD": "Click",
     "DIRECTORY": "Tods",
     "ELEMENT_LOCATOR": "div.centered-button-container a.btn.btn-dark",
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH": ["//button[@id='closeIconContainer' and @data-testid='closeIcon']"],
+    "POPUP_TEXT": ["NO, THANK YOU","NO, THANK YOU", "Continue without Accepting"],
+    "POPUP_ID": ["closeIconContainer", "dismissbutton2", null],
+    "POPUP_CLASS": [null, null, "onetrust-close-btn-handler"],
+    "POPUP_XPATH": [
+      "//button[@id='closeIconContainer' and @data-testid='closeIcon']",
+      "//button[@id='dismissbutton2' and @data-testid='dismissbutton2']",
+      "//button[@class='onetrust-close-btn-handler banner-close-button ot-close-link']"
+    ],
     "BY_XPATH": false,
     "DOMAIN": "tods.com",
     "PRODUCTS_PER_HTML_TAG": "card display"
@@ -385,7 +389,8 @@
   "Valentino": {
     "METHOD": "Click",
     "DIRECTORY": "Valentino",
-    "ELEMENT_LOCATOR": "p.vlt-cta-white[role='button']",
+    "ELEMENT_LOCATOR": [
+    "p.vlt-cta-white[role='button']"],
     "POPUP_TEXT": [],
     "POPUP_ID": [],
     "POPUP_CLASS": [],
@@ -413,13 +418,13 @@
     "METHOD": "Click",
     "DIRECTORY": "Loro_Piana",
     "ELEMENT_LOCATOR": "a.main-button.t-cta[name='viewMore']",
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH": [],
+    "POPUP_TEXT": ["Reject All"],
+    "POPUP_ID": ["onetrust-reject-all-handler"],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "loropiana.com",
-    "PRODUCTS_PER_HTML_TAG": "product-result js-lpl-results scroll-animation a-show-up kl-changed animate"
+    "PRODUCTS_PER_HTML_TAG": "product-details"
   },
   "Celine": {
     "METHOD": "Scroll",
@@ -431,7 +436,7 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "celine.com",
-    "PRODUCTS_PER_HTML_TAG": "o-listing-grid__item o-listing-grid__item--break"
+    "PRODUCTS_PER_HTML_TAG": "o-listing-grid__item"
   },
   "Stone Island": {
     "METHOD": "Click",
@@ -444,5 +449,18 @@
     "BY_XPATH": false,
     "DOMAIN": "stoneisland.com",
     "PRODUCTS_PER_HTML_TAG": "itemBoxPrice"
+  },
+  "Jacquemus": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Jacquemus",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "jacquemus.com",
+    "PRODUCTS_PER_HTML_TAG": "product loaded"
   }
+
 }
