@@ -168,6 +168,7 @@ class PageExpander:
 
     def expand_page_click(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10,
                           popup_id=None, popup_text=None, popup_class=None, popup_xpath=None):
+        #comment test
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
