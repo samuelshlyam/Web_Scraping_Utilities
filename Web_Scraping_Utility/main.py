@@ -78,7 +78,7 @@ class PageExpander:
             print("Failed to close the popup after several retries.")
 
     def expand_page_pages(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10, popup_id=None, popup_text=None,popup_class=None,popup_xpath=None):
-        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
         os.makedirs(new_path)
@@ -168,7 +168,7 @@ class PageExpander:
 
     def expand_page_click(self, urls, element_locator, locator_type=By.CSS_SELECTOR, wait_time=10,
                           popup_id=None, popup_text=None, popup_class=None, popup_xpath=None):
-        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
         os.makedirs(new_path)
@@ -215,6 +215,7 @@ class PageExpander:
                     time.sleep(5)  # Wait for scrolling to complete
                     # Click the expand button using JavaScript to avoid interception
                     self.driver.execute_script("arguments[0].click();", load_more_button)
+                    self.driver.execute_script()
 
                     # Wait a bit for the page to load more content
                     time.sleep(wait_time)
@@ -237,7 +238,7 @@ class PageExpander:
     def expand_page_hybrid(self, urls, element_locator, locator_type=By.CSS_SELECTOR,
                        wait_time=10, scroll_pause_time=10,
                        popup_text=None, popup_id=None, popup_class=None, popup_xpath=None,initial_scroll_back_amount=300):
-        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         logging_file_path = os.path.join(new_path, f"{self.brand_name}.log")
         os.makedirs(new_path)
@@ -317,8 +318,9 @@ class PageExpander:
             page_sources.append(page_source)
         self.driver.close()
         return page_sources
+
     def expand_page_scroll(self, urls, initial_scroll_back_amount=300, wait_time=10, scroll_pause_time=10, popup_id=None, popup_text=None, popup_class=None,popup_xpath=None):
-        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         new_path = os.path.join(current_directory, "Outputs", self.brand_name, time_stamp)
         logging_file_path=os.path.join(new_path, f"{self.brand_name}.log")
         os.makedirs(new_path)
