@@ -30,28 +30,28 @@ class PageExpander:
         print("I made it in here")
         popup_closed = False
         retries = 0
-        max_retries = 12
-        count=0
+        max_retries = 4
         while not popup_closed and retries < max_retries:
             try:
-                count+=1
-                if popup_text and count%4==0:
+                if popup_text:
                     print(f"{self.brand_name}: Trying to close popup with text: {popup_text}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.XPATH, f'//button[contains(text(), "{popup_text}")]'))
                     )
-                elif popup_id and count%4==1:
+                    print(close_button)
+                if popup_id:
                     print(f"{self.brand_name}: Trying to close popup with ID: {popup_id}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.ID, popup_id))
                     )
-                elif popup_class and count%4==2:
+                    print(close_button)
+                if popup_class:
                     print(f"{self.brand_name}: Trying to close popup with class: {popup_class}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
                         EC.element_to_be_clickable((By.CLASS_NAME, popup_class))
                     )
                     print(close_button)
-                elif popup_xpath and count%4==3:
+                if popup_xpath:
                     # Handle specific popup structure
                     print(f"{self.brand_name}: Trying to close popup with XPATH: {popup_xpath}")
                     close_button = WebDriverWait(self.driver, wait_time).until(
@@ -216,10 +216,10 @@ class PageExpander:
                     time.sleep(5)  # Wait for scrolling to complete
                     # Click the expand button using JavaScript to avoid interception
                     self.driver.execute_script("arguments[0].click();", load_more_button)
-                    self.driver.execute_script()
 
                     # Wait a bit for the page to load more content
                     time.sleep(wait_time)
+                    logger.info(f"Retries have been reset to 0")
                     retries = 0
 
                 except Exception as e:

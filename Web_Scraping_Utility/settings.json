@@ -461,6 +461,18 @@
     "BY_XPATH": false,
     "DOMAIN": "jacquemus.com",
     "PRODUCTS_PER_HTML_TAG": "product loaded"
+  },
+  "Chloe": {
+    "METHOD": "Click",
+    "DIRECTORY": "Chloe",
+    "ELEMENT_LOCATOR": "button.loadMoreButton",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "chloe.com",
+    "PRODUCTS_PER_HTML_TAG": "searchProduct-wrapper"
   }
 
 }
