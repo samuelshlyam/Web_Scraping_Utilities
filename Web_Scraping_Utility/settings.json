@@ -1,17 +1,5 @@
 {
-  "Alexander Mcqueen": {
-    "METHOD" : "Click",
-    "DIRECTORY" : "Alexander_McQueen",
-    "ELEMENT_LOCATOR" : "//button[contains(text(), 'Load more')]",
-    "POPUP_TEXT": ["No thank you", "OK"],
-    "POPUP_ID": [null,null],
-    "POPUP_CLASS": [null,null],
-    "POPUP_XPATH":[null,null],
-    "BY_XPATH": true,
-    "DOMAIN" : "alexandermcqueen.com",
-    "PRODUCTS_PER_HTML_TAG": "swiper-slide swiper-slide-active"
-  },
-  "Balenciaga": {
+  "66": {
     "METHOD" : "Hybrid",
     "DIRECTORY" : "Balenciaga",
     "ELEMENT_LOCATOR": "button.c-loadmore__btn.c-button--animation[data-action='loadMoreProducts']",
@@ -21,9 +9,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "balenciaga.com",
-    "PRODUCTS_PER_HTML_TAG": "c-product__item"
+    "PRODUCTS_PER_HTML_TAG": "c-product__item",
+    "URL_LIST": ["https://www.balenciaga.com/en-us/men/accessories/view-all-the-accessories", "https://www.balenciaga.com/en-us/women/shoes/view-all", "https://www.balenciaga.com/en-us/women/ready-to-wear/view-all", "https://www.balenciaga.com/en-us/women/bags/view-all", "https://www.balenciaga.com/en-us/women/small-leather-goods/view-all", "https://www.balenciaga.com/en-us/women/accessories/view-all", "https://www.balenciaga.com/en-us/men/ready-to-wear/view-all", "https://www.balenciaga.com/en-us/men/shoes/view-all", "https://www.balenciaga.com/en-us/men/bags/view-all", "https://www.balenciaga.com/en-us/men/small-leather-goods/view-all", "https://www.balenciaga.com/en-it/men/accessories/view-all-the-accessories", "https://www.balenciaga.com/en-it/women/shoes/view-all", "https://www.balenciaga.com/en-it/women/ready-to-wear/view-all", "https://www.balenciaga.com/en-it/women/bags/view-all", "https://www.balenciaga.com/en-it/women/small-leather-goods/view-all", "https://www.balenciaga.com/en-it/women/accessories/view-all", "https://www.balenciaga.com/en-it/men/ready-to-wear/view-all", "https://www.balenciaga.com/en-it/men/shoes/view-all", "https://www.balenciaga.com/en-it/men/bags/view-all", "https://www.balenciaga.com/en-it/men/small-leather-goods/view-all"]
   },
-  "Balmain": {
+  "68": {
     "METHOD" : "Click",
     "DIRECTORY" : "Balmain",
     "ELEMENT_LOCATOR": "button.load-more-link",
@@ -33,9 +22,10 @@
     "POPUP_XPATH":[null],
     "BY_XPATH": false,
     "DOMAIN" : "balmain.com",
-    "PRODUCTS_PER_HTML_TAG": "product-body"
+    "PRODUCTS_PER_HTML_TAG": "product-body",
+    "URL_LIST": ["https://it.balmain.com/en/women/ready-to-wear/", "https://it.balmain.com/en/women/shoes/", "https://it.balmain.com/en/women/accessories/", "https://it.balmain.com/en/women/bags/", "https://it.balmain.com/en/women/sneakers/", "https://it.balmain.com/en/men/ready-to-wear/", "https://it.balmain.com/en/men/shoes/", "https://it.balmain.com/en/men/accessories/", "https://it.balmain.com/en/men/bags/", "https://it.balmain.com/en/men/sneakers/", "https://us.balmain.com/en/women/ready-to-wear/", "https://us.balmain.com/en/women/shoes/", "https://us.balmain.com/en/women/accessories/", "https://us.balmain.com/en/women/bags/", "https://us.balmain.com/en/women/sneakers/", "https://us.balmain.com/en/men/ready-to-wear/", "https://us.balmain.com/en/men/shoes/", "https://us.balmain.com/en/men/accessories/", "https://us.balmain.com/en/men/bags/", "https://us.balmain.com/en/men/sneakers/"]
   },
-  "Brunello Cucinelli": {
+  "601": {
     "METHOD" : "Click",
     "DIRECTORY" : "Brunello_Cucinelli",
     "ELEMENT_LOCATOR": "a#loadMoreButtonPLP.cc-button-secondary.cc-load-more-button",
@@ -45,9 +35,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "shop.brunellocucinelli.com",
-    "PRODUCTS_PER_HTML_TAG": "col-sm-4 col-md-4 grid3-tile-margin js-singleItem-plp"
+    "PRODUCTS_PER_HTML_TAG": "col-sm-4 col-md-4 grid3-tile-margin js-singleItem-plp",
+    "URL_LIST": ["https://shop.brunellocucinelli.com/en-it/women/ready-to-wear/", "https://shop.brunellocucinelli.com/en-it/women/shoes/", "https://shop.brunellocucinelli.com/en-it/women/accessories/", "https://shop.brunellocucinelli.com/en-it/women/bags/", "https://shop.brunellocucinelli.com/en-it/men/ready-to-wear/", "https://shop.brunellocucinelli.com/en-it/men/shoes/", "https://shop.brunellocucinelli.com/en-it/men/accessories/", "https://shop.brunellocucinelli.com/en-it/fragrances/", "https://shop.brunellocucinelli.com/en-us/women/ready-to-wear/", "https://shop.brunellocucinelli.com/en-us/women/shoes/", "https://shop.brunellocucinelli.com/en-us/women/accessories/", "https://shop.brunellocucinelli.com/en-us/women/bags/", "https://shop.brunellocucinelli.com/en-us/men/ready-to-wear/", "https://shop.brunellocucinelli.com/en-us/men/shoes/", "https://shop.brunellocucinelli.com/en-us/men/accessories/", "https://shop.brunellocucinelli.com/en-us/fragrances/"]
   },
-  "Givenchy": {
+  "227": {
     "METHOD" : "Click",
     "DIRECTORY" : "Givenchy",
     "ELEMENT_LOCATOR": "a.all.btn.btn-outline-primary.btn-load.js-pager-view-more",
@@ -57,9 +48,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "givenchy.com",
-    "PRODUCTS_PER_HTML_TAG": "grid-tile js-slv-elements col-sm-6 col-md-4"
+    "PRODUCTS_PER_HTML_TAG": "grid-tile js-slv-elements col-sm-6 col-md-4",
+    "URL_LIST": ["https://www.givenchy.com/it/en/men/ready-to-wear/", "https://www.givenchy.com/it/en/men/bags/", "https://www.givenchy.com/it/en/men/shoes/", "https://www.givenchy.com/it/en/men/accessories/", "https://www.givenchy.com/it/en/women/ready-to-wear/", "https://www.givenchy.com/it/en/women/bags/", "https://www.givenchy.com/it/en/women/shoes/", "https://www.givenchy.com/it/en/women/accessories/", "https://www.givenchy.com/us/en-US/men/ready-to-wear/", "https://www.givenchy.com/us/en-US/men/bags/", "https://www.givenchy.com/us/en-US/men/shoes/", "https://www.givenchy.com/us/en-US/men/accessories/", "https://www.givenchy.com/us/en-US/women/ready-to-wear/", "https://www.givenchy.com/us/en-US/women/bags/", "https://www.givenchy.com/us/en-US/women/shoes/", "https://www.givenchy.com/us/en-US/women/accessories/"]
   },
-  "Kenzo": {
+  "275": {
     "METHOD" : "Click",
     "DIRECTORY" : "Kenzo",
     "ELEMENT_LOCATOR": "button.importance-secondary",
@@ -69,21 +61,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "kenzo.com",
-    "PRODUCTS_PER_HTML_TAG": "m-product-tile"
+    "PRODUCTS_PER_HTML_TAG": "m-product-tile",
+    "URL_LIST": ["https://www.kenzo.com/it-it/c-uomo/vedi-tutto", "https://www.kenzo.com/it-it/c-scarpe/uomo-2", "https://www.kenzo.com/it-it/c-accessori/vedi-tutto", "https://www.kenzo.com/it-it/c-accessori/borse-uomo", "https://www.kenzo.com/it-it/c-donna/vedi-tutto", "https://www.kenzo.com/it-it/c-accessori/borse-donna", "https://www.kenzo.com/it-it/c-accessori/vedi-tutto", "https://www.kenzo.com/it-it/c-scarpe/donna-1", "https://www.kenzo.com/it-it/c-accessori/vedi-tutto", "https://www.kenzo.com/it-it/c-bambini/vedi-tutto", "https://www.kenzo.com/it-it/most-wanted-men", "https://www.kenzo.com/it-it/most-wanted-women", "https://www.kenzo.com/it-it/c-saldi/uomo/vedi-tutto", "https://www.kenzo.com/it-it/c-saldi/donna/vedi-tutto", "https://www.kenzo.com/it-it/c-saldi/accesori/vedi-tutto", "https://www.kenzo.com/it-it/c-saldi/bambini/vedi-tutto", "https://www.kenzo.com/en-us/c-men/see-all", "https://www.kenzo.com/en-us/c-shoes/men", "https://www.kenzo.com/en-us/c-accessories/see-all", "https://www.kenzo.com/en-us/c-accessories/small-leathergoods", "https://www.kenzo.com/en-us/c-accessories/men-bags", "https://www.kenzo.com/en-us/c-women/see-all", "https://www.kenzo.com/en-us/c-accessories/women-bags", "https://www.kenzo.com/en-us/c-shoes/women", "https://www.kenzo.com/en-us/c-new/men", "https://www.kenzo.com/en-us/c-new/women", "https://www.kenzo.com/en-us/c-kids/see-all", "https://www.kenzo.com/en-us/c-sales/men/see-all", "https://www.kenzo.com/en-us/c-sales/women/see-all", "https://www.kenzo.com/en-us/c-sales/accessories/see-all", "https://www.kenzo.com/en-us/c-sales/kids/see-all"]
   },
-  "Saint Laurent": {
-    "METHOD" : "Scroll",
-    "DIRECTORY" : "Saint_Laurent",
-    "ELEMENT_LOCATOR": null,
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH":[],
-    "BY_XPATH": false,
-    "DOMAIN" : "ysl.com",
-    "PRODUCTS_PER_HTML_TAG": "c-product__infos"
-  },
-  "Fendi": {
+  "201": {
     "METHOD" : "Click",
     "DIRECTORY" : "Fendi",
     "ELEMENT_LOCATOR": "button.c-search-results__product-grid-show-more.show-more.btn.btn-primary.btn-primary--small-pd-ar.more",
@@ -93,9 +74,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN": "fendi.com",
-    "PRODUCTS_PER_HTML_TAG": "c-tiles col-6 col-lg-3 d-flex flex-column"
+    "PRODUCTS_PER_HTML_TAG": "c-tiles col-6 col-lg-3 d-flex flex-column",
+    "URL_LIST": ["https://www.fendi.com/it-en/woman/ready-to-wear", "https://www.fendi.com/it-en/woman/shoes", "https://www.fendi.com/it-en/woman/accessories", "https://www.fendi.com/it-en/woman/small-leather-goods_1", "https://www.fendi.com/it-en/woman/fashion-jewelry", "https://www.fendi.com/it-en/woman/beachwear", "https://www.fendi.com/it-en/man/bags", "https://www.fendi.com/it-en/man/ready-to-wear", "https://www.fendi.com/it-en/man/shoes", "https://www.fendi.com/it-en/man/accessories", "https://www.fendi.com/it-en/man/small-leather-goods_1", "https://www.fendi.com/it-en/man/fashion-jewelry", "https://www.fendi.com/it-en/man/beachwear", "https://www.fendi.com/it-en/fragrances", "https://www.fendi.com/it-en/woman/bags", "https://www.fendi.com/us-en/woman/bags", "https://www.fendi.com/us-en/woman/ready-to-wear", "https://www.fendi.com/us-en/woman/shoes", "https://www.fendi.com/us-en/woman/accessories", "https://www.fendi.com/us-en/woman/small-leather-goods", "https://www.fendi.com/us-en/woman/fashion-jewelry", "https://www.fendi.com/us-en/woman/beachwear", "https://www.fendi.com/us-en/man/bags", "https://www.fendi.com/us-en/man/ready-to-wear", "https://www.fendi.com/us-en/man/shoes", "https://www.fendi.com/us-en/man/accessories", "https://www.fendi.com/us-en/man/small-leather-goods", "https://www.fendi.com/us-en/man/fashion-jewelry_1", "https://www.fendi.com/us-en/man/beachwear", "https://www.fendi.com/us-en/fragrances", "https://www.fendi.com/us-en/man/travel"]
   },
-  "Bottega Veneta": {
+  "93": {
     "METHOD" : "Hybrid",
     "DIRECTORY" : "Bottega_Veneta",
     "ELEMENT_LOCATOR": "div.ab1251271-trigger",
@@ -105,9 +87,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "bottegaveneta.com",
-    "PRODUCTS_PER_HTML_TAG": "c-product__infos"
+    "PRODUCTS_PER_HTML_TAG": "c-product__infos",
+    "URL_LIST": ["https://www.bottegaveneta.com/en-it/women/bags", "https://www.bottegaveneta.com/en-it/women/shoes", "https://www.bottegaveneta.com/en-it/women/clothing", "https://www.bottegaveneta.com/en-it/women/wallets", "https://www.bottegaveneta.com/en-it/women/jewellery", "https://www.bottegaveneta.com/en-it/women/accessories", "https://www.bottegaveneta.com/en-it/women/eyewear", "https://www.bottegaveneta.com/en-it/men/bags", "https://www.bottegaveneta.com/en-it/men/shoes", "https://www.bottegaveneta.com/en-it/men/clothing", "https://www.bottegaveneta.com/en-it/men/wallets", "https://www.bottegaveneta.com/en-it/men/jewellery", "https://www.bottegaveneta.com/en-it/men/accessories", "https://www.bottegaveneta.com/en-it/men/eyewear", "https://www.bottegaveneta.com/en-it/search?cgid=men-travel", "https://www.bottegaveneta.com/en-it/search?cgid=women-travel", "https://www.bottegaveneta.com/en-us/women/bags", "https://www.bottegaveneta.com/en-us/women/shoes", "https://www.bottegaveneta.com/en-us/women/clothing", "https://www.bottegaveneta.com/en-us/women/wallets", "https://www.bottegaveneta.com/en-us/women/jewellery", "https://www.bottegaveneta.com/en-us/women/accessories", "https://www.bottegaveneta.com/en-us/women/eyewear", "https://www.bottegaveneta.com/en-us/men/bags", "https://www.bottegaveneta.com/en-us/men/shoes", "https://www.bottegaveneta.com/en-us/men/clothing", "https://www.bottegaveneta.com/en-us/men/wallets", "https://www.bottegaveneta.com/en-us/men/jewellery", "https://www.bottegaveneta.com/en-us/men/accessories", "https://www.bottegaveneta.com/en-us/men/eyewear", "https://www.bottegaveneta.com/en-us/women/travel", "https://www.bottegaveneta.com/en-us/men/travel"]
   },
-  "Burberry": {
+  "101": {
     "METHOD": "Hybrid",
     "DIRECTORY": "Burberry",
     "ELEMENT_LOCATOR": "button.product-listing-shelf__view-more-new.css-o1bmk2.e6yz8z0",
@@ -117,9 +100,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN": "burberry.com",
-    "PRODUCTS_PER_HTML_TAG": "redesigned-product-card product-listing-shelf__product-card"
+    "PRODUCTS_PER_HTML_TAG": "redesigned-product-card product-listing-shelf__product-card",
+    "URL_LIST": ["https://it.burberry.com/mens-bags/", "https://it.burberry.com/mens-shoes/", "https://it.burberry.com/l/mens-accessories/", "https://it.burberry.com/l/scarves/", "https://it.burberry.com/womens-clothing/", "https://it.burberry.com/womens-bags/", "https://it.burberry.com/womens-shoes/", "https://it.burberry.com/l/womens-accessories/", "https://it.burberry.com/l/scarves/", "https://it.burberry.com/mens-clothing/", "https://us.burberry.com/mens-bags/", "https://us.burberry.com/mens-shoes/", "https://us.burberry.com/l/mens-accessories/", "https://us.burberry.com/l/scarves/", "https://us.burberry.com/womens-clothing/", "https://us.burberry.com/womens-bags/", "https://us.burberry.com/womens-shoes/", "https://us.burberry.com/l/womens-accessories/", "https://us.burberry.com/l/scarves/", "https://us.burberry.com/mens-clothing/"]
   },
-  "Ferragamo": {
+  "481": {
     "METHOD": "Click",
     "DIRECTORY": "Ferragamo",
     "ELEMENT_LOCATOR": "button.see-more.btn.cmp-button.cmp-button--fill",
@@ -129,9 +113,10 @@
     "POPUP_XPATH":[],
     "BY_XPATH": false,
     "DOMAIN" : "ferragamo.com",
-    "PRODUCTS_PER_HTML_TAG": "r23-grid--list-plp__item__product-info"
+    "PRODUCTS_PER_HTML_TAG": "r23-grid--list-plp__item__product-info",
+    "URL_LIST": ["https://www.ferragamo.com/shop/ita/it/donna/scarpe", "https://www.ferragamo.com/shop/ita/it/donna/borse", "https://www.ferragamo.com/shop/ita/it/donna/rtw-donna-it", "https://www.ferragamo.com/shop/ita/it/donna/piccola-pelletteria", "https://www.ferragamo.com/shop/ita/it/donna/accessori-in-seta-donna", "https://www.ferragamo.com/shop/ita/it/donna/gioielli-donna", "https://www.ferragamo.com/shop/ita/it/uomo/scarpe-uomo", "https://www.ferragamo.com/shop/ita/it/uomo/valigeria", "https://www.ferragamo.com/shop/ita/it/uomo/abbigliamento-uomo", "https://www.ferragamo.com/shop/ita/it/uomo/piccola-pelletteria-uomo", "https://www.ferragamo.com/shop/ita/it/uomo/gioielli-orologi-uomo", "https://www.ferragamo.com/shop/ita/it/uomo/accessori-in-seta", "https://www.ferragamo.com/shop/ita/it/uomo/profumi-uomo", "https://www.ferragamo.com/shop/ita/it/donna/profumi-", "https://www.ferragamo.com/shop/ita/it/donna/occhiali-donna", "https://www.ferragamo.com/shop/ita/it/donna/gioielli-donna", "https://www.ferragamo.com/shop/ita/it/uomo/occhiali-uomo", "https://www.ferragamo.com/shop/ita/it/donna/novita/nuovi-arrivi-per-lei", "https://www.ferragamo.com/shop/ita/it/donna/novita/summer-city-w-it", "https://www.ferragamo.com/shop/ita/it/collezioni-speciali/fw24-collection-donna-it", "https://www.ferragamo.com/shop/ita/it/uomo/nuoviarrivi-uomo/nuovi-arrivi-uomo-it", "https://www.ferragamo.com/shop/ita/it/uomo/nuoviarrivi-uomo/vacation-essentials-it-uomo", "https://www.ferragamo.com/shop/ita/it/uomo/nuoviarrivi-uomo/summer-city-m-it", "https://www.ferragamo.com/shop/ita/it/collezioni-speciali/fw24-collection-uomo-it", "https://www.ferragamo.com/shop/us/en/men/shoes-1", "https://www.ferragamo.com/shop/us/en/men/large-leather-goods", "https://www.ferragamo.com/shop/us/en/men/ready-to-wear-men", "https://www.ferragamo.com/shop/us/en/men/wallets-small-leather-goods", "https://www.ferragamo.com/shop/us/en/men/ties-accessories", "https://www.ferragamo.com/shop/us/en/men/jewelry-m", "https://www.ferragamo.com/shop/us/en/men/eyewear-man-usa", "https://www.ferragamo.com/shop/us/en/men/fragrances-men-usa", "https://www.ferragamo.com/shop/us/en/women/shoes", "https://www.ferragamo.com/shop/us/en/women/handbags", "https://www.ferragamo.com/shop/us/en/women/ready-to-wear-women", "https://www.ferragamo.com/shop/us/en/women/wallets-small-leathers-goods", "https://www.ferragamo.com/shop/us/en/women/silk-bijoux", "https://www.ferragamo.com/shop/us/en/women/fine-jewelry", "https://www.ferragamo.com/shop/us/en/women/eyewear-w", "https://www.ferragamo.com/shop/us/en/women/fragrances-w", "https://www.ferragamo.com/shop/us/en/women/new-in-woman/exotics", "https://www.ferragamo.com/shop/us/en/women/new-in-woman/new-arrivals-woman", "https://www.ferragamo.com/shop/us/en/women/new-in-woman/vacation-essentials-women-us", "https://www.ferragamo.com/shop/us/en/sf/hug-bag-category", "https://www.ferragamo.com/shop/us/en/women/new-in-woman/summer-city-w-us", "https://www.ferragamo.com/shop/us/en/special-collections/fw24-collection-woman-us", "https://www.ferragamo.com/shop/us/en/men/new-arrivals-man/new-new-arrivals-us", "https://www.ferragamo.com/shop/us/en/men/new-arrivals-man/vacation-essentials-men-us", "https://www.ferragamo.com/shop/us/en/men/new-arrivals-man/summer-city-m-us", "https://www.ferragamo.com/shop/us/en/special-collections/fw24-collection-man-us"]
   },
-  "Prada": {
+  "439": {
   "METHOD": "Hybrid",
   "DIRECTORY": "Prada",
   "ELEMENT_LOCATOR": "a.button-link.inline-flex.items-center[aria-label='Show more']",
@@ -141,21 +126,10 @@
   "POPUP_XPATH": ["//div[contains(@class, 'banner_cta') and contains(@class, 'cta_accept')]"],
   "BY_XPATH": false,
   "DOMAIN": "prada.com",
-  "PRODUCTS_PER_HTML_TAG": "w-full h-auto lg:h-full"
+  "PRODUCTS_PER_HTML_TAG": "w-full h-auto lg:h-full",
+    "URL_LIST": ["https://www.prada.com/it/en/womens/shoes/c/10070EU", "https://www.prada.com/it/en/womens/bags/c/10062EU", "https://www.prada.com/it/en/womens/ready-to-wear/c/10048EU", "https://www.prada.com/it/en/womens/accessories/c/10079EU", "https://www.prada.com/it/en/womens/lifestyle-accessories/c/10088EU", "https://www.prada.com/it/en/womens/travel/c/10094EU", "https://www.prada.com/it/en/womens/jewelry/fine-jewelry-collection/c/10096EU", "https://www.prada.com/it/en/womens/jewelry/fashion-jewelry/c/10093EU", "https://www.prada.com/it/en/womens/jewelry/silver-jewelry/c/10095EU", "https://www.prada.com/it/en/mens/ready-to-wear/c/10130EU", "https://www.prada.com/it/en/mens/bags/c/10143EU", "https://www.prada.com/it/en/mens/shoes/c/10149EU", "https://www.prada.com/it/en/mens/accessories/c/10156EU", "https://www.prada.com/it/en/mens/lifestyle-accessories/c/10166EU", "https://www.prada.com/it/en/mens/travel/c/10175EU", "https://www.prada.com/it/en/mens/jewelry/fine-jewelry-collection/c/10296EU", "https://www.prada.com/it/en/mens/jewelry/silver-jewelry/c/10174EU", "https://www.prada.com/it/en/mens/jewelry/fashion-jewelry/c/10172EU", "https://www.prada.com/us/en/womens/shoes/c/10070US", "https://www.prada.com/us/en/womens/bags/c/10062US", "https://www.prada.com/us/en/womens/ready-to-wear/c/10048US", "https://www.prada.com/us/en/womens/accessories/c/10079US", "https://www.prada.com/us/en/womens/lifestyle-accessories/c/10088US", "https://www.prada.com/us/en/womens/travel/c/10094US", "https://www.prada.com/us/en/womens/jewelry/fine-jewelry-collection/c/10096US", "https://www.prada.com/us/en/womens/jewelry/fashion-jewelry/c/10093US", "https://www.prada.com/us/en/womens/jewelry/silver-jewelry/c/10095US", "https://www.prada.com/us/en/mens/ready-to-wear/c/10130US", "https://www.prada.com/us/en/mens/bags/c/10143US", "https://www.prada.com/us/en/mens/shoes/c/10149US", "https://www.prada.com/us/en/mens/accessories/c/10156US", "https://www.prada.com/us/en/mens/lifestyle-accessories/c/10166US", "https://www.prada.com/us/en/mens/travel/c/10175US", "https://www.prada.com/us/en/mens/jewelry/fine-jewelry-collection/c/10296US", "https://www.prada.com/us/en/mens/jewelry/silver-jewelry/c/10174US", "https://www.prada.com/us/en/mens/jewelry/fashion-jewelry/c/10172US"]
 },
-  "Loewe": {
-    "METHOD": "Hybrid",
-    "DIRECTORY": "Loewe",
-    "ELEMENT_LOCATOR": "button[data-testid='load-more-button']",
-    "POPUP_TEXT": [],
-    "POPUP_ID": [],
-    "POPUP_CLASS": [],
-    "POPUP_XPATH": [],
-    "BY_XPATH": false,
-    "DOMAIN": "loewe.com",
-    "PRODUCTS_PER_HTML_TAG": "product-tile"
-  },
-  "Veja": {
+  "542": {
     "METHOD": "Pages",
     "DIRECTORY": "Veja",
     "ELEMENT_LOCATOR": "a.action.next",
@@ -165,9 +139,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "veja-store.com",
-    "PRODUCTS_PER_HTML_TAG": "product-item-info"
+    "PRODUCTS_PER_HTML_TAG": "product-item-info",
+    "URL_LIST": ["https://www.veja-store.com/en_us/men", "https://www.veja-store.com/en_us/women", "https://www.veja-store.com/en_us/kids", "https://www.veja-store.com/en_us/accessories", "https://www.veja-store.com/en_us/vegan-shoes", "https://www.veja-store.com/en_us/running-shoes", "https://www.veja-store.com/it_it/c/uomo", "https://www.veja-store.com/it_it/c/donna", "https://www.veja-store.com/it_it/c/bambino", "https://www.veja-store.com/it_it/c/accessori", "https://www.veja-store.com/it_it/c/vegano", "https://www.veja-store.com/it_it/c/corsa", "https://www.veja-store.com/it_it/c-outlet"]
   },
-  "Miu Miu": {
+  "358": {
     "METHOD": "Hybrid",
     "DIRECTORY": "Miu_Miu",
     "ELEMENT_LOCATOR": "a.button-link[aria-label='Show more']",
@@ -177,9 +152,11 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "miumiu.com",
-    "PRODUCTS_PER_HTML_TAG": "card__image-wrapper"
+    "PRODUCTS_PER_HTML_TAG": "card__image-wrapper",
+    "URL_LIST": ["https://www.miumiu.com/it/en/ready-to-wear/c/10216EU", "https://www.miumiu.com/it/en/shoes/c/10207EU", "https://www.miumiu.com/it/en/accessories/c/10259EU", "https://www.miumiu.com/it/en/wallets/c/10230EU", "https://www.miumiu.com/it/en/jewels/c/10235EU", "https://www.miumiu.com/it/en/fragrances/c/10242EU", "https://www.miumiu.com/it/en/collections/miu-miu-select/c/10196EU", "https://www.miumiu.com/it/en/new-arrivals/c/10200EU", "https://www.miumiu.com/it/en/collections/churchs-x-miu-miu/c/10480EU", "https://www.miumiu.com/it/en/collections/lete-a-la-plage/c/10602EU", "https://www.miumiu.com/it/en/collections/miu-miu-upcycled/c/10515EU", "https://www.miumiu.com/it/en/collections/miu-miu-lettres/c/10595EU", "https://www.miumiu.com/it/en/collections/new-balance-x-miu-miu/c/10326EU", "https://miumiu.com/it/en/collections/fw24-collection/c/10474EU", "https://www.miumiu.com/us/en/ready-to-wear/c/10216US", "https://www.miumiu.com/US/en/shoes/c/10207US", "https://www.miumiu.com/US/en/accessories/c/10259US", "https://www.miumiu.com/US/en/wallets/c/10230US", "https://www.miumiu.com/US/en/jewels/c/10235US", "https://www.miumiu.com/US/en/fragrances/c/10242US", "https://www.miumiu.com/us/en/new-arrivals/c/10200US", "https://www.miumiu.com/us/en/collections/fw24-collection/c/10474US", "https://www.miumiu.com/us/en/collections/new-balance-x-miu-miu/c/10326US", "https://www.miumiu.com/us/en/collections/miu-miu-lettres/c/10595US", "https://www.miumiu.com/us/en/collections/miu-miu-upcycled/c/10515US", "https://www.miumiu.com/us/en/collections/lete-a-la-plage/c/10602US", "https://www.miumiu.com/us/en/collections/churchs-x-miu-miu/c/10480US", "https://www.miumiu.com/us/en/collections/miu-miu-select/c/10196US"]
+
   },
-  "Aquazzura": {
+  "46": {
     "METHOD": "Click",
     "DIRECTORY": "Aquazzura",
     "ELEMENT_LOCATOR": "div.load-more-items button.btn.btn-primary",
@@ -189,9 +166,10 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "aquazzura.com",
-    "PRODUCTS_PER_HTML_TAG": "card-product__info__price"
+    "PRODUCTS_PER_HTML_TAG": "card-product__info__price",
+    "URL_LIST": ["https://www.aquazzura.com/it_en/jewelry.html", "https://www.aquazzura.com/it_en/bridal.html", "https://www.aquazzura.com/it_en/bridal/bridesmaid.html", "https://www.aquazzura.com/it_en/bridal/wedding-guest.html", "https://www.aquazzura.com/it_en/bridal/bags-jewelry.html", "https://www.aquazzura.com/it_en/shoes.html", "https://www.aquazzura.com/it_en/bags.html", "https://www.aquazzura.com/us_en/jewelry.html", "https://www.aquazzura.com/us_en/bridal.html", "https://www.aquazzura.com/us_en/bridal/bridesmaid.html", "https://www.aquazzura.com/us_en/bridal/wedding-guest.html", "https://www.aquazzura.com/us_en/bridal/bags-jewelry.html", "https://www.aquazzura.com/us_en/shoes.html", "https://www.aquazzura.com/us_en/bags.html"]
   },
-  "Gianvito Rossi": {
+  "223": {
     "METHOD": "Click",
     "DIRECTORY": "Gianvito_Rossi",
     "ELEMENT_LOCATOR": "a.b-load_more-button.b-button.m-outline[data-event-click\\.prevent='loadMore']",
@@ -201,9 +179,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "gianvitorossi.com",
-    "PRODUCTS_PER_HTML_TAG": "b-price-item"
+    "PRODUCTS_PER_HTML_TAG": "b-price-item",
+    "URL_LIST": ["https://www.gianvitorossi.com/it_en/woman/shoes/", "https://www.gianvitorossi.com/it_en/woman/collections/", "https://www.gianvitorossi.com/it_en/woman/accessories/", "https://www.gianvitorossi.com/it_en/man/", "https://www.gianvitorossi.com/it_en/bridal/wedding-selection/", "https://www.gianvitorossi.com/it_en/bridal/wedding-selection/the-perfect-bridegroom/", "https://www.gianvitorossi.com/us_en/woman/shoes/", "https://www.gianvitorossi.com/us_en/woman/collections/", "https://www.gianvitorossi.com/us_en/woman/accessories/", "https://www.gianvitorossi.com/us_en/man/", "https://www.gianvitorossi.com/us_en/bridal/wedding-selection/", "https://www.gianvitorossi.com/us_en/bridal/wedding-selection/the-perfect-bridegroom/"]
   },
-  "Manolo Blahnik": {
+  "327": {
     "METHOD": "Click",
     "DIRECTORY": "Manolo_Blahnik",
     "ELEMENT_LOCATOR": "button#load-more",
@@ -212,9 +191,11 @@
     "POPUP_CLASS": ["button.text-xs.lg\\:w\\[170px\\]"],
     "POPUP_XPATH": [null],
     "DOMAIN": "manoloblahnik.com",
-    "PRODUCTS_PER_HTML_TAG": "item product product-item flex flex-col w-full"
+    "PRODUCTS_PER_HTML_TAG": "item product product-item flex flex-col w-full",
+    "URL_LIST": ["https://www.manoloblahnik.com/int/women/style.html", "https://www.manoloblahnik.com/int/women/classics.html", "https://www.manoloblahnik.com/int/women/accessories.html", "https://www.manoloblahnik.com/int/men/style.html", "https://www.manoloblahnik.com/int/men/classics.html", "https://www.manoloblahnik.com/int/men/accessories.html", "https://www.manoloblahnik.com/us/women/style.html", "https://www.manoloblahnik.com/us/women/classics.html", "https://www.manoloblahnik.com/us/women/accessories.html", "https://www.manoloblahnik.com/us/men/style.html", "https://www.manoloblahnik.com/us/men/classics.html", "https://www.manoloblahnik.com/us/men/accessories.html"]"
+
   },
-  "Jimmy Choo": {
+  "266": {
     "METHOD": "Scroll",
     "DIRECTORY": "Jimmy_Choo",
     "ELEMENT_LOCATOR": null,
@@ -224,9 +205,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "jimmychoo.com",
-    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up"
+    "PRODUCTS_PER_HTML_TAG": "js-grid-tile grid-tile-element",
+    "URL_LIST": ["https://us.jimmychoo.com/en/women/", "https://us.jimmychoo.com/en/men/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/bridal-shoes/", "https://us.jimmychoo.com/en/collections/the-icons/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/finishing-touches/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/bags-and-clutches/", "https://us.jimmychoo.com/en/collections/womens-edits/bride-to-be/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/mother-of-the-bride/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/groom/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/bridesmaid/", "https://us.jimmychoo.com/en/bridal-boutique/bridal-collections/wedding-guest/", "https://us.jimmychoo.com/en/beauty/makeup/", "https://us.jimmychoo.com/en/beauty/fragrance/womens-fragrance/", "https://us.jimmychoo.com/en/beauty/fragrance/mens-fragrance/"]
   },
-  "The Row": {
+  "512": {
     "METHOD": "Scroll",
     "DIRECTORY": "The_Row",
     "ELEMENT_LOCATOR": null,
@@ -236,9 +218,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "therow.com",
-    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up"
+    "PRODUCTS_PER_HTML_TAG": "Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up",
+    "URL_LIST": ["https://www.therow.com/en-it/collections/men-clothing-ready-to-wear", "https://www.therow.com/en-it/collections/women-clothing-ready-to-wear", "https://www.therow.com/en-it/collections/women-handbags", "https://www.therow.com/en-it/collections/women-shoes", "https://www.therow.com/en-it/collections/women-accessories", "https://www.therow.com/en-it/collections/women-essentials", "https://www.therow.com/en-it/collections/men-shoes", "https://www.therow.com/en-it/collections/men-accessories", "https://www.therow.com/en-it/collections/mens-essentials", "https://www.therow.com/en-it/collections/fragrance-oils", "https://www.therow.com/en-it/collections/men-sale", "https://www.therow.com/en-it/collections/womens-sale-accessories-leather-goods", "https://www.therow.com/en-it/collections/women-sale-clothing", "https://www.therow.com/collections/men-clothing-ready-to-wear", "https://www.therow.com/collections/women-clothing-ready-to-wear", "https://www.therow.com/collections/women-handbags", "https://www.therow.com/collections/women-shoes", "https://www.therow.com/collections/women-accessories", "https://www.therow.com/collections/women-essentials", "https://www.therow.com/collections/men-shoes", "https://www.therow.com/collections/men-accessories", "https://www.therow.com/collections/mens-essentials", "https://www.therow.com/collections/fragrance-oils", "https://www.therow.com/collections/men-sale", "https://www.therow.com/collections/womens-sale-accessories-leather-goods", "https://www.therow.com/collections/women-sale-clothing"]
   },
-  "Acne Studios": {
+  "7": {
     "METHOD": "Scroll",
     "DIRECTORY": "Acne_Studios",
     "ELEMENT_LOCATOR": null,
@@ -248,9 +231,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "acnestudios.com",
-    "PRODUCTS_PER_HTML_TAG": "tile tile--span-4 tile--has-link product-tile"
+    "PRODUCTS_PER_HTML_TAG": "tile tile--span-4 tile--has-link product-tile",
+    "URL_LIST": ["https://www.acnestudios.com/it/en/man/shoes-and-accessories/", "https://www.acnestudios.com/it/en/man/clothing/", "https://www.acnestudios.com/it/en/man/jeans/", "https://www.acnestudios.com/it/en/man/scarves/", "https://www.acnestudios.com/it/en/man/bags/", "https://www.acnestudios.com/it/en/woman/clothing/", "https://www.acnestudios.com/it/en/woman/shoes-and-accessories/", "https://www.acnestudios.com/it/en/woman/jeans/", "https://www.acnestudios.com/it/en/woman/scarves/", "https://www.acnestudios.com/it/en/woman/bags/", "https://www.acnestudios.com/us/en/man/shoes-and-accessories/", "https://www.acnestudios.com/us/en/man/clothing/", "https://www.acnestudios.com/us/en/man/jeans/", "https://www.acnestudios.com/us/en/man/scarves/", "https://www.acnestudios.com/us/en/man/bags/", "https://www.acnestudios.com/us/en/woman/clothing/", "https://www.acnestudios.com/us/en/woman/shoes-and-accessories/", "https://www.acnestudios.com/us/en/woman/jeans/", "https://www.acnestudios.com/us/en/woman/scarves/", "https://www.acnestudios.com/us/en/woman/bags/"]
   },
-  "Moose Knuckles": {
+  "374": {
     "METHOD": "Click",
     "DIRECTORY": "Moose_Knuckles",
     "ELEMENT_LOCATOR": "div.Plp_load-more-wrapper__3HheE div.Button_secondary__xOtDg",
@@ -260,9 +244,10 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "mooseknuckles.com",
-    "PRODUCTS_PER_HTML_TAG": "ProductTile_productitem-block__2sZ1u"
+    "PRODUCTS_PER_HTML_TAG": "ProductTile_productitem-block__2sZ1u",
+    "URL_LIST": ["https://www.mooseknucklescanada.com/eu-de/c/men/clothing", "https://www.mooseknucklescanada.com/eu-de/c/men/outerwear", "https://www.mooseknucklescanada.com/eu-de/c/accessories", "https://www.mooseknucklescanada.com/eu-de/c/men/icons", "https://www.mooseknucklescanada.com/eu-de/c/women/icons", "https://www.mooseknucklescanada.com/eu-de/c/women/clothing", "https://www.mooseknucklescanada.com/eu-de/c/women/outerwear", "https://www.mooseknucklescanada.com/eu-de/c/accessories", "https://www.mooseknucklescanada.com/eu-de/c/women/sale", "https://www.mooseknucklescanada.com/eu-de/c/kids/sale", "https://www.mooseknucklescanada.com/eu-de/c/men/sale", "https://www.mooseknucklescanada.com/us-en/c/men/clothing", "https://www.mooseknucklescanada.com/us-en/c/men/outerwear", "https://www.mooseknucklescanada.com/us-en/c/accessories", "https://www.mooseknucklescanada.com/us-en/c/men/icons", "https://www.mooseknucklescanada.com/us-en/c/women/icons", "https://www.mooseknucklescanada.com/us-en/c/women/clothing", "https://www.mooseknucklescanada.com/us-en/c/women/outerwear", "https://www.mooseknucklescanada.com/us-en/c/accessories", "https://www.mooseknucklescanada.com/us-en/c/women/sale", "https://www.mooseknucklescanada.com/us-en/c/kids/sale", "https://www.mooseknucklescanada.com/us-en/c/men/sale"]
   },
-  "Tom Ford": {
+  "523": {
     "METHOD": "Click",
     "DIRECTORY": "Tom_Ford",
     "ELEMENT_LOCATOR": "div.show-more div.text-center button.btn.btn-outline-primary.more",
@@ -272,21 +257,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "tomfordfashion.com",
-    "PRODUCTS_PER_HTML_TAG": "product-tile-wrap"
+    "PRODUCTS_PER_HTML_TAG": "product-tile-wrap",
+    "URL_LIST": ["https://www.tomfordfashion.com/men/ready-to-wear/", "https://www.tomfordfashion.com/men/underwear/", "https://www.tomfordfashion.com/men/shoes/", "https://www.tomfordfashion.com/men/accessories/", "https://www.tomfordfashion.com/men/bags/", "https://www.tomfordfashion.com/eyewear/men/", "https://www.tomfordfashion.com/women/ready-to-wear/", "https://www.tomfordfashion.com/women/underwear/", "https://www.tomfordfashion.com/women/shoes/", "https://www.tomfordfashion.com/women/accessories/", "https://www.tomfordfashion.com/women/bags/", "https://www.tomfordfashion.com/eyewear/women/"]
   },
-  "Cult Gaia": {
-    "METHOD": "Scroll",
-    "DIRECTORY": "Cult_Gaia",
-    "ELEMENT_LOCATOR": null,
-    "POPUP_TEXT": [null,null],
-    "POPUP_ID": [null,null],
-    "POPUP_CLASS": ["klaviyo-close-form","btn--close"],
-    "POPUP_XPATH": [null,null],
-    "BY_XPATH": false,
-    "DOMAIN": "cultgaia.com",
-    "PRODUCTS_PER_HTML_TAG": "col col--auto lazy-pag__item product-grid__item"
-  },
-  "Stella McCartney": {
+  "498": {
     "METHOD": "Click",
     "DIRECTORY": "Stella_McCartney",
     "ELEMENT_LOCATOR": ["a.btn.btn-outline-primary.more","button.btn.btn-outline-primary.more"],
@@ -296,9 +270,10 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "stellamccartney.com",
-    "PRODUCTS_PER_HTML_TAG": "col-6 col-sm-4 col-md-3 product-wrapper"
+    "PRODUCTS_PER_HTML_TAG": "col-6 col-sm-4 col-md-3 product-wrapper",
+    "URL_LIST": ["https://www.stellamccartney.com/it/it/women/ready-to-wear", "https://www.stellamccartney.com/it/it/women/handbags", "https://www.stellamccartney.com/it/it/women/shoes", "https://www.stellamccartney.com/it/it/unisex", "https://www.stellamccartney.com/it/it/kids", "https://www.stellamccartney.com/it/it/adidas", "https://www.stellamccartney.com/it/it/sale/sale-women", "https://www.stellamccartney.com/it/it/women/new-in", "https://www.stellamccartney.com/it/it/sale/sale-kids", "https://www.stellamccartney.com/it/it/sale/sale-adidas", "https://www.stellamccartney.com/us/en/women/ready-to-wear", "https://www.stellamccartney.com/us/en/women/handbags", "https://www.stellamccartney.com/us/en/women/shoes", "https://www.stellamccartney.com/us/en/unisex", "https://www.stellamccartney.com/us/en/kids", "https://www.stellamccartney.com/us/en/adidas", "https://www.stellamccartney.com/us/en/sale/sale-women", "https://www.stellamccartney.com/us/en/women/new-in", "https://www.stellamccartney.com/us/en/sale/sale-kids", "https://www.stellamccartney.com/us/en/sale/sale-adidas"]
   },
-  "DSquared2": {
+  "165": {
     "METHOD": "Click",
     "DIRECTORY": "DSquared2",
     "ELEMENT_LOCATOR": "a.b-load_more-button.b-button.m-outline",
@@ -308,9 +283,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "dsquared2.com",
-    "PRODUCTS_PER_HTML_TAG": "b-product_tile-content"
+    "PRODUCTS_PER_HTML_TAG": "b-product_tile-content",
+    "URL_LIST": ["https://www.dsquared2.com/us/men/ready-to-wear", "https://www.dsquared2.com/us/men/shoes", "https://dsquared2.com/us/men/bags", "https://www.dsquared2.com/us/men/accessories", "https://www.dsquared2.com/us/women/ready-to-wear", "https://www.dsquared2.com/us/women/shoes", "https://dsquared2.com/us/women/bags", "https://www.dsquared2.com/us/women/accessories", "https://www.dsquared2.com/us/kids", "https://www.dsquared2.com/us/dsquared2-icon", "https://www.dsquared2.com/us/fw24-boxer/fw24-boxer.html", "https://www.dsquared2.com/us/sale/men", "https://dsquared2.com/us/sale/women", "https://www.dsquared2.com/us/sale/kids", "https://www.dsquared2.com/it/uomo", "https://www.dsquared2.com/it/sale/donna", "https://www.dsquared2.com/it/sale/bambino", "https://www.dsquared2.com/it/sale/uomo", "https://www.dsquared2.com/it/donna", "https://www.dsquared2.com/it/bambino", "https://www.dsquared2.com/it/icon", "https://www.dsquared2.com/it/d2world/d2projects", "https://www.dsquared2.com/it/fw24-boxer/fw24-boxer.html"]
   },
-  "Etro": {
+  "187": {
     "METHOD": "Click",
     "DIRECTORY": "Etro",
     "ELEMENT_LOCATOR": "button.productgrid-pagination-cta",
@@ -320,9 +296,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "etro.com",
-    "PRODUCTS_PER_HTML_TAG": "producttile-cover"
+    "PRODUCTS_PER_HTML_TAG": "producttile-cover",
+    "URL_LIST": ["https://www.etro.com/it-en/women/bags/", "https://www.etro.com/it-en/women/clothing/", "https://www.etro.com/it-en/women/accessories/", "https://www.etro.com/it-en/women/small-leather-goods/", "https://www.etro.com/it-en/women/shoes/", "https://www.etro.com/it-en/men/clothing/", "https://www.etro.com/it-en/men/accessories/", "https://www.etro.com/it-en/men/small-leather-goods/", "https://www.etro.com/it-en/men/bags/", "https://www.etro.com/it-en/men/shoes/", "https://www.etro.com/it-en/home/etro-home/", "https://www.etro.com/it-en/fragrances/etro-fragrances/", "https://www.etro.com/it-en/kids/newborn/", "https://www.etro.com/it-en/kids/baby-girl-1-36-months/", "https://www.etro.com/it-en/kids/girl-4-10-years/", "https://www.etro.com/it-en/kids/boy-4-10-years/topwear/", "https://www.etro.com/us-en/women/bags/", "https://www.etro.com/us-en/women/clothing/", "https://www.etro.com/us-en/women/accessories/", "https://www.etro.com/us-en/women/small-leather-goods/", "https://www.etro.com/us-en/women/shoes/", "https://www.etro.com/us-en/men/clothing/", "https://www.etro.com/us-en/men/accessories/", "https://www.etro.com/us-en/men/small-leather-goods/", "https://www.etro.com/us-en/men/bags/", "https://www.etro.com/us-en/men/shoes/", "https://www.etro.com/us-en/home/etro-home/", "https://www.etro.com/us-en/fragrances/etro-fragrances/", "https://www.etro.com/us-en/kids/newborn/", "https://www.etro.com/us-en/kids/baby-girl-1-36-months/", "https://www.etro.com/us-en/kids/girl-4-10-years/", "https://www.etro.com/us-en/kids/boy-4-10-years/topwear/"]
   },
-  "Golden Goose": {
+  "228": {
     "METHOD": "Click",
     "DIRECTORY": "Golden_Goose",
     "ELEMENT_LOCATOR": "button.js-show-more",
@@ -332,9 +309,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "goldengoose.com",
-    "PRODUCTS_PER_HTML_TAG": "product master"
+    "PRODUCTS_PER_HTML_TAG": "product master",
+    "URL_LIST": ["https://www.goldengoose.com/it/en/ls/women/clothing", "https://www.goldengoose.com/it/en/ls/women/sneakers", "https://www.goldengoose.com/it/en/ls/women/bags", "https://www.goldengoose.com/it/en/ls/women/accessories", "https://www.goldengoose.com/it/en/ls/women/shoes-boots", "https://www.goldengoose.com/it/en/ls/women/essences", "https://www.goldengoose.com/it/en/ls/men/sneakers", "https://www.goldengoose.com/it/en/ls/men/clothing", "https://www.goldengoose.com/it/en/ls/men/accessories", "https://www.goldengoose.com/it/en/ls/men/essences", "https://www.goldengoose.com/it/en/ls/men/shoes-boots", "https://www.goldengoose.com/it/en/ls/kids/boys", "https://www.goldengoose.com/it/en/ls/kids/girls", "https://www.goldengoose.com/it/en/ls/kids/sneakers/little-boys--1-3-years-", "https://www.goldengoose.com/it/en/ls/kids/sneakers/little-girls--1-3-years-", "https://www.goldengoose.com/it/en/ls/kids/sneakers/boys--4-10-years-", "https://www.goldengoose.com/it/en/ls/kids/sneakers/girls--4-10-years-", "https://www.goldengoose.com/us/en/ls/women/clothing", "https://www.goldengoose.com/us/en/ls/women/sneakers", "https://www.goldengoose.com/us/en/ls/women/bags", "https://www.goldengoose.com/us/en/ls/women/accessories", "https://www.goldengoose.com/us/en/ls/women/shoes-boots", "https://www.goldengoose.com/us/en/ls/women/essences", "https://www.goldengoose.com/us/en/ls/men/sneakers", "https://www.goldengoose.com/us/en/ls/men/clothing", "https://www.goldengoose.com/us/en/ls/men/accessories", "https://www.goldengoose.com/us/en/ls/men/essences", "https://www.goldengoose.com/us/en/ls/men/shoes-boots", "https://www.goldengoose.com/us/en/ls/kids/boys", "https://www.goldengoose.com/us/en/ls/kids/girls", "https://www.goldengoose.com/us/en/ls/kids/sneakers/little-boys--1-3-years-", "https://www.goldengoose.com/us/en/ls/kids/sneakers/little-girls--1-3-years-", "https://www.goldengoose.com/us/en/ls/kids/sneakers/boys--4-10-years-", "https://www.goldengoose.com/us/en/ls/kids/sneakers/girls--4-10-years-"]
   },
-  "Isabel Marant": {
+  "252": {
     "METHOD": "Scroll",
     "DIRECTORY": "Isabel_Marant",
     "ELEMENT_LOCATOR": null,
@@ -344,9 +322,10 @@
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "isabelmarant.com",
-    "PRODUCTS_PER_HTML_TAG": "product-item__info"
+    "PRODUCTS_PER_HTML_TAG": "product-item__info",
+    "URL_LIST": ["https://isabelmarant.com/collections/isabel-marant-woman-all", "https://isabelmarant.com/collections/summer-edit", "https://isabelmarant.com/collections/marant-etoile-woman-all", "https://isabelmarant.com/collections/shoes-all", "https://isabelmarant.com/collections/bags-all", "https://isabelmarant.com/collections/accessories-all", "https://isabelmarant.com/collections/marant-man-all", "https://us.isabelmarant.com/collections/isabel-marant-woman-all", "https://us.isabelmarant.com/collections/summer-edit", "https://us.isabelmarant.com/collections/marant-etoile-woman-all", "https://us.isabelmarant.com/collections/shoes-all", "https://us.isabelmarant.com/collections/bags-all", "https://us.isabelmarant.com/collections/accessories-all", "https://us.isabelmarant.com/collections/marant-man-all"]
   },
-  "MCM": {
+  "343": {
     "METHOD": "Click",
     "DIRECTORY": "MCM",
     "ELEMENT_LOCATOR": "a.load-more",
@@ -356,9 +335,10 @@
     "POPUP_XPATH": ["//button[@aria-label='Continue to site; close the dialog']"],
     "BY_XPATH": false,
     "DOMAIN": "mcmworldwide.com",
-    "PRODUCTS_PER_HTML_TAG": "grid-cell"
+    "PRODUCTS_PER_HTML_TAG": "grid-cell",
+    "URL_LIST": ["https://it.mcmworldwide.com/en_IT/women/bags/all-bags", "https://it.mcmworldwide.com/en_IT/women/wallets/all-wallets", "https://it.mcmworldwide.com/en_IT/women/accessories/all-accessories", "https://it.mcmworldwide.com/en_IT/women/fragrance", "https://IT.mcmworldwide.com/en_IT/women/clothing/all-clothing", "https://IT.mcmworldwide.com/en_IT/women/shoes/all-shoes", "https://IT.mcmworldwide.com/en_IT/travel/all-travel", "https://IT.mcmworldwide.com/en_IT/men/bags/all-bags", "https://IT.mcmworldwide.com/en_IT/men/wallets/all-wallets", "https://IT.mcmworldwide.com/en_IT/men/accessories/all-accessories", "https://IT.mcmworldwide.com/en_IT/men/fragrance", "https://IT.mcmworldwide.com/en_IT/men/clothing/all-clothing", "https://IT.mcmworldwide.com/en_IT/men/shoes/all-shoes", "https://it.mcmworldwide.com/en_IT/gifts/gifts-for-her", "https://it.mcmworldwide.com/en_IT/gifts/gifts-for-him", "https://us.mcmworldwide.com/en_US/women/bags/all-bags", "https://us.mcmworldwide.com/en_US/women/wallets/all-wallets", "https://us.mcmworldwide.com/en_US/women/accessories/all-accessories", "https://us.mcmworldwide.com/en_US/women/fragrance", "https://us.mcmworldwide.com/en_US/women/clothing/all-clothing", "https://us.mcmworldwide.com/en_US/women/shoes/all-shoes", "https://us.mcmworldwide.com/en_US/travel/all-travel", "https://us.mcmworldwide.com/en_US/men/bags/all-bags", "https://us.mcmworldwide.com/en_US/men/wallets/all-wallets", "https://us.mcmworldwide.com/en_US/men/accessories/all-accessories", "https://us.mcmworldwide.com/en_US/men/fragrance", "https://us.mcmworldwide.com/en_US/men/clothing/all-clothing", "https://us.mcmworldwide.com/en_US/men/shoes/all-shoes", "https://us.mcmworldwide.com/en_US/gifts/gifts-for-her", "https://us.mcmworldwide.com/en_US/gifts/gifts-for-her"]
   },
-  "Louboutin": {
+  "317": {
     "METHOD": "Pages",
     "DIRECTORY": "Louboutin",
     "ELEMENT_LOCATOR": "li.item.pages-item-next a.action.next",
@@ -368,25 +348,10 @@
     "POPUP_XPATH": ["//button[@class='action-close' and @data-role='closeBtn']"],
     "BY_XPATH": false,
     "DOMAIN": "christianlouboutin.com",
-    "PRODUCTS_PER_HTML_TAG": "item product product-item "
+    "PRODUCTS_PER_HTML_TAG": "item product product-item",
+    "URL_LIST": ["https://eu.christianlouboutin.com/fr_fr/mesdames/les-essentiels/tous-les-essentiels/", "https://eu.christianlouboutin.com/fr_fr/mesdames/souliers/tous-les-souliers/", "https://eu.christianlouboutin.com/fr_fr/mesdames/souliers/tous-les-souliers/", "https://eu.christianlouboutin.com/fr_fr/mesdames/accessoires/tous-les-accessoires/", "https://eu.christianlouboutin.com/fr_fr/messieurs/les-essentiels/tous-les-essentiels/", "https://eu.christianlouboutin.com/fr_fr/messieurs/souliers/tous-les-souliers/", "https://eu.christianlouboutin.com/fr_fr/messieurs/sacs/tous-les-sacs/", "https://eu.christianlouboutin.com/fr_fr/messieurs/accessoires/tous-les-accessoires/", "https://eu.christianlouboutin.com/fr_fr/mesdames/sacs/tous-les-sacs/", "https://eu.christianlouboutin.com/fr_fr/mesdames/accessoires/tous-les-accessoires/", "https://eu.christianlouboutin.com/fr_fr/messieurs/sacs/tous-les-sacs/", "https://eu.christianlouboutin.com/fr_fr/messieurs/accessoires/tous-les-accessoires/", "https://eu.christianlouboutin.com/fr_fr/enfants/garcons/tout-l-univers-garcon/", "https://eu.christianlouboutin.com/fr_fr/enfants/filles/tout-l-univers-fille/", "https://eu.christianlouboutin.com/fr_fr/enfants/bebes/tout-l-univers-bebe/", "https://eu.christianlouboutin.com/fr_fr/mariage/l-enfant-d-honneur/tout-pour-l-enfant-d-honneur/", "https://eu.christianlouboutin.com/fr_fr/mariage/les-invites/tout-pour-les-invites/", "https://eu.christianlouboutin.com/fr_fr/messieurs/rechercher-par-occasion/mariage/", "https://eu.christianlouboutin.com/fr_fr/mesdames/rechercher-par-occasion/mariage/", "https://eu.christianlouboutin.com/fr_fr/beaute/yeux/tous-les-produits-yeux/", "https://eu.christianlouboutin.com/fr_fr/beaute/teint/tous-les-produits-teint/", "https://eu.christianlouboutin.com/fr_fr/beaute/levres/tous-les-produits-levres/", "https://eu.christianlouboutin.com/fr_fr/beaute/parfums/tous-les-parfums/", "https://eu.christianlouboutin.com/fr_fr/beaute/ongles/tous-les-produits-ongles/", "https://us.christianlouboutin.com/us_en/ladies/shoes/all-shoes/", "https://us.christianlouboutin.com/us_en/ladies/bags/all-bags/", "https://us.christianlouboutin.com/us_en/ladies/accessories/all-accessories/", "https://us.christianlouboutin.com/us_en/gentlemen/shoes/all-shoes/", "https://us.christianlouboutin.com/us_en/gentlemen/bags/all-bags/", "https://us.christianlouboutin.com/us_en/gentlemen/accessories/all-accessories/", "https://us.christianlouboutin.com/us_en/kids/baby/all-baby/", "https://us.christianlouboutin.com/us_en/kids/girls/all-girls/", "https://us.christianlouboutin.com/us_en/kids/boys/all-boys/", "https://us.christianlouboutin.com/us_en/ladies/shop-by-occasion/wedding/", "https://us.christianlouboutin.com/us_en/gentlemen/shop-by-occasion/wedding/", "https://us.christianlouboutin.com/us_en/bridal/wedding-collection-for-the-guests/all-wedding-guest-shoes-bags/", "https://us.christianlouboutin.com/us_en/beauty/fragrances/all-fragrances/", "https://us.christianlouboutin.com/us_en/beauty/lips/all-lip-makeup/", "https://us.christianlouboutin.com/us_en/beauty/face/all-face-makeup/", "https://us.christianlouboutin.com/us_en/beauty/eyes/all-eye-makeup/", "https://us.christianlouboutin.com/us_en/beauty/nails/all-nail-products/"]
   },
-  "Tods": {
-    "METHOD": "Click",
-    "DIRECTORY": "Tods",
-    "ELEMENT_LOCATOR": "div.centered-button-container a.btn.btn-dark",
-    "POPUP_TEXT": ["NO, THANK YOU","NO, THANK YOU", "Continue without Accepting"],
-    "POPUP_ID": ["closeIconContainer", "dismissbutton2", null],
-    "POPUP_CLASS": [null, null, "onetrust-close-btn-handler"],
-    "POPUP_XPATH": [
-      "//button[@id='closeIconContainer' and @data-testid='closeIcon']",
-      "//button[@id='dismissbutton2' and @data-testid='dismissbutton2']",
-      "//button[@class='onetrust-close-btn-handler banner-close-button ot-close-link']"
-    ],
-    "BY_XPATH": false,
-    "DOMAIN": "tods.com",
-    "PRODUCTS_PER_HTML_TAG": "card display"
-  },
-  "Valentino": {
+  "536": {
     "METHOD": "Click",
     "DIRECTORY": "Valentino",
     "ELEMENT_LOCATOR": [
@@ -397,9 +362,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "valentino.com",
-    "PRODUCTS_PER_HTML_TAG": "productCard-wrapper"
+    "PRODUCTS_PER_HTML_TAG": "productCard-wrapper",
+    "URL_LIST": ["https://www.valentino.com/en-it/women/bags", "https://www.valentino.com/en-it/women/ready-to-wear", "https://www.valentino.com/en-it/women/shoes", "https://www.valentino.com/en-it/women/accessories", "https://www.valentino.com/en-it/men/ready-to-wear", "https://www.valentino.com/en-it/men/bags", "https://www.valentino.com/en-it/men/shoes", "https://www.valentino.com/en-it/men/accessories", "https://www.valentino.com/en-it/women/fragrances", "https://www.valentino.com/en-it/men/fragrances", "https://www.valentino.com/en-it/experience/valentino-beauty", "https://www.valentino.com/en-us/women/bags", "https://www.valentino.com/en-us/women/ready-to-wear", "https://www.valentino.com/en-us/women/shoes", "https://www.valentino.com/en-us/women/accessories", "https://www.valentino.com/en-us/men/ready-to-wear", "https://www.valentino.com/en-us/men/bags", "https://www.valentino.com/en-us/men/shoes", "https://www.valentino.com/en-us/men/accessories", "https://www.valentino.com/en-us/women/fragrances", "https://www.valentino.com/en-us/men/fragrances", "https://www.valentino.com/en-us/experience/valentino-beauty"]
   },
-  "Marni": {
+  "336": {
     "METHOD": "Click",
     "DIRECTORY": "Marni",
     "ELEMENT_LOCATOR": [
@@ -412,21 +378,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "marni.com",
-    "PRODUCTS_PER_HTML_TAG": "product newPLP-true"
+    "PRODUCTS_PER_HTML_TAG": "product newPLP-true",
+    "URL_LIST": ["https://www.marni.com/it-it/donna/abbigliamento/", "https://www.marni.com/it-it/donna/scarpe/", "https://www.marni.com/it-it/donna/gioielli/", "https://www.marni.com/it-it/sale/uomo/", "https://www.marni.com/it-it/sale/donna/", "https://www.marni.com/it-it/sale/bambino/", "https://www.marni.com/it-it/sale/marni-market/", "https://www.marni.com/it-it/new-in/donna/", "https://www.marni.com/it-it/new-in/uomo/", "https://www.marni.com/it-it/uomo/abbigliamento/", "https://www.marni.com/it-it/uomo/borse/", "https://www.marni.com/it-it/uomo/scarpe/", "https://www.marni.com/it-it/uomo/accessori/", "https://www.marni.com/it-it/kids/", "https://www.marni.com/it-it/marni-market/visualizza-tutto/", "https://www.marni.com/it-it/marni-market/borse/", "https://www.marni.com/it-it/regali/regali-per-lei/", "https://www.marni.com/it-it/regali/regali-per-lui/", "https://www.marni.com/it-it/donna/accessori/", "https://www.marni.com/it-it/donna/borse/", "https://www.marni.com/en-us/women/bags/", "https://www.marni.com/en-us/women/ready-to-wear/", "https://www.marni.com/en-us/women/accessories/", "https://www.marni.com/en-us/women/jewelry/", "https://www.marni.com/en-us/new-in/women/", "https://www.marni.com/en-us/new-in/men/", "https://www.marni.com/en-us/gifts/gifts-for-her/", "https://www.marni.com/en-us/gifts/gifts-for-him/", "https://www.marni.com/en-us/sale/women/", "https://www.marni.com/en-us/sale/men/", "https://www.marni.com/en-us/sale/kids/", "https://www.marni.com/en-us/sale/marni-market/", "https://www.marni.com/en-us/women/bags/", "https://www.marni.com/en-us/men/ready-to-wear/", "https://www.marni.com/en-us/men/bags/", "https://www.marni.com/en-us/men/shoes/", "https://www.marni.com/en-us/men/accessories/", "https://www.marni.com/en-us/kids/", "https://www.marni.com/en-us/marni-market/view-all/", "https://www.marni.com/en-us/focus-on/essentials-for-her/", "https://www.marni.com/en-us/focus-on/essentials-for-him/"]
   },
-  "Loro Piana": {
-    "METHOD": "Click",
-    "DIRECTORY": "Loro_Piana",
-    "ELEMENT_LOCATOR": "a.main-button.t-cta[name='viewMore']",
-    "POPUP_TEXT": ["Reject All"],
-    "POPUP_ID": ["onetrust-reject-all-handler"],
-    "POPUP_CLASS": [null],
-    "POPUP_XPATH": [null],
-    "BY_XPATH": false,
-    "DOMAIN": "loropiana.com",
-    "PRODUCTS_PER_HTML_TAG": "product-details"
-  },
-  "Celine": {
+  "118": {
     "METHOD": "Scroll",
     "DIRECTORY": "Celine",
     "ELEMENT_LOCATOR": null,
@@ -436,9 +391,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "celine.com",
-    "PRODUCTS_PER_HTML_TAG": "o-listing-grid__item"
+    "PRODUCTS_PER_HTML_TAG": "o-listing-grid__item",
+    "URL_LIST": ["https://www.celine.com/en-it/celine-shop-women/handbags/?nav=A003-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/mini-bags/?nav=A0321-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/small-leather-goods/?nav=A004-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/ready-to-wear/?nav=A001-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/shoes/?nav=A002-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/accessories/?nav=A00010-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/jewellery/?nav=A005-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-women/fine-jewellery/?nav=A0009", "https://www.celine.com/en-it/celine-shop-men/bags/?nav=E003-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-men/small-leather-goods/?nav=E004-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-men/ready-to-wear/?nav=E001-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-men/shoes/?nav=E002-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-men/accessories/?nav=E007-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-men/jewellery/?nav=E005-VIEW-ALL", "https://www.celine.com/en-it/celine-shop-men/fine-jewellery/?nav=E009", "https://www.celine.com/en-it/celine-haute-parfumerie/fragrances/?nav=Y001-2", "https://www.celine.com/en-it/celine-haute-parfumerie/travel-sprays/?nav=Y002-2", "https://www.celine.com/en-it/celine-haute-parfumerie/bath-and-body/?nav=Y0010-2", "https://www.celine.com/en-it/celine-haute-parfumerie/candles-and-home-scents/?nav=Y003-2", "https://www.celine.com/en-us/celine-shop-women/handbags/?nav=A003-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/mini-bags/?nav=A0321-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/small-leather-goods/?nav=A004-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/ready-to-wear/?nav=A001-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/shoes/?nav=A002-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/accessories/?nav=A00010-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/jewellery/?nav=A005-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-women/fine-jewellery/?nav=A0009", "https://www.celine.com/en-us/celine-shop-men/bags/?nav=E003-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-men/small-leather-goods/?nav=E004-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-men/ready-to-wear/?nav=E001-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-men/shoes/?nav=E002-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-men/accessories/?nav=E007-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-men/jewellery/?nav=E005-VIEW-ALL", "https://www.celine.com/en-us/celine-shop-men/fine-jewellery/?nav=E009", "https://www.celine.com/en-us/celine-haute-parfumerie/fragrances/?nav=Y001-2", "https://www.celine.com/en-us/celine-haute-parfumerie/travel-sprays/?nav=Y002-2", "https://www.celine.com/en-us/celine-haute-parfumerie/bath-and-body/?nav=Y0010-2", "https://www.celine.com/en-us/celine-haute-parfumerie/candles-and-home-scents/?nav=Y003-2"]
   },
-  "Stone Island": {
+  "500": {
     "METHOD": "Click",
     "DIRECTORY": "Stone_Island",
     "ELEMENT_LOCATOR": "button.loadMoreButton",
@@ -448,9 +404,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "stoneisland.com",
-    "PRODUCTS_PER_HTML_TAG": "itemBoxPrice"
+    "PRODUCTS_PER_HTML_TAG": "itemBoxPrice",
+    "URL_LIST": ["https://www.stoneisland.com/it/stone-island/capispalla", "https://www.stoneisland.com/it/stone-island/overshirt", "https://www.stoneisland.com/it/stone-island/maglieria", "https://www.stoneisland.com/it/stone-island/felpe", "https://www.stoneisland.com/it/stone-island/polo-t-shirts", "https://www.stoneisland.com/it/stone-island/pantalone", "https://www.stoneisland.com/it/stone-island/bermuda-short-mare", "https://www.stoneisland.com/it/stone-island/accessori", "https://www.stoneisland.com/it/stone-island/borse", "https://www.stoneisland.com/it/stone-island/scarpe", "https://www.stoneisland.com/it/stone-island/seasonal-focus", "https://www.stoneisland.com/it/stone-island/classic-hues", "https://www.stoneisland.com/it/stone-island/view-all-sale", "https://www.stoneisland.com/it/stone-island-junior/baby", "https://www.stoneisland.com/it/stone-island-junior/kid", "https://www.stoneisland.com/it/stone-island-junior/junior", "https://www.stoneisland.com/it/stone-island-junior/teen", "https://www.stoneisland.com/it/stone-island/stone_island_previewaw2425_section", "https://www.stoneisland.com/it/stone-island/capispalla/secondary", "https://www.stoneisland.com/it/stone-island/overshirt/secondary", "https://www.stoneisland.com/it/stone-island/maglieria/secondary", "https://www.stoneisland.com/it/stone-island/felpe/secondary", "https://stoneisland.com/it/stone-island/polo-t-shirts/secondary", "https://www.stoneisland.com/it/stone-island/pantaloni/secondary", "https://www.stoneisland.com/it/stone-island/accessori/secondary", "https://www.stoneisland.com/it/stone-island/libri/secondary", "https://www.stoneisland.com/us/stone-island/coats-jackets", "https://www.stoneisland.com/us/stone-island/overshirts", "https://www.stoneisland.com/us/stone-island/knitwear", "https://www.stoneisland.com/us/stone-island/fleecewear", "https://www.stoneisland.com/us/stone-island/polo-shirts-t-shirts", "https://www.stoneisland.com/us/stone-island/pants", "https://www.stoneisland.com/us/stone-island/bermuda-shorts-swim-trunks", "https://www.stoneisland.com/us/stone-island/accessories", "https://www.stoneisland.com/us/stone-island/bags", "https://www.stoneisland.com/us/stone-island/shoes", "https://www.stoneisland.com/us/stone-island/book", "https://www.stoneisland.com/us/stone-island/seasonal-focus", "https://www.stoneisland.com/us/stone-island/classic-hues", "https://www.stoneisland.com/us/stone-island/preview-aw24-25/secondary", "https://www.stoneisland.com/us/stone-island/view-all-sale", "https://www.stoneisland.com/us/stone-island-junior/baby", "https://www.stoneisland.com/us/stone-island-junior/kid", "https://www.stoneisland.com/us/stone-island-junior/junior", "https://www.stoneisland.com/us/stone-island-junior/teen", "https://www.stoneisland.com/us/stone-island/stone_island_previewaw2425_section", "https://www.stoneisland.com/us/stone-island/coats-jackets/secondary", "https://www.stoneisland.com/us/stone-island/overshirts/secondary", "https://www.stoneisland.com/us/stone-island/knitwear/secondary", "https://www.stoneisland.com/us/stone-island/fleecewear/secondary", "https://www.stoneisland.com/us/stone-island/polo-shirts-t-shirts/secondary", "https://www.stoneisland.com/us/stone-island/pants/secondary", "https://www.stoneisland.com/us/stone-island/accessories/secondary", "https://www.stoneisland.com/us/stone-island/books/secondary"]
   },
-  "Jacquemus": {
+  "263": {
     "METHOD": "Scroll",
     "DIRECTORY": "Jacquemus",
     "ELEMENT_LOCATOR": null,
@@ -460,9 +417,10 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "jacquemus.com",
-    "PRODUCTS_PER_HTML_TAG": "product loaded"
+    "PRODUCTS_PER_HTML_TAG": "product loaded",
+    "URL_LIST": ["https://www.jacquemus.com/en_it/all-bags", "https://www.jacquemus.com/en_it/nike-collection", "https://www.jacquemus.com/en_it/ready-to-wear-all-women-2", "https://www.jacquemus.com/en_it/accessories-collection-women", "https://www.jacquemus.com/en_it/ready-to-wear-all-men", "https://www.jacquemus.com/en_it/accessories-bag-collection-men", "https://www.jacquemus.com/en_it/kids-collection-view-all-women", "https://www.jacquemus.com/en_it/kids-collection-view-all-men", "https://www.jacquemus.com/en_it/women-sale-selection-view-all", "https://www.jacquemus.com/en_it/men-sale-selection-view-all", "https://www.jacquemus.com/en_it/la-casa-new-in-women", "https://www.jacquemus.com/en_it/la-casa-new-in-men", "https://www.jacquemus.com/en_us/all-bags", "https://www.jacquemus.com/en_us/nike-collection", "https://www.jacquemus.com/en_us/ready-to-wear-all-women-2", "https://www.jacquemus.com/en_us/accessories-collection-women", "https://www.jacquemus.com/en_us/ready-to-wear-all-men", "https://www.jacquemus.com/en_us/accessories-bag-collection-men", "https://www.jacquemus.com/en_us/kids-collection-view-all-women", "https://www.jacquemus.com/en_us/kids-collection-view-all-men", "https://www.jacquemus.com/en_us/women-sale-selection-view-all", "https://www.jacquemus.com/en_us/men-sale-selection-view-all"]
   },
-  "Chloe": {
+  "125": {
     "METHOD": "Click",
     "DIRECTORY": "Chloe",
     "ELEMENT_LOCATOR": "button.loadMoreButton",
@@ -472,7 +430,49 @@
     "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "chloe.com",
-    "PRODUCTS_PER_HTML_TAG": "searchProduct-wrapper"
+    "PRODUCTS_PER_HTML_TAG": "searchProduct-wrapper",
+    "URL_LIST": ["https://www.chloe.com/it/chloe/shop-online/women/bags", "https://www.chloe.com/it/chloe/shop-online/women/ready-to-wear", "https://chloe.com/it/chloe/shop-online/women/shoes", "https://www.chloe.com/it/chloe/shop-online/women/small-leather-goods", "https://www.chloe.com/it/chloe/shop-online/women/accessories", "https://www.chloe.com/it/chloe/shop-online/women/eyewear", "https://www.chloe.com/it/chloe/shop-online/women/fragrances", "https://www.chloe.com/it/chloe/shop-online/women/childrenswear", "https://www.chloe.com/it/chloe/shop-online/women/sale", "https://www.chloe.com/us/chloe/shop-online/women/bags", "https://www.chloe.com/us/chloe/shop-online/women/ready-to-wear", "https://chloe.com/us/chloe/shop-online/women/shoes", "https://www.chloe.com/us/chloe/shop-online/women/small-leather-goods", "https://www.chloe.com/us/chloe/shop-online/women/accessories", "https://www.chloe.com/us/chloe/shop-online/women/eyewear", "https://www.chloe.com/us/chloe/shop-online/women/fragrances", "https://www.chloe.com/us/chloe/shop-online/women/childrenswear", "https://www.chloe.com/us/chloe/shop-online/women/sale"]
+  },
+  "401": {
+    "METHOD": "Click",
+    "DIRECTORY": "Off_White",
+    "ELEMENT_LOCATOR": "div.css-1hnvvvj button.emnvohd0.css-1n21rpr.e1hob6j91",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "off---white.com",
+    "PRODUCTS_PER_HTML_TAG": "css-18srfn0 e134ay6f10",
+    "URL_LIST": ["https://www.off---white.com/it-it/shopping/man-clothing", "https://www.off---white.com/it-it/shopping/man-shoes", "https://www.off---white.com/it-it/shopping/man-bags", "https://www.off---white.com/it-it/shopping/man-accessories", "https://www.off---white.com/it-it/shopping/man-jewelry", "https://www.off---white.com/it-it/shopping/woman-clothing", "https://www.off---white.com/it-it/shopping/woman-shoes", "https://www.off---white.com/it-it/shopping/woman-activewear", "https://www.off---white.com/it-it/shopping/woman-bags", "https://www.off---white.com/it-it/shopping/woman-accessories", "https://www.off---white.com/it-it/shopping/woman-jewelry", "https://www.off---white.com/it-it/shopping/kids-boys", "https://www.off---white.com/it-it/shopping/kids-girls", "https://www.off---white.com/it-it/shopping/kids-baby", "https://www.off---white.com/it-it/shopping/eyewear-sunglasses", "https://www.off---white.com/it-it/shopping/eyewear-eyeglasses", "https://www.off---white.com/it-it/shopping/eyewear-icon-sunglasses", "https://www.off---white.com/it-it/shopping/homeware", "https://www.off---white.com/en-us/shopping/man-clothing", "https://www.off---white.com/en-us/shopping/man-shoes", "https://www.off---white.com/en-us/shopping/man-bags", "https://www.off---white.com/en-us/shopping/man-accessories", "https://www.off---white.com/en-us/shopping/man-jewelry", "https://www.off---white.com/en-us/shopping/woman-clothing", "https://www.off---white.com/en-us/shopping/woman-shoes", "https://www.off---white.com/en-us/shopping/woman-activewear", "https://www.off---white.com/en-us/shopping/woman-bags", "https://www.off---white.com/en-us/shopping/woman-accessories", "https://www.off---white.com/en-us/shopping/woman-jewelry", "https://www.off---white.com/en-us/shopping/kids-boys", "https://www.off---white.com/en-us/shopping/kids-girls", "https://www.off---white.com/en-us/shopping/kids-baby", "https://www.off---white.com/en-us/shopping/eyewear-sunglasses", "https://www.off---white.com/en-us/shopping/eyewear-eyeglasses", "https://www.off---white.com/en-us/shopping/eyewear-icon-sunglasses", "https://www.off---white.com/en-us/shopping/homeware"]
+  },
+  "412": {
+    "METHOD": "Pages",
+    "DIRECTORY": "Palm_Angels",
+    "ELEMENT_LOCATOR": [
+      "button[data-test='full-pagination-next']",
+      "button[data-test='simple-pagination-next']"
+    ],
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "DOMAIN": "palmangels.com",
+    "PRODUCTS_PER_HTML_TAG": "\"product-card\"",
+    "URL_LIST": ["https://www.palmangels.com/en-us/sets/sale-man", "https://www.palmangels.com/en-us/sets/sale-woman", "https://palmangels.com/en-us/sets/sale-children", "https://www.palmangels.com/en-us/sets/new-in-man", "https://www.palmangels.com/en-us/sets/new-in-woman", "https://www.palmangels.com/en-us/sets/new-in-kids", "https://www.palmangels.com/en-us/shopping/man-clothing", "https://www.palmangels.com/en-us/shopping/man-bags", "https://www.palmangels.com/en-us/shopping/man-shoes", "https://www.palmangels.com/en-us/shopping/man-accessories", "https://www.palmangels.com/en-us/sets/f1-collection-racing-haas", "https://www.palmangels.com/en-us/sets/lunar-new-year", "https://www.palmangels.com/en-us/shopping/home", "https://www.palmangels.com/en-us/sets/gifts-for-him", "https://www.palmangels.com/en-us/sets/online-exclusive-man", "https://www.palmangels.com/en-us/shopping/woman-clothing", "https://www.palmangels.com/en-us/shopping/woman-bags", "https://www.palmangels.com/en-us/shopping/woman-shoes", "https://www.palmangels.com/en-us/sets/lunar-new-year", "https://www.palmangels.com/en-us/sets/gifts-for-her", "https://www.palmangels.com/en-us/sets/online-exclusive-woman", "https://www.palmangels.com/en-us/shopping/eyewear", "https://www.palmangels.com/en-us/shopping/kids-boy", "https://www.palmangels.com/en-us/shopping/kids-girl", "https://www.palmangels.com/en-us/sets/f1-collection-racing-haas", "https://www.palmangels.com/en-us/sets/icons-boy", "https://www.palmangels.com/en-us/shopping/kids-baby", "https://www.palmangels.com/en-us/sets/icons-girl", "https://www.palmangels.com/en-us/sets/gifts-for-boy", "https://www.palmangels.com/en-us/sets/gifts-for-girl", "https://www.palmangels.com/en-us/sets/icons-man", "https://www.palmangels.com/en-us/sets/bear-man", "https://www.palmangels.com/en-us/sets/curved-logo-man", "https://www.palmangels.com/en-us/sets/spray-city-monogram", "https://www.palmangels.com/en-us/sets/tracksuits-man", "https://www.palmangels.com/en-us/sets/icons-woman", "https://www.palmangels.com/en-us/sets/bear-woman", "https://www.palmangels.com/en-us/sets/curved-logo-woman", "https://www.palmangels.com/en-us/sets/tracksuits-woman", "https://www.palmangels.com/en-us/sets/f1-collection-racing-haas", "https://www.palmangels.com/en-us/sets/tods-sneakers-tab", "https://www.palmangels.com/en-us/sets/moncler-x-palm-angels-genius", "https://www.palmangels.com/en-us/sets/moncler-maya-down-jackets", "https://www.palmangels.com/it-it/sets/sale-man", "https://www.palmangels.com/it-it/sets/sale-woman", "https://palmangels.com/it-it/sets/sale-children", "https://www.palmangels.com/it-it/sets/new-in-man", "https://www.palmangels.com/it-it/sets/new-in-woman", "https://www.palmangels.com/it-it/sets/new-in-kids", "https://www.palmangels.com/it-it/shopping/man-clothing", "https://www.palmangels.com/it-it/shopping/man-bags", "https://www.palmangels.com/it-it/shopping/man-shoes", "https://www.palmangels.com/it-it/shopping/man-accessories", "https://www.palmangels.com/it-it/sets/f1-collection-racing-haas", "https://www.palmangels.com/it-it/sets/lunar-new-year", "https://www.palmangels.com/it-it/shopping/home", "https://www.palmangels.com/it-it/sets/gifts-for-him", "https://www.palmangels.com/it-it/sets/online-exclusive-man", "https://www.palmangels.com/it-it/shopping/woman-clothing", "https://www.palmangels.com/it-it/shopping/woman-bags", "https://www.palmangels.com/it-it/shopping/woman-shoes", "https://www.palmangels.com/it-it/sets/lunar-new-year", "https://www.palmangels.com/it-it/sets/gifts-for-her", "https://www.palmangels.com/it-it/sets/online-exclusive-woman", "https://www.palmangels.com/it-it/shopping/eyewear", "https://www.palmangels.com/it-it/shopping/kids-boy", "https://www.palmangels.com/it-it/shopping/kids-girl", "https://www.palmangels.com/it-it/sets/f1-collection-racing-haas", "https://www.palmangels.com/it-it/sets/icons-boy", "https://www.palmangels.com/it-it/shopping/kids-baby", "https://www.palmangels.com/it-it/sets/icons-girl", "https://www.palmangels.com/it-it/sets/gifts-for-boy", "https://www.palmangels.com/it-it/sets/gifts-for-girl", "https://www.palmangels.com/it-it/sets/icons-man", "https://www.palmangels.com/it-it/sets/bear-man", "https://www.palmangels.com/it-it/sets/curved-logo-man", "https://www.palmangels.com/it-it/sets/spray-city-monogram", "https://www.palmangels.com/it-it/sets/tracksuits-man", "https://www.palmangels.com/it-it/sets/icons-woman", "https://www.palmangels.com/it-it/sets/bear-woman", "https://www.palmangels.com/it-it/sets/curved-logo-woman", "https://www.palmangels.com/it-it/sets/tracksuits-woman", "https://www.palmangels.com/it-it/sets/f1-collection-racing-haas", "https://www.palmangels.com/it-it/sets/tods-sneakers-tab", "https://www.palmangels.com/it-it/sets/moncler-x-palm-angels-genius", "https://www.palmangels.com/it-it/sets/moncler-maya-down-jackets"]
+  },
+  "110": {
+    "METHOD": "Scroll",
+    "DIRECTORY": "Canada_Goose",
+    "ELEMENT_LOCATOR": null,
+    "POPUP_TEXT": [null],
+    "POPUP_ID": ["dismissbutton2"],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "canadagoose.com",
+    "PRODUCTS_PER_HTML_TAG": "grid-tile col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3 pb-3 pb-md-6 pb-xl-8 ",
+    "URL_LIST": ["https://www.canadagoose.com/it/en/shop/women/", "https://www.canadagoose.com/it/en/shop/men/", "https://www.canadagoose.com/it/en/shop/kids/", "https://www.canadagoose.com/it/en/shop/shoes/", "https://www.canadagoose.com/us/en/shop/women/", "https://www.canadagoose.com/us/en/shop/men/", "https://www.canadagoose.com/us/en/shop/kids/", "https://www.canadagoose.com/us/en/shop/shoes/"]
   }
-
 }
