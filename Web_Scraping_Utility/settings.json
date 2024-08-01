@@ -6,7 +6,7 @@
     "POPUP_TEXT": ["No, stay on the United States site"],
     "POPUP_ID": [null],
     "POPUP_CLASS": [null],
-    "POPUP_XPATH":[],
+    "POPUP_XPATH":[null],
     "BY_XPATH": false,
     "DOMAIN" : "balenciaga.com",
     "PRODUCTS_PER_HTML_TAG": "c-product__item",
@@ -192,8 +192,7 @@
     "POPUP_XPATH": [null],
     "DOMAIN": "manoloblahnik.com",
     "PRODUCTS_PER_HTML_TAG": "item product product-item flex flex-col w-full",
-    "URL_LIST": ["https://www.manoloblahnik.com/int/women/style.html", "https://www.manoloblahnik.com/int/women/classics.html", "https://www.manoloblahnik.com/int/women/accessories.html", "https://www.manoloblahnik.com/int/men/style.html", "https://www.manoloblahnik.com/int/men/classics.html", "https://www.manoloblahnik.com/int/men/accessories.html", "https://www.manoloblahnik.com/us/women/style.html", "https://www.manoloblahnik.com/us/women/classics.html", "https://www.manoloblahnik.com/us/women/accessories.html", "https://www.manoloblahnik.com/us/men/style.html", "https://www.manoloblahnik.com/us/men/classics.html", "https://www.manoloblahnik.com/us/men/accessories.html"]"
-
+    "URL_LIST": ["https://www.manoloblahnik.com/int/women/style.html", "https://www.manoloblahnik.com/int/women/classics.html", "https://www.manoloblahnik.com/int/women/accessories.html", "https://www.manoloblahnik.com/int/men/style.html", "https://www.manoloblahnik.com/int/men/classics.html", "https://www.manoloblahnik.com/int/men/accessories.html", "https://www.manoloblahnik.com/us/women/style.html", "https://www.manoloblahnik.com/us/women/classics.html", "https://www.manoloblahnik.com/us/women/accessories.html", "https://www.manoloblahnik.com/us/men/style.html", "https://www.manoloblahnik.com/us/men/classics.html", "https://www.manoloblahnik.com/us/men/accessories.html"]
   },
   "266": {
     "METHOD": "Scroll",
