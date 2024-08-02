@@ -16,13 +16,11 @@ from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 import ray
-
-
-
+from dotenv import load_dotenv
 from fastapi import FastAPI
 
+load_dotenv()
 app = FastAPI()
-=
 @ray.remote
 class PageExpander:
 
