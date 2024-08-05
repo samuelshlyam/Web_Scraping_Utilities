@@ -31,7 +31,10 @@ class PageExpander:
         options = webdriver.ChromeOptions()
         options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
-        options.add_argument("start-maximized")
+        options.add_argument("--start-maximized")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-setuid-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         options.add_argument("--headless=new")
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-gpu")
@@ -522,7 +525,7 @@ class PageExpander:
         print(f"Saved: {filepath}")
         return filepath
     def save_html_s3(self, html_filepath):
-        path_parts=html_filepath.split("\\")[-3:]
+        path_parts=html_filepath.split("/")[-3:]
         path_parts[-2] = str(uuid.uuid4())
         path="_".join(path_parts)
         return self.upload_file_to_space(html_filepath,path)
@@ -569,13 +572,13 @@ class PageExpander:
     def update_complete(self):
         headers = {
             'accept': 'application/json',
-            # 'content-type': 'application/x-www-form-urlencoded',
+            'content-type': 'application/x-www-form-urlencoded',
         }
 
         params = {
             'job_id': f"{self.job_id}",
-            'resultUrl': self.result_url,
-            'logUrl': self.log_url,
+            'resultUrl': f"{self.result_url}",
+            'logUrl': f"{self.log_url}",
             'count' : self.product_count
         }
 
