@@ -5,9 +5,9 @@ import datetime
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 from sqlalchemy import create_engine,text
+from dotenv import load_dotenv
 
-from Web_Scraping_Utilities.Web_Scraping_Utility.Agent_Node.main import PageExpander
-
+load_dotenv()
 
 pwd_value = str(os.environ.get('MSSQLS_PWD'))
 pwd_str =f"Pwd={pwd_value};"
@@ -15,7 +15,6 @@ global conn
 conn = "DRIVER={ODBC Driver 17 for SQL Server};Server=35.172.243.170;Database=luxurymarket_p4;Uid=luxurysitescraper;" + pwd_str
 global engine
 engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % conn)
-from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -45,6 +44,9 @@ def update_sql_job(job_id, resultUrl,logUrl,count):
     f" HarvestEnd = getdate()\n"
     f" Where ID = {job_id}")
     if len(sql) > 0:
+        ip = requests.get('https://api.ipify.org').content.decode('utf8')
+        print('My public IP address is: {}'.format(ip))
+        
         connection = engine.connect()
         sql = text(sql)
         print(sql)
@@ -57,7 +59,7 @@ def update_sql_job(job_id, resultUrl,logUrl,count):
 
 @app.post("/job_complete")
 async def brand_batch_endpoint(job_id: str, resultUrl:str,logUrl:str,count:int,background_tasks: BackgroundTasks):
-    background_tasks.add_task(update_sql_job, job_id, resultUrl,logUrl,count)
+    background_tasks.add_task(update_sql_job, job_id, resultUrl ,logUrl ,count)
 
     return {"message": "Notification sent in the background"}
 
@@ -75,27 +77,36 @@ def procces_brand_single(job_id):
     brand_id = str(df.iloc[0,0])
     print(brand_id,url)
     print(f"Processing job {job_id} with URL: {url}")
-    jsonData = fetch_settings()
-    print(jsonData)
-    data = jsonData.get(brand_id)
-    print(data)
-    brand_name = data.get('DIRECTORY')
-    time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    output_dir = os.path.join(current_directory, 'Outputs', brand_name, time_stamp)
-    print(f"Number of URLs: {len(url)}")
-
-    os.makedirs(output_dir, exist_ok=True)
+    
+    response_status = submit_job_post(job_id,brand_id,url)
 
 
-    print(f"send request with {job_id,url}")
+
+    print(f"send request with {job_id}, Status: {response_status}")
+    
 def fetch_job_details(job_id):
     sql_query = f"Select BrandId, ScanUrl from utb_BrandScanJobs where ID = {job_id}"
     print(sql_query)
     df = pd.read_sql_query(sql_query, con=engine)
+    engine.dispose()
     print(df)
     return df
 
+def submit_job_post(job_id,brand_id,url):
 
+    headers = {
+        'accept': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
+    }
+
+    params = {
+        'job_id': f"{job_id}",
+        'brand_id':f"{brand_id}",
+        'scan_url':f"{url}",
+    }
+
+    response = requests.post(f"{os.environ.get('AGENT_BASE_URL')}/run_html", params=params, headers=headers)
+    return response.status_code
 
 #KEEP
 # def process_brand_batch(brand_id):

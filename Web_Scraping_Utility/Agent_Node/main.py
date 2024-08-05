@@ -567,20 +567,20 @@ class PageExpander:
             count += 1
             start += 1  # move past the last found substring
     def update_complete(self):
-        MANAGER_ENDPOINT = 'http://127.0.0.1:8001'
         headers = {
             'accept': 'application/json',
-            'content-type': 'application/x-www-form-urlencoded',
+            # 'content-type': 'application/x-www-form-urlencoded',
         }
 
         params = {
             'job_id': f"{self.job_id}",
-            'resultUrl': f"{self.result_url}",
-            'logUrl': f"{self.log_url}",
+            'resultUrl': self.result_url,
+            'logUrl': self.log_url,
             'count' : self.product_count
         }
 
-        response = requests.post(f'{MANAGER_ENDPOINT}/job_complete', params=params, headers=headers)
+        requests.post(f"{os.getenv('MANAGER_ENDPOINT')}/job_complete", params=params, headers=headers)
+        
 
 
 def read_file_to_list(file_path):
