@@ -16,10 +16,10 @@ from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 import ray
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from fastapi import FastAPI
 
-load_dotenv()
+# load_dotenv()
 app = FastAPI()
 @ray.remote
 class PageExpander:
@@ -625,6 +625,9 @@ async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, backgrou
 
     return {"message": "Notification sent in the background"}
 
+@app.post("/")
+async def check():
+    return {"message": "Alive"}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8002, log_level="info")
+    uvicorn.run("main:app", port=8080, log_level="info")
