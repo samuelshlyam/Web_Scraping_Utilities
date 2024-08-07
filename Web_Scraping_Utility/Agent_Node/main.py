@@ -238,6 +238,8 @@ class PageExpander:
             page_sources.append(page_source)
             try:
                 # Scroll to the bottom in order to allow items to load
+                load_more_button = None
+                next_url=None
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
@@ -313,6 +315,7 @@ class PageExpander:
         retries = 0
         while True:
             try:
+                load_more_button = None
                 # If there is no button to click stop
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
@@ -378,6 +381,7 @@ class PageExpander:
 
             # Try to click the "load more" button if it exists
             try:
+                load_more_button=None
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
                         try:
@@ -420,7 +424,7 @@ class PageExpander:
                 else:
                     scroll_back_amount=self.INITIAL_SCROLL_BACK_AMOUNT
                     no_changes_count = 0  # Reset count if height changed
-                    self.logger.exception(f"{self.brand_name} Successfully scrolled to bottom loading new items.")
+                    self.logger.info(f"{self.brand_name} Successfully scrolled to bottom loading new items.")
 
                 last_height = new_height
 
