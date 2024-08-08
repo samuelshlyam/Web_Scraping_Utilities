@@ -654,5 +654,22 @@
     "DOMAIN": "canadagoose.com",
     "PRODUCTS_PER_HTML_TAG": "grid-tile col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3 pb-3 pb-md-6 pb-xl-8 ",
     "URL_LIST": ["https://www.canadagoose.com/it/en/shop/women/", "https://www.canadagoose.com/it/en/shop/men/", "https://www.canadagoose.com/it/en/shop/kids/", "https://www.canadagoose.com/it/en/shop/shoes/", "https://www.canadagoose.com/us/en/shop/women/", "https://www.canadagoose.com/us/en/shop/men/", "https://www.canadagoose.com/us/en/shop/kids/", "https://www.canadagoose.com/us/en/shop/shoes/"]
+  },
+  "67": {
+    "METHOD": "Hybrid",
+    "DIRECTORY": "Bally",
+    "ELEMENT_LOCATOR": "button.px-40.border.!border-[#1F1E1D].!bg-[#FCFAF8].outline-4.outline-offset-2.outline-grey-400.leading-[24px].text-[#1f1e1d].bg-transparent.border.border-inherit.font-normal.text-[15px].hover:opacity-80.disabled:opacity-30.py-14",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
+    "BY_XPATH": false,
+    "POPUP_WAIT_TIME": 5,
+    "GENERAL_WAIT_TIME": 10,
+    "MAX_RETRIES": 10,
+    "INITIAL_SCROLL_BACK_AMOUNT": 300,
+    "SCROLL_BACK_CHANGE": 100,
+    "DOMAIN": "bally.com",
+    "PRODUCTS_PER_HTML_TAG": "relative"
   }
 }
