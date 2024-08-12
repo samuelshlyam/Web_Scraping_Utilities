@@ -16,7 +16,6 @@ from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 # from dotenv import load_dotenv
-from fastapi import FastAPI
 
 # load_dotenv()
 app = FastAPI()
@@ -632,6 +631,9 @@ async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, backgrou
     background_tasks.add_task(process_remote_run,job_id,brand_id,scan_url)
 
     return {"message": "Notification sent in the background"}
+@app.post("/")
+async def health_check():
+    return {"message": "Hello"}
 
 
 if __name__ == "__main__":
