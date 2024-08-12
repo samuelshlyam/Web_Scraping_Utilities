@@ -15,19 +15,21 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-import ray
 # from dotenv import load_dotenv
-from fastapi import FastAPI
 
 # load_dotenv()
 app = FastAPI()
-@ray.remote
 class PageExpander:
 
     def __init__(self,job_id, brand_id,url):
+        #Initially set all necessary variables
         self.result_url = None
         self.log_url=None
         self.product_count=0
+        self.brand_id = brand_id
+        self.url = url
+
+        #Set ChromeOptions for driver
         options = webdriver.ChromeOptions()
         options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
@@ -38,17 +40,18 @@ class PageExpander:
         options.add_argument("--headless=new")
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-gpu")
-        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        current_directory=os.getcwd()
-        self.output_dir = os.getcwd()
         self.driver = webdriver.Chrome(options=options)
-        self.brand_id=brand_id
-        self.url=url
-        self.data=self.fetch_settings()[brand_id]
+
+        #Get and Load Data
+        self.data = self.fetch_settings()[brand_id] if self.fetch_settings() else None
         self.load_data()
+        self.job_id=job_id
+
+        # Setup Logging
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        current_directory = os.getcwd()
         self.output_dir = os.path.join(current_directory, 'Outputs', self.brand_name, time_stamp)
         self.setup_logging()
-        self.job_id=job_id
 
 
     def start(self):
@@ -60,8 +63,11 @@ class PageExpander:
             self.expand_page_hybrid()
         elif self.method == "Pages":
             self.expand_page_pages()
+        else:
+            self.logger.exception("Invalid Method")
     def load_data(self):
-        self.brand_name=self.data.get("DIRECTORY","")
+
+        self.brand_name=self.data.get("BRAND_NAME","")
         self.ELEMENT_LOCATOR = self.data.get("ELEMENT_LOCATOR","")
         self.POPUP_TEXT = self.data.get("POPUP_TEXT", [])
         self.POPUP_ID = self.data.get("POPUP_ID", [])
@@ -70,7 +76,7 @@ class PageExpander:
         self.BY_XPATH = self.data.get("BY_XPATH", False)
         self.method = self.data.get("METHOD", "Click")
         self.PRODUCTS_PER_HTML_TAG = self.data.get("PRODUCTS_PER_HTML_TAG", "")
-        self.LOCATOR_TYPE = self.BY_XPATH if self.BY_XPATH else By.CSS_SELECTOR
+        self.LOCATOR_TYPE = By.XPATH if self.BY_XPATH else By.CSS_SELECTOR
 
         self.POPUP_WAIT_TIME = int(self.data.get("POPUP_WAIT_TIME", 5))
         self.GENERAL_WAIT_TIME = int(self.data.get("GENERAL_WAIT_TIME", 5))
@@ -82,9 +88,9 @@ class PageExpander:
         try:
             response = requests.get(os.getenv('SETTINGS_URL'))
             response.raise_for_status()  # Raises an HTTPError for bad responses
+            print(f"This is the settings file\n{response.json()}")
             return response.json()
         except requests.RequestException as e:
-            print(f"Error fetching settings: {e}")
             return None
     def setup_logging(self):
         # Setup logging in correct file location
@@ -102,7 +108,6 @@ class PageExpander:
                 logging.FileHandler(self.logging_file_path),
                 logging.StreamHandler()
             ])
-
         self.logger = logging.getLogger(__name__)
         self.logger.info("This is a log message from the gg script")
     def close_popup(self):
@@ -238,6 +243,8 @@ class PageExpander:
             page_sources.append(page_source)
             try:
                 # Scroll to the bottom in order to allow items to load
+                load_more_button = None
+                next_url=None
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
@@ -313,6 +320,7 @@ class PageExpander:
         retries = 0
         while True:
             try:
+                load_more_button = None
                 # If there is no button to click stop
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
@@ -378,6 +386,7 @@ class PageExpander:
 
             # Try to click the "load more" button if it exists
             try:
+                load_more_button=None
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
                         try:
@@ -420,7 +429,7 @@ class PageExpander:
                 else:
                     scroll_back_amount=self.INITIAL_SCROLL_BACK_AMOUNT
                     no_changes_count = 0  # Reset count if height changed
-                    self.logger.exception(f"{self.brand_name} Successfully scrolled to bottom loading new items.")
+                    self.logger.info(f"{self.brand_name} Successfully scrolled to bottom loading new items.")
 
                 last_height = new_height
 
@@ -526,7 +535,13 @@ class PageExpander:
         return filepath
     def save_html_s3(self, html_filepath):
         path_parts=html_filepath.split("/")[-3:]
-        path_parts[-2] = str(uuid.uuid4())
+        code=str(uuid.uuid4())
+        if len(path_parts)>=2:
+            path_parts[-2] =code
+        elif isinstance(path_parts,list):
+            path_parts[-1] = code
+        else:
+            path_parts=[code]
         path="_".join(path_parts)
         return self.upload_file_to_space(html_filepath,path)
 
@@ -616,18 +631,18 @@ def read_file_to_list(file_path):
 
 
 def process_remote_run(job_id,brand_id, scan_url):
-    expander = PageExpander.remote(job_id, brand_id,scan_url)
-    result = ray.get(expander.start.remote())
+    expander = PageExpander(job_id, brand_id,scan_url)
+    result = expander.start()
 
 @app.post("/run_html")
 async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, background_tasks: BackgroundTasks):
     background_tasks.add_task(process_remote_run,job_id,brand_id,scan_url)
 
     return {"message": "Notification sent in the background"}
-
 @app.post("/")
-async def check():
-    return {"message": "Alive"}
+async def health_check():
+    return {"message": "Hello"}
+
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8080, log_level="info")
+    uvicorn.run("main:app", port=8080,host="0.0.0.0" ,log_level="info")
