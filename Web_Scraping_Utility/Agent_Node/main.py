@@ -15,13 +15,11 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-import ray
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from fastapi import FastAPI
 
-load_dotenv()
+# load_dotenv()
 app = FastAPI()
-@ray.remote
 class PageExpander:
 
     def __init__(self,job_id, brand_id,url):
@@ -61,7 +59,7 @@ class PageExpander:
         elif self.method == "Pages":
             self.expand_page_pages()
     def load_data(self):
-        self.brand_name=self.data.get("DIRECTORY","")
+        self.brand_name=self.data.get("BRAND_NAME","")
         self.ELEMENT_LOCATOR = self.data.get("ELEMENT_LOCATOR","")
         self.POPUP_TEXT = self.data.get("POPUP_TEXT", [])
         self.POPUP_ID = self.data.get("POPUP_ID", [])
@@ -70,7 +68,7 @@ class PageExpander:
         self.BY_XPATH = self.data.get("BY_XPATH", False)
         self.method = self.data.get("METHOD", "Click")
         self.PRODUCTS_PER_HTML_TAG = self.data.get("PRODUCTS_PER_HTML_TAG", "")
-        self.LOCATOR_TYPE = self.BY_XPATH if self.BY_XPATH else By.CSS_SELECTOR
+        self.LOCATOR_TYPE = By.XPATH if self.BY_XPATH else By.CSS_SELECTOR
 
         self.POPUP_WAIT_TIME = int(self.data.get("POPUP_WAIT_TIME", 5))
         self.GENERAL_WAIT_TIME = int(self.data.get("GENERAL_WAIT_TIME", 5))
@@ -530,7 +528,13 @@ class PageExpander:
         return filepath
     def save_html_s3(self, html_filepath):
         path_parts=html_filepath.split("/")[-3:]
-        path_parts[-2] = str(uuid.uuid4())
+        code=str(uuid.uuid4())
+        if len(path_parts)>=2:
+            path_parts[-2] =code
+        elif isinstance(path_parts,list):
+            path_parts[-1] = code
+        else:
+            path_parts=[code]
         path="_".join(path_parts)
         return self.upload_file_to_space(html_filepath,path)
 
@@ -620,8 +624,8 @@ def read_file_to_list(file_path):
 
 
 def process_remote_run(job_id,brand_id, scan_url):
-    expander = PageExpander.remote(job_id, brand_id,scan_url)
-    result = ray.get(expander.start.remote())
+    expander = PageExpander(job_id, brand_id,scan_url)
+    result = expander.start()
 
 @app.post("/run_html")
 async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, background_tasks: BackgroundTasks):
@@ -631,4 +635,4 @@ async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, backgrou
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8102, log_level="info")
+    uvicorn.run("main:app", port=8102, host= "0.0.0.0", log_level="info")
