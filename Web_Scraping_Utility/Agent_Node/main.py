@@ -15,16 +15,21 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 app = FastAPI()
 class PageExpander:
 
     def __init__(self,job_id, brand_id,url):
+        #Initially set all necessary variables
         self.result_url = None
         self.log_url=None
         self.product_count=0
+        self.brand_id = brand_id
+        self.url = url
+
+        #Set ChromeOptions for driver
         options = webdriver.ChromeOptions()
         options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
@@ -35,17 +40,18 @@ class PageExpander:
         options.add_argument("--headless=new")
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-gpu")
-        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        current_directory=os.getcwd()
-        self.output_dir = os.getcwd()
         self.driver = webdriver.Chrome(options=options)
-        self.brand_id=brand_id
-        self.url=url
-        self.data=self.fetch_settings()[brand_id]
+
+        #Get and Load Data
+        self.data = self.fetch_settings()[brand_id] if self.fetch_settings() else None
         self.load_data()
+        self.job_id=job_id
+
+        # Setup Logging
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        current_directory = os.getcwd()
         self.output_dir = os.path.join(current_directory, 'Outputs', self.brand_name, time_stamp)
         self.setup_logging()
-        self.job_id=job_id
 
 
     def start(self):
@@ -57,7 +63,10 @@ class PageExpander:
             self.expand_page_hybrid()
         elif self.method == "Pages":
             self.expand_page_pages()
+        else:
+            self.logger.exception("Invalid Method")
     def load_data(self):
+
         self.brand_name=self.data.get("BRAND_NAME","")
         self.ELEMENT_LOCATOR = self.data.get("ELEMENT_LOCATOR","")
         self.POPUP_TEXT = self.data.get("POPUP_TEXT", [])
@@ -79,9 +88,9 @@ class PageExpander:
         try:
             response = requests.get(os.getenv('SETTINGS_URL'))
             response.raise_for_status()  # Raises an HTTPError for bad responses
+            print(f"This is the settings file\n{response.json()}")
             return response.json()
         except requests.RequestException as e:
-            print(f"Error fetching settings: {e}")
             return None
     def setup_logging(self):
         # Setup logging in correct file location
@@ -99,7 +108,6 @@ class PageExpander:
                 logging.FileHandler(self.logging_file_path),
                 logging.StreamHandler()
             ])
-
         self.logger = logging.getLogger(__name__)
         self.logger.info("This is a log message from the gg script")
     def close_popup(self):
@@ -637,4 +645,4 @@ async def health_check():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8080, host= "0.0.0.0", log_level="info")
+    uvicorn.run("main:app", port=8102, log_level="info")
