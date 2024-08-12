@@ -144,8 +144,5 @@ def submit_job_post(job_id,brand_id,url):
 # print(f"\nProcessing completed.\nTime taken: {end - start}")
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     uvicorn.run("main:app", port=8080, host="0.0.0.0" ,log_level="info")
-=======
-    uvicorn.run("main:app", port=8101, log_level="info")
->>>>>>> d17427f9c06e5637b770702550f7dbff1d742823
+
