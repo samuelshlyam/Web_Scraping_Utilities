@@ -1,5 +1,7 @@
 import uuid
 import boto3
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail,Personalization,To,Cc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -34,6 +36,7 @@ class PageExpander:
         options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
         options.add_argument("--start-maximized")
+        options.add_argument("--incognito")
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-setuid-sandbox')
         options.add_argument('--disable-dev-shm-usage')
@@ -77,7 +80,7 @@ class PageExpander:
         self.method = self.data.get("METHOD", "Click")
         self.PRODUCTS_PER_HTML_TAG = self.data.get("PRODUCTS_PER_HTML_TAG", "")
         self.LOCATOR_TYPE = By.XPATH if self.BY_XPATH else By.CSS_SELECTOR
-
+        self.IMAGES_LOAD = self.data.get("IMAGES_LOAD", False)
         self.POPUP_WAIT_TIME = int(self.data.get("POPUP_WAIT_TIME", 5))
         self.GENERAL_WAIT_TIME = int(self.data.get("GENERAL_WAIT_TIME", 5))
         self.MAX_RETRIES = int(self.data.get("MAX_RETRIES", 10))
@@ -245,7 +248,7 @@ class PageExpander:
                 # Scroll to the bottom in order to allow items to load
                 load_more_button = None
                 next_url=None
-                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight   );")
                 if type(self.ELEMENT_LOCATOR) == list:
                     for locator in self.ELEMENT_LOCATOR:
                         self.logger.info(locator)
@@ -345,7 +348,15 @@ class PageExpander:
                 time.sleep(self.GENERAL_WAIT_TIME)  # Wait for scrolling to complete
                 # Click the expand button using JavaScript to avoid interception
                 self.driver.execute_script("arguments[0].click();", load_more_button)
-
+                # Scroll through entire page so images load
+                if self.IMAGES_LOAD:
+                    current_height = self.driver.execute_script("return window.pageYOffset + window.innerHeight")
+                    while current_height > 100:
+                        self.driver.execute_script("window.scrollBy(0, -arguments[0]);", self.INITIAL_SCROLL_BACK_AMOUNT)
+                        current_height = self.driver.execute_script("return window.pageYOffset + window.innerHeight")
+                        time.sleep(0.25)
+                        self.logger.info(f"This is the current scroll height {current_height}")
+                    self.logger.info("Scrolled back up to the top slowly, images should now be loaded")
                 # Wait a bit for the page to load more content
                 time.sleep(self.GENERAL_WAIT_TIME)
                 self.logger.info(f"{self.brand_name} Retries have been reset to 0")
@@ -431,7 +442,18 @@ class PageExpander:
                     no_changes_count = 0  # Reset count if height changed
                     self.logger.info(f"{self.brand_name} Successfully scrolled to bottom loading new items.")
 
+                # Scroll through entire page so images load
+                if self.IMAGES_LOAD:
+                    current_height = self.driver.execute_script("return document.body.scrollHeight")
+                    while current_height > last_height-1000:
+                        self.driver.execute_script("window.scrollBy(0, -arguments[0]);", self.INITIAL_SCROLL_BACK_AMOUNT)
+                        current_height = self.driver.execute_script("return window.pageYOffset + window.innerHeight")
+                        time.sleep(0.25)
+                        self.logger.info(f"This is the current scroll height {current_height}")
+                    self.logger.info("Scrolled back up to the top slowly, images should now be loaded")
                 last_height = new_height
+
+
 
 
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
@@ -463,10 +485,6 @@ class PageExpander:
             self.driver.execute_script("window.scrollBy(0, -arguments[0]);", scroll_back_amount)
             time.sleep(self.GENERAL_WAIT_TIME)
 
-            # Scroll to the bottom again
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(self.GENERAL_WAIT_TIME)
-
             # Check if the page height has changed
             new_height = self.driver.execute_script("return document.body.scrollHeight")
 
@@ -480,7 +498,21 @@ class PageExpander:
                 scroll_back_amount = self.INITIAL_SCROLL_BACK_AMOUNT
                 retry_count = 0  # Reset retry count if new content is loaded
                 self.logger.info(f"{self.brand_name}: Successfully Scrolled")
+
+            # Scroll through entire page so images load
+            if self.IMAGES_LOAD:
+                current_height = self.driver.execute_script("return window.pageYOffset + window.innerHeight")
+                while current_height > last_height - 1000:
+                    self.driver.execute_script("window.scrollBy(0, -arguments[0]);", self.INITIAL_SCROLL_BACK_AMOUNT)
+                    current_height = self.driver.execute_script("return window.pageYOffset + window.innerHeight")
+                    time.sleep(0.25)
+                    self.logger.info(f"This is the current scroll height {current_height}")
+                self.logger.info("Scrolled back up to the top slowly, images should now be loaded")
             last_height = new_height
+
+            # Scroll to the bottom again just in case
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(self.GENERAL_WAIT_TIME)
 
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
         html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
@@ -633,7 +665,38 @@ def read_file_to_list(file_path):
 def process_remote_run(job_id,brand_id, scan_url):
     expander = PageExpander(job_id, brand_id,scan_url)
     result = expander.start()
+def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error - Parsing Step"):
+    message_with_breaks = message_text.replace("\n", "<br>")
 
+    html_content = f"""
+<html>
+<body>
+<div class="container">
+    <!-- Use the modified message with <br> for line breaks -->
+    <p>Message details:<br>{message_with_breaks}</p>
+</div>
+</body>
+</html>
+"""
+    message = Mail(
+        from_email='distrotool@iconluxurygroup.com',
+        subject=subject,
+        html_content=html_content
+    )
+
+    cc_recipient = 'notifications@popovtech.com'
+    personalization = Personalization()
+    personalization.add_cc(Cc(cc_recipient))
+    personalization.add_to(To(to_emails))
+    message.add_personalization(personalization)
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e)
 @app.post("/run_html")
 async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, background_tasks: BackgroundTasks):
     background_tasks.add_task(process_remote_run,job_id,brand_id,scan_url)
@@ -645,4 +708,4 @@ async def health_check():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8102, log_level="info")
+    uvicorn.run("main:app", port=8106, log_level="info")

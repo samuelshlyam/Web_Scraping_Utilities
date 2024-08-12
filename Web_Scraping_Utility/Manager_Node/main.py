@@ -83,7 +83,42 @@ def procces_brand_single(job_id):
 
 
     print(f"send request with {job_id}, Status: {response_status}")
-    
+    if response_status != 200:
+        send_email(f"Request with job id {job_id} failed to send, Status: {response_status}")
+
+
+def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error - Parsing Step"):
+    message_with_breaks = message_text.replace("\n", "<br>")
+
+    html_content = f"""
+<html>
+<body>
+<div class="container">
+    <!-- Use the modified message with <br> for line breaks -->
+    <p>Message details:<br>{message_with_breaks}</p>
+</div>
+</body>
+</html>
+"""
+    message = Mail(
+        from_email='distrotool@iconluxurygroup.com',
+        subject=subject,
+        html_content=html_content
+    )
+
+    cc_recipient = 'notifications@popovtech.com'
+    personalization = Personalization()
+    personalization.add_cc(Cc(cc_recipient))
+    personalization.add_to(To(to_emails))
+    message.add_personalization(personalization)
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e)
 def fetch_job_details(job_id):
     sql_query = f"Select BrandId, ScanUrl from utb_BrandScanJobs where ID = {job_id}"
     print(sql_query)
@@ -144,4 +179,4 @@ def submit_job_post(job_id,brand_id,url):
 # print(f"\nProcessing completed.\nTime taken: {end - start}")
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8101, log_level="info")
+    uvicorn.run("main:app", port=8105, log_level="info")
