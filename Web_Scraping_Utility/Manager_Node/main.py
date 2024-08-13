@@ -1,6 +1,8 @@
 import pandas as pd
 import requests
 import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail,Personalization,To,Cc
 import datetime
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
@@ -91,15 +93,15 @@ def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error
     message_with_breaks = message_text.replace("\n", "<br>")
 
     html_content = f"""
-<html>
-<body>
-<div class="container">
-    <!-- Use the modified message with <br> for line breaks -->
-    <p>Message details:<br>{message_with_breaks}</p>
-</div>
-</body>
-</html>
-"""
+                    <html>
+                    <body>
+                    <div class="container">
+                        <!-- Use the modified message with <br> for line breaks -->
+                        <p>Message details:<br>{message_with_breaks}</p>
+                    </div>
+                    </body>
+                    </html>
+                    """
     message = Mail(
         from_email='distrotool@iconluxurygroup.com',
         subject=subject,

@@ -30,6 +30,7 @@ class PageExpander:
         self.product_count=0
         self.brand_id = brand_id
         self.url = url
+        self.code = str(uuid.uuid4())
 
         #Set ChromeOptions for driver
         options = webdriver.ChromeOptions()
@@ -66,10 +67,13 @@ class PageExpander:
             self.expand_page_hybrid()
         elif self.method == "Pages":
             self.expand_page_pages()
+        elif self.method == "Request":
+            self.get_html_requests()
         else:
             self.logger.exception("Invalid Method")
     def load_data(self):
-
+        if not self.data:
+            print(f"The settings didn't load correctly")
         self.brand_name=self.data.get("BRAND_NAME","")
         self.ELEMENT_LOCATOR = self.data.get("ELEMENT_LOCATOR","")
         self.POPUP_TEXT = self.data.get("POPUP_TEXT", [])
@@ -111,7 +115,7 @@ class PageExpander:
                 logging.FileHandler(self.logging_file_path),
                 logging.StreamHandler()
             ])
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger(__name__ + self.code)
         self.logger.info("This is a log message from the gg script")
     def close_popup(self):
         if not self.POPUP_TEXT and not self.POPUP_ID and not self.POPUP_CLASS and not self.POPUP_XPATH:
@@ -255,9 +259,19 @@ class PageExpander:
                         try:
                             for text, id_, class_, xpath in zip(self.POPUP_TEXT, self.POPUP_ID, self.POPUP_CLASS, self.POPUP_XPATH):
                                 self.logger.info(f"{self.brand_name} {text},{id_}, {class_}, {xpath}")
-                            load_more_button = WebDriverWait(self.driver, self.GENERAL_WAIT_TIME).until(
-                                EC.presence_of_element_located((self.LOCATOR_TYPE, self.ELEMENT_LOCATOR))
-                            )
+                            if isinstance(self.ELEMENT_LOCATOR,list):
+                                for locator in self.ELEMENT_LOCATOR:
+                                    try:
+                                        load_more_button = WebDriverWait(self.driver, self.GENERAL_WAIT_TIME).until(
+                                            EC.element_to_be_clickable((self.LOCATOR_TYPE, locator))
+                                        )
+                                        break
+                                    except:
+                                        continue
+                            else:
+                                load_more_button = WebDriverWait(self.driver, self.GENERAL_WAIT_TIME).until(
+                                    EC.presence_of_element_located((self.LOCATOR_TYPE, self.ELEMENT_LOCATOR))
+                                )
                             next_url = load_more_button.get_attribute('href')
                             self.driver.get(next_url)
                             self.logger.info(f"{self.brand_name} The next page has been opened for {self.brand_name}")
@@ -304,8 +318,9 @@ class PageExpander:
                     if retries>=self.MAX_RETRIES:
                         break
         all_html_string=self.write_html_to_file(page_sources)
-        self.result_url=self.save_html_s3(self.output_dir)
-        self.log_url = self.save_html_s3(self.logging_file_path)
+        html_filepath = self.save_html_file(self.url, all_html_string, self.output_dir)
+        self.result_url=self.save_html_s3(html_filepath)
+        self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(all_html_string,self.PRODUCTS_PER_HTML_TAG)
         self.update_complete()
         self.driver.close()
@@ -374,7 +389,7 @@ class PageExpander:
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
         html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
         self.result_url = self.save_html_s3(html_filepath)
-        self.log_url = self.save_html_s3(self.logging_file_path)
+        self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
         self.update_complete()
         self.driver.close()
@@ -459,7 +474,7 @@ class PageExpander:
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
         html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
         self.result_url = self.save_html_s3(html_filepath)
-        self.log_url = self.save_html_s3(self.logging_file_path)
+        self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
         self.update_complete()
         self.driver.close()
@@ -517,7 +532,7 @@ class PageExpander:
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
         html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
         self.result_url=self.save_html_s3(html_filepath)
-        self.log_url=self.save_html_s3(self.logging_file_path)
+        self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(page_source,self.PRODUCTS_PER_HTML_TAG)
         self.update_complete()
         self.driver.close()
@@ -537,13 +552,13 @@ class PageExpander:
 
         # Write to file
         try:
-            with open(self.output_dir, 'w', encoding='utf-8') as file:
+            with open(self.output_dir, encoding='utf-8') as file:
                 file.write(combined_html)
             self.logger.info(f"Successfully wrote {len(html_list)} HTML strings to {self.output_dir}")
         except IOError as e:
             self.logger.debug(f"An error occurred while writing to the file: {e}")
-
         return combined_html
+
     def save_html_file(self, url, html_content, base_directory):
         # Extract the path from the URL
         path = url.split("//")[-1]  # Remove protocol and get the path
@@ -565,15 +580,15 @@ class PageExpander:
 
         print(f"Saved: {filepath}")
         return filepath
+
     def save_html_s3(self, html_filepath):
         path_parts=html_filepath.split("/")[-3:]
-        code=str(uuid.uuid4())
         if len(path_parts)>=2:
-            path_parts[-2] =code
+            path_parts[-2] =self.code
         elif isinstance(path_parts,list):
-            path_parts[-1] = code
+            path_parts[-1] = self.code
         else:
-            path_parts=[code]
+            path_parts=[self.code]
         path="_".join(path_parts)
         return self.upload_file_to_space(html_filepath,path)
 
