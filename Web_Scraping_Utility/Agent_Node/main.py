@@ -3,6 +3,7 @@ import boto3
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail,Personalization,To,Cc
 from selenium import webdriver
+import traceback
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,9 +18,9 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 app = FastAPI()
 class PageExpander:
 
@@ -97,8 +98,11 @@ class PageExpander:
             response.raise_for_status()  # Raises an HTTPError for bad responses
             print(f"This is the settings file\n{response.json()}")
             return response.json()
-        except requests.RequestException as e:
-            return None
+        except Exception:
+          exception_f = traceback.format_exc()
+          send_email(str(exception_f))
+          print(exception_f)
+          return None
     def setup_logging(self):
         # Setup logging in correct file location
         path = self.url.split("//")[-1]
@@ -680,7 +684,7 @@ def read_file_to_list(file_path):
 def process_remote_run(job_id,brand_id, scan_url):
     expander = PageExpander(job_id, brand_id,scan_url)
     result = expander.start()
-def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error - Parsing Step"):
+def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error - HTML Step"):
     message_with_breaks = message_text.replace("\n", "<br>")
 
     html_content = f"""
@@ -723,4 +727,4 @@ async def health_check():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8106, log_level="info")
+    uvicorn.run("main:app", port=8080,host="0.0.0.0" ,log_level="info")
