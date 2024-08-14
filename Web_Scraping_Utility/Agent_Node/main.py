@@ -13,6 +13,7 @@ import re
 import os
 import datetime
 import logging
+import logging.handlers
 import time
 import csv
 from bs4 import BeautifulSoup
@@ -48,7 +49,8 @@ class PageExpander:
         self.driver = webdriver.Chrome(options=options)
 
         #Get and Load Data
-        self.data = self.fetch_settings()[brand_id] if self.fetch_settings() else None
+        settings=self.fetch_settings()
+        self.data = settings[brand_id] if settings else None
         self.load_data()
         self.job_id=job_id
 
@@ -68,8 +70,6 @@ class PageExpander:
             self.expand_page_hybrid()
         elif self.method == "Pages":
             self.expand_page_pages()
-        elif self.method == "Request":
-            self.get_html_requests()
         else:
             self.logger.exception("Invalid Method")
     def load_data(self):
@@ -104,23 +104,39 @@ class PageExpander:
           print(exception_f)
           return None
     def setup_logging(self):
-        # Setup logging in correct file location
+        #Create the location of the log file
         path = self.url.split("//")[-1]
         path = re.sub(r'[<>:"\\|?*]', '_', path)
         path_parts = path.split("/")
-        logging_dir = os.path.join(self.output_dir, *path_parts)
+        logging_dir = os.path.join(self.output_dir, *path_parts[:-1])
         os.makedirs(logging_dir, exist_ok=True)
         log_filename = path_parts[-1] + ".log" if path_parts[-1] else path_parts[-2] + ".log"
         self.logging_file_path = os.path.join(logging_dir, log_filename)
-        logging.basicConfig(
-            level=logging.DEBUG,
-            format="%(asctime)s [%(levelname)s] %(message)s",
-            handlers=[
-                logging.FileHandler(self.logging_file_path),
-                logging.StreamHandler()
-            ])
-        self.logger = logging.getLogger(__name__ + self.code)
-        self.logger.info("This is a log message from the gg script")
+
+        #Initially get a unique logger using a UUID, brand ID, and job ID
+        logger_name=f"UUID: {self.code}, Brand ID: {self.brand_id}, Job ID: {self.job_id}"
+        self.logger = logging.getLogger(logger_name)
+
+        #Set formatter
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+        #Create handler for logs that go to the file on the debug level
+        log_file_handler=logging.handlers.RotatingFileHandler(self.logging_file_path)
+        log_file_handler.setFormatter(formatter)
+        log_file_handler.setLevel(logging.DEBUG)
+
+        #Create handler for logs that go to the console on the info level
+        log_console_handler=logging.StreamHandler()
+        log_console_handler.setFormatter(formatter)
+        log_console_handler.setLevel(logging.INFO)
+
+        self.logger.addHandler(log_file_handler)
+        self.logger.addHandler(log_console_handler)
+
+        #Initial test that the logger is instantiated and working properly
+        self.logger.info("This is what info messages will look like")
+        self.logger.error("This is what error messages will look like")
+        self.logger.critical("This is what a critical error message looks like")
     def close_popup(self):
         if not self.POPUP_TEXT and not self.POPUP_ID and not self.POPUP_CLASS and not self.POPUP_XPATH:
             return
@@ -322,10 +338,11 @@ class PageExpander:
                     if retries>=self.MAX_RETRIES:
                         break
         all_html_string=self.write_html_to_file(page_sources)
-        html_filepath = self.save_html_file(self.url, all_html_string, self.output_dir)
-        self.result_url=self.save_html_s3(html_filepath)
+        self.html_filepath = self.save_html_file(self.url, all_html_string, self.output_dir)
+        self.result_url=self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(all_html_string,self.PRODUCTS_PER_HTML_TAG)
+        logging.shutdown()
         self.update_complete()
         self.driver.close()
         return page_sources
@@ -391,10 +408,11 @@ class PageExpander:
                     break
 
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
-        html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
-        self.result_url = self.save_html_s3(html_filepath)
+        self.html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
+        self.result_url = self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
+        logging.shutdown()
         self.update_complete()
         self.driver.close()
     def expand_page_hybrid(self):
@@ -476,10 +494,11 @@ class PageExpander:
 
 
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
-        html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
-        self.result_url = self.save_html_s3(html_filepath)
+        self.html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
+        self.result_url = self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
+        logging.shutdown()
         self.update_complete()
         self.driver.close()
 
@@ -534,10 +553,11 @@ class PageExpander:
             time.sleep(self.GENERAL_WAIT_TIME)
 
         page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
-        html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
-        self.result_url=self.save_html_s3(html_filepath)
+        self.html_filepath=self.save_html_file(self.url, page_source, self.output_dir)
+        self.result_url=self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(page_source,self.PRODUCTS_PER_HTML_TAG)
+        logging.shutdown()
         self.update_complete()
         self.driver.close()
 
@@ -593,7 +613,7 @@ class PageExpander:
             path_parts[-1] = self.code
         else:
             path_parts=[self.code]
-        path="_".join(path_parts)
+        path="_".join(path_parts) + ".html"
         return self.upload_file_to_space(html_filepath,path)
 
     def get_s3_client(self):
@@ -647,7 +667,10 @@ class PageExpander:
             'logUrl': f"{self.log_url}",
             'count' : self.product_count
         }
-
+        os.remove(self.html_filepath)
+        os.remove(self.logging_file_path)
+        os.rmdir(self.output_dir)
+        self.logger.info(f"Sending output to {os.getenv('MANAGER_ENDPOINT')} with params {params}")
         requests.post(f"{os.getenv('MANAGER_ENDPOINT')}/job_complete", params=params, headers=headers)
         
 
