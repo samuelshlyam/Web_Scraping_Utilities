@@ -665,6 +665,7 @@ class PageExpander:
         }
         os.remove(self.html_filepath)
         os.remove(self.logging_file_path)
+        os.rmdir(self.output_dir)
         self.logger.info(f"Sending output to {os.getenv('MANAGER_ENDPOINT')} with params {params}")
         requests.post(f"{os.getenv('MANAGER_ENDPOINT')}/job_complete", params=params, headers=headers)
         
