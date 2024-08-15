@@ -1,3 +1,4 @@
+import sys
 import uuid
 import boto3
 from sendgrid import SendGridAPIClient
@@ -22,28 +23,28 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 app = FastAPI()
 class PageExpander:
 
     def __init__(self,job_id, brand_id,url):
+        # Initially set all necessary variables
+        self.result_url = None
+        self.log_url = None
+        self.product_count = 0
+        self.brand_id = brand_id
+        self.url = url
+        self.code = str(uuid.uuid4())
         #Start Logging
-        self.code = uuid.uuid4()
         self.job_id=job_id
         self.brand_id = brand_id
         time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         current_directory = os.getcwd()
-        self.output_dir = os.path.join(current_directory, 'Outputs', self.brand_name, time_stamp)
+        self.output_dir = os.path.join(current_directory, 'Outputs', self.brand_id, time_stamp,self.code)
+        os.makedirs(self.output_dir)
         self.setup_logging()
-        #Initially set all necessary variables
-        self.result_url = None
-        self.log_url=None
-        self.product_count=0
-        self.brand_id = brand_id
-        self.url = url
-        self.code = str(uuid.uuid4())
 
         #Set ChromeOptions for driver
         options = webdriver.ChromeOptions()
@@ -61,22 +62,30 @@ class PageExpander:
 
         #Get and Load Data
         settings=self.fetch_settings()
-        self.data = settings[brand_id] if settings else None
+        self.data = settings[brand_id] if settings else {}
         self.load_data()
         self.job_id=job_id
 
     def start(self):
-        if self.method == "Click":
-            self.expand_page_click()
-        elif self.method == "Scroll":
-            self.expand_page_scroll()
-        elif self.method == "Hybrid":
-            self.expand_page_hybrid()
-        elif self.method == "Pages":
-            self.expand_page_pages()
-        else:
-            send_email(f"Error occurred while starting\nName:{self.brand_name}\nMethod:{self.method}",subject=f"{self.brand_name} Error - Start Job")
-            self.logger.critical(f"Error occurred while starting\nName:{self.brand_name}\nMethod:{self.method}")
+        try:
+            if self.method == "Click":
+                self.expand_page_click()
+            elif self.method == "Scroll":
+                self.expand_page_scroll()
+            elif self.method == "Hybrid":
+                self.expand_page_hybrid()
+            elif self.method == "Pages":
+                self.expand_page_pages()
+            else:
+                send_email(f"Error occurred while starting\nID:{self.brand_id}\nMethod:{self.method}",subject=f"{self.brand_id} Error - Start Job")
+                self.logger.critical(f"Error occurred while starting\nID:{self.brand_id}\nMethod:{self.method}")
+        except:
+            send_email(f"Error occurred while starting\nID:{self.brand_id}\nMethod:{self.method}",
+                       subject=f"{self.brand_id} Error - Start Job")
+            self.logger.critical(f"Error occurred while starting\nID:{self.brand_id}\nMethod:{self.method}")
+
+
+
 
     def load_data(self):
         try:
@@ -87,7 +96,7 @@ class PageExpander:
             self.POPUP_CLASS = self.data.get("POPUP_CLASS", [])
             self.POPUP_XPATH = self.data.get("POPUP_XPATH", [])
             self.BY_XPATH = self.data.get("BY_XPATH", False)
-            self.method = self.data.get("METHOD", "Click")
+            self.method = self.data.get("METHOD", "NOT VALID")
             self.PRODUCTS_PER_HTML_TAG = self.data.get("PRODUCTS_PER_HTML_TAG", "")
             self.LOCATOR_TYPE = By.XPATH if self.BY_XPATH else By.CSS_SELECTOR
             self.IMAGES_LOAD = self.data.get("IMAGES_LOAD", False)
@@ -96,9 +105,9 @@ class PageExpander:
             self.MAX_RETRIES = int(self.data.get("MAX_RETRIES", 10))
             self.INITIAL_SCROLL_BACK_AMOUNT = int(self.data.get("INITIAL_SCROLL_BACK_AMOUNT", 300))
             self.SCROLL_BACK_CHANGE = int(self.data.get("SCROLL_BACK_CHANGE", 100))
-        except Exception as e:
+        except Exception:
             exception_f = traceback.format_exc()
-            send_email(f"Error occurred while loading data:\nJSON CONVERSION FAILURE OR MISSING KEY\n{str(exception_f)}",subject=f"{self.brand_name} Error - Settings")
+            send_email(f"Error occurred while loading data:\nJSON CONVERSION FAILURE OR MISSING KEY\n{str(exception_f)}",subject=f"{self.brand_id} Error - Settings")
             self.logger.critical(f"Error occurred while loading data: {exception_f}")
 
     def fetch_settings(self):
@@ -116,7 +125,7 @@ class PageExpander:
         except Exception:
             exception_f = traceback.format_exc()
             self.logger.critical(f"Error occurred while fetching settings:\n{str(exception_f)}")
-            send_email(f"Error occurred while loading data:\n{str(exception_f)}",subject=f"{self.brand_name} Error - Settings")
+            send_email(f"Error occurred while loading data:\n{str(exception_f)}",subject=f"{self.brand_id} Error - Settings")
             return None
 
     def setup_logging(self):
@@ -129,40 +138,35 @@ class PageExpander:
         log_filename = path_parts[-1] + ".log" if path_parts[-1] else path_parts[-2] + ".log"
         self.logging_file_path = os.path.join(logging_dir, log_filename)
 
-        #Initially get a unique logger using a UUID, brand ID, and job ID
-        logger_name=f"Brand ID: {self.brand_id}, Job ID: {self.job_id}, UUID: {self.code}"
+        # Initially get a unique logger using a UUID, brand ID, and job ID
+        logger_name = f"Brand ID: {self.brand_id}, Job ID: {self.job_id}, UUID: {self.code}"
         self.logger = logging.getLogger(logger_name)
+        self.logger.setLevel(logging.DEBUG)  # Set logger to DEBUG to capture all messages
+        self.logger.propagate = False  # Prevent propagation to root logger
 
-        #Set formatter
+        # Set formatter
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-        #Create handler for logs that go to the file on the debug level
-        self.log_file_handler=logging.handlers.RotatingFileHandler(self.logging_file_path)
+        # Create handler for logs that go to the file on the debug level
+        self.log_file_handler = logging.handlers.RotatingFileHandler(self.logging_file_path)
         self.log_file_handler.setFormatter(formatter)
         self.log_file_handler.setLevel(logging.DEBUG)
 
-        #Create handler for logs that go to the console on the info level
-        self.log_console_handler=logging.StreamHandler()
+        # Create handler for logs that go to the console on the info level
+        self.log_console_handler = logging.StreamHandler(sys.stdout)
         self.log_console_handler.setFormatter(formatter)
         self.log_console_handler.setLevel(logging.INFO)
 
         self.logger.addHandler(self.log_file_handler)
         self.logger.addHandler(self.log_console_handler)
 
-        #Initial test that the logger is instantiated and working properly
-        self.logger.info("This is what info messages will look like")
-        self.logger.error("This is what error messages will look like")
-        self.logger.critical("This is what a critical error message looks like")
-    def shutdown_logger(self):
-        # Remove the handler from the logger
-        self.logger.removeHandler(self.log_console_handler)
-        self.logger.removeHandler(self.log_file_handler)
-        # Close the handler
-        self.log_file_handler.close()
-        self.log_console_handler.close()
-        # Remove any remaining references to the handler
-        del self.log_file_handler
-        del self.log_console_handler
+        # Initial test that the logger is instantiated and working properly
+        self.logger.debug("This is a debug message (should appear in file only)")
+        self.logger.info("This is an info message (should appear in both file and console)")
+        self.logger.warning("This is a warning message (should appear in both file and console)")
+        self.logger.error("This is an error message (should appear in both file and console)")
+        self.logger.critical("This is a critical message (should appear in both file and console)")
+
     def close_popup(self):
         if not self.POPUP_TEXT and not self.POPUP_ID and not self.POPUP_CLASS and not self.POPUP_XPATH:
             return
@@ -402,7 +406,7 @@ class PageExpander:
         self.result_url=self.save_html_s3(html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(all_html_string,self.PRODUCTS_PER_HTML_TAG)
-        self.shutdown_logger()
+        
         self.update_complete()
         self.driver.close()
         return page_sources
@@ -489,7 +493,7 @@ class PageExpander:
         self.result_url = self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
-        self.shutdown_logger()
+        
         self.update_complete()
         self.driver.close()
 
@@ -593,7 +597,7 @@ class PageExpander:
         self.result_url = self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
-        self.shutdown_logger()
+        
         self.update_complete()
         self.driver.close()
 
@@ -661,7 +665,7 @@ class PageExpander:
         self.result_url=self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(page_source,self.PRODUCTS_PER_HTML_TAG)
-        self.shutdown_logger()
+        
         self.update_complete()
         self.driver.close()
 
@@ -882,5 +886,5 @@ async def health_check():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8080,host="0.0.0.0" ,log_level="info")
+    uvicorn.run("main:app", port=8105 ,log_level="info")
 
