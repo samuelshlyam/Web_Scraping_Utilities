@@ -34,7 +34,9 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 RUN which odbcinst
 
 # Now copy the rest of the application into the container
+
 COPY icon_image_lib/ icon_image_lib/
+
 COPY main.py .
 # COPY install_sql_server_dev.sh .
 
@@ -47,19 +49,8 @@ RUN odbcinst -j
 # Upgrade all Python packages to the latest versions
 #RUN pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
 
-# Label for Datadog logs
-# LABEL "com.datadoghq.ad.logs"='[<LOGS_CONFIG>]'
-
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
-
-# ENV SPACES_ENDPOINT=https://s3.us-east-2.amazonaws.com
-
-# ENV SPACES_BUCKET_NAME=iconluxurygroup-s3
-
-
-ENV MSSQLS_PWD=Ftu5675FDG54hjhiuu$
-
 
 # Run main.py when the container launches
 CMD ["python", "main.py"]
