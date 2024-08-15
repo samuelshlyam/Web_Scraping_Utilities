@@ -133,22 +133,32 @@ class PageExpander:
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
         #Create handler for logs that go to the file on the debug level
-        log_file_handler=logging.handlers.RotatingFileHandler(self.logging_file_path)
-        log_file_handler.setFormatter(formatter)
-        log_file_handler.setLevel(logging.DEBUG)
+        self.log_file_handler=logging.handlers.RotatingFileHandler(self.logging_file_path)
+        self.log_file_handler.setFormatter(formatter)
+        self.log_file_handler.setLevel(logging.DEBUG)
 
         #Create handler for logs that go to the console on the info level
-        log_console_handler=logging.StreamHandler()
-        log_console_handler.setFormatter(formatter)
-        log_console_handler.setLevel(logging.INFO)
+        self.log_console_handler=logging.StreamHandler()
+        self.log_console_handler.setFormatter(formatter)
+        self.log_console_handler.setLevel(logging.INFO)
 
-        self.logger.addHandler(log_file_handler)
-        self.logger.addHandler(log_console_handler)
+        self.logger.addHandler(self.log_file_handler)
+        self.logger.addHandler(self.log_console_handler)
 
         #Initial test that the logger is instantiated and working properly
         self.logger.info("This is what info messages will look like")
         self.logger.error("This is what error messages will look like")
         self.logger.critical("This is what a critical error message looks like")
+    def shutdown_logger(self):
+        # Remove the handler from the logger
+        self.logger.removeHandler(self.log_console_handler)
+        self.logger.removeHandler(self.log_file_handler)
+        # Close the handler
+        self.log_file_handler.close()
+        self.log_console_handler.close()
+        # Remove any remaining references to the handler
+        del self.log_file_handler
+        del self.log_console_handler
     def close_popup(self):
         if not self.POPUP_TEXT and not self.POPUP_ID and not self.POPUP_CLASS and not self.POPUP_XPATH:
             return
@@ -388,7 +398,7 @@ class PageExpander:
         self.result_url=self.save_html_s3(html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(all_html_string,self.PRODUCTS_PER_HTML_TAG)
-        logging.shutdown()
+        self.shutdown_logger()
         self.update_complete()
         self.driver.close()
         return page_sources
@@ -475,7 +485,7 @@ class PageExpander:
         self.result_url = self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
-        logging.shutdown()
+        self.shutdown_logger()
         self.update_complete()
         self.driver.close()
 
@@ -579,7 +589,7 @@ class PageExpander:
         self.result_url = self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count = self.count_substring_occurrences(page_source, self.PRODUCTS_PER_HTML_TAG)
-        logging.shutdown()
+        self.shutdown_logger()
         self.update_complete()
         self.driver.close()
 
@@ -647,7 +657,7 @@ class PageExpander:
         self.result_url=self.save_html_s3(self.html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(page_source,self.PRODUCTS_PER_HTML_TAG)
-        logging.shutdown()
+        self.shutdown_logger()
         self.update_complete()
         self.driver.close()
 
