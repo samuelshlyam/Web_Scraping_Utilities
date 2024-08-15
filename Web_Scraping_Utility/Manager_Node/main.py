@@ -1,15 +1,14 @@
 import pandas as pd
 import requests
 import os
+import traceback
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail,Personalization,To,Cc
 import datetime
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
 from sqlalchemy import create_engine,text
-from dotenv import load_dotenv
 
-load_dotenv()
 
 pwd_value = str(os.environ.get('MSSQLS_PWD'))
 pwd_str =f"Pwd={pwd_value};"
@@ -20,25 +19,8 @@ engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % conn)
 
 app = FastAPI()
 
-
-
-SETTINGS_URL = "https://raw.githubusercontent.com/samuelshlyam/HTML_Gather_Settings/dev/settings.json"
 current_directory = os.getcwd()
 
-def fetch_settings():
-    try:
-        response = requests.get(os.getenv("SETTINGS_URL"))
-        response.raise_for_status()  # Raises an HTTPError for bad responses
-        return response.json()
-    except requests.RequestException as e:
-        print(f"Error fetching settings: {e}")
-        return None
-
-
-# @app.post("/fetch_html")
-# async def brand_batch_endpoint(brand_id: str, background_tasks: BackgroundTasks):
-#     background_tasks.add_task(process_brand_batch, brand_id)
-#     return {"message": "Notification sent in the background"}
 def update_sql_job(job_id, resultUrl,logUrl,count):
     sql=(f"Update utb_BrandScanJobs Set ResultURL = '{resultUrl}',\n"
     f"HarverstLogURL = '{logUrl}',\n"
@@ -89,7 +71,7 @@ def procces_brand_single(job_id):
         send_email(f"Request with job id {job_id} failed to send, Status: {response_status}")
 
 
-def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error - Parsing Step"):
+def send_email(message_text, to_emails='nik@iconluxurygroup.com', subject="Error - HTML Step"):
     message_with_breaks = message_text.replace("\n", "<br>")
 
     html_content = f"""
@@ -145,45 +127,6 @@ def submit_job_post(job_id,brand_id,url):
     response = requests.post(f"{os.environ.get('AGENT_BASE_URL')}/run_html", params=params, headers=headers)
     return response.status_code
 
-#KEEP
-# def process_brand_batch(brand_id):
-#     jsonData = fetch_settings()
-#     data = jsonData.get(brand_id)
-#     URL_LIST = data.get('URL_LIST')
-#     brand_name = data.get('DIRECTORY')
-#     time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-#     output_dir = os.path.join(current_directory, 'Outputs', brand_name, time_stamp)
-#     print(f"Number of URLs: {len(URL_LIST)}")
-#
-#     os.makedirs(output_dir, exist_ok=True)
-#
-#     expanders = [PageExpander.remote(brand_id, url, output_dir) for url in URL_LIST]
-#     results = ray.get([expander.start.remote() for expander in expanders])
-#     print(results)
-
-# start = datetime.datetime.now()
-#
-# # Fetch settings from the GitHub URL
-#
-#
-# if jsonData is None:
-#     print("Failed to fetch settings. Exiting.")
-# else:
-#     # Get the brand ID from user input
-#     brand_id = input("Enter the brand ID to process: ")
-#
-#     if brand_id not in jsonData:
-#         print(f"Brand ID '{brand_id}' not found in settings.")
-#     else:
-#         process_brand(expander, brand_id, jsonData[brand_id])
-#
-# end = datetime.datetime.now()
-# print(f"\nProcessing completed.\nTime taken: {end - start}")
-
 if __name__ == "__main__":
-<<<<<<< HEAD
     uvicorn.run("main:app", port=8080, host="0.0.0.0" ,log_level="info")
 
-=======
-    uvicorn.run("main:app", port=8105, log_level="info")
->>>>>>> 7397cc9d9ae3ffb3172b4bcee5855a54cf6058de

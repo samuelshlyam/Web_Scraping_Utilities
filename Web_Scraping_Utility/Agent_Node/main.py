@@ -4,7 +4,9 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail,Personalization,To,Cc
 from selenium import webdriver
 import traceback
+
 from selenium.common.exceptions import TimeoutException
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -20,9 +22,9 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 app = FastAPI()
 class PageExpander:
 
@@ -106,6 +108,7 @@ class PageExpander:
             response = requests.get(settings_url)
             json_response = response.json()
             response.raise_for_status()  # Raises an HTTPError for bad responses
+
             self.logger.info(f"This is the settings file\n{json_response}")
 
             self.logger.info(response.status_code)
@@ -115,6 +118,7 @@ class PageExpander:
             self.logger.critical(f"Error occurred while fetching settings:\n{str(exception_f)}")
             send_email(f"Error occurred while loading data:\n{str(exception_f)}",subject=f"{self.brand_name} Error - Settings")
             return None
+
     def setup_logging(self):
         #Create the location of the log file
         path = self.url.split("//")[-1]
@@ -833,7 +837,9 @@ def process_remote_run(job_id,brand_id, scan_url):
     expander = PageExpander(job_id, brand_id,scan_url)
     result = expander.start()
 
+
 def send_email(message_text, to_emails='samuel@shlyam.com', subject="Error - HTML Step"):
+
     message_with_breaks = message_text.replace("\n", "<br>")
 
     html_content = f"""
