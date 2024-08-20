@@ -313,8 +313,8 @@ class PageExpander:
         #Necessary Variables
         retries=0
         page_number=1
-
-        while retries<=self.MAX_RETRIES:
+        check_button_clicked = False
+        while retries<self.MAX_RETRIES:
             self.logger.info(f"Pop Up Settings Values for: {self.brand_id}\n{self.brand_name}\n{self.POPUP_TEXT}\n{self.POPUP_ID}\n{self.POPUP_CLASS}\n{self.POPUP_XPATH}")
             self.close_popup()
             page_source = self.driver.execute_script("return document.documentElement.outerHTML;")
@@ -338,7 +338,7 @@ class PageExpander:
                                     exception_f = traceback.format_exc()
                                     send_email(f"Error occurred when sending the get request for:{self.brand_id}\n {next_url}\n{exception_f}",subject=f"{self.brand_name} Error - Page Pages Method")
 
-                                    self.logger.critical(f"Error occurred when sending the get request for:{self.brand_id}\n {next_url}\n{exception_f}")
+                                    self.logger.critical(f"Error occurred when sending the get request for:{self.brand_id}\n{next_url}\n{exception_f}")
                             else:
                                 raise TypeError
                             break
@@ -369,12 +369,10 @@ class PageExpander:
                         break
                     except TimeoutException:
                         exception_f = traceback.format_exc()
-                        self.logger.info(f"Load More button not found for:{self.brand_id}\n{self.brand_name}\n{self.LOCATOR_TYPE}\n{locator}\n{exception_f}")
-                        continue
+                        self.logger.info(f"Load More button not found for:{self.brand_id}\n{self.brand_name}\n{self.LOCATOR_TYPE}\n{self.ELEMENT_LOCATOR}\n{exception_f}")
                     except TypeError:
                         exception_f = traceback.format_exc()
-                        self.logger.info(f"Load More button does not contain an href for:{self.brand_id}\n{self.brand_name}\n{self.LOCATOR_TYPE}\n{locator}\n{exception_f}")
-                        continue
+                        self.logger.info(f"Load More button does not contain an href for:{self.brand_id}\n{self.brand_name}\n{self.LOCATOR_TYPE}\n{self.ELEMENT_LOCATOR}\n{exception_f}")
                 if not load_more_button:
                     raise Exception("NO_LOAD_BUTTON_EXCEPT")
                 # Wait for the expand button to be present and clickable
@@ -394,7 +392,9 @@ class PageExpander:
                 time.sleep(self.GENERAL_WAIT_TIME)
                 retries=0
                 page_number+=1
+                check_button_clicked=True
                 self.logger.info(f"{self.brand_name} Retries have been reset to 0")
+                self.logger.info(f"Button Click Check set to True: {check_button_clicked}")
             except Exception as e:
                 self.logger.info(f"{self.brand_name}: Error occurred:\n{e}")
                 time.sleep(self.GENERAL_WAIT_TIME)
@@ -406,7 +406,10 @@ class PageExpander:
         self.result_url=self.save_html_s3(html_filepath)
         self.log_url=self.upload_file_to_space(self.logging_file_path,self.logging_file_path)
         self.product_count=self.count_substring_occurrences(all_html_string,self.PRODUCTS_PER_HTML_TAG)
-        
+        if not check_button_clicked:
+            self.logger.error(f"Error occurred while Settings have wrong values for: {self.brand_id}\n{self.brand_name}\nELEMENT_LOCATOR: {self.ELEMENT_LOCATOR}\n{self.LOCATOR_TYPE}")
+            send_email(f"Error occurred while Settings have wrong values for: {self.brand_id}\n{self.brand_name}\nELEMENT_LOCATOR: {self.ELEMENT_LOCATOR}\n{self.LOCATOR_TYPE}",subject=f"{self.brand_name} Error - Page Pages Method")
+
         self.update_complete()
         self.driver.close()
         return page_sources
@@ -430,11 +433,11 @@ class PageExpander:
         self.logger.info(f"This is the currently used element locator {self.ELEMENT_LOCATOR}")
         retries = 0
         check_button_clicked=False
-        while retries<=self.MAX_RETRIES:
+        while retries<self.MAX_RETRIES:
             try:
                 load_more_button = None
                 # If there is no button to click stop
-                if type(self.ELEMENT_LOCATOR) == list:
+                if isinstance(self.ELEMENT_LOCATOR,list):
                     for locator in self.ELEMENT_LOCATOR:
                         try:
                             load_more_button = WebDriverWait(self.driver, self.GENERAL_WAIT_TIME).until(
@@ -452,7 +455,7 @@ class PageExpander:
                         )
                     except TimeoutException:
                         exception_f = traceback.format_exc()
-                        self.logger.info(f"Load More button not found for: {self.brand_id}\n{self.brand_name}\n{self.LOCATOR_TYPE}\n{locator}\n{exception_f}")
+                        self.logger.info(f"Load More button not found for: {self.brand_id}\n{self.brand_name}\n{self.LOCATOR_TYPE}\n{self.ELEMENT_LOCATOR}\n{exception_f}")
                 if not load_more_button:
                     raise Exception("NO_LOAD_BUTTON_EXCEPT")
                 check_button_clicked=True
@@ -518,7 +521,7 @@ class PageExpander:
         no_changes_count = 0
         scroll_back_amount = self.INITIAL_SCROLL_BACK_AMOUNT
         check_button_clicked=False
-        while True:
+        while no_changes_count < self.MAX_RETRIES:
 
             # Try to click the "load more" button if it exists
             try:
@@ -567,9 +570,8 @@ class PageExpander:
                     no_changes_count += 1
                     scroll_back_amount += self.SCROLL_BACK_CHANGE
                     self.logger.exception(f"{self.brand_name}: No change in height. Attempt {no_changes_count}/{self.MAX_RETRIES}")
-                    if no_changes_count >= self.MAX_RETRIES:
+                    if no_changes_count == self.MAX_RETRIES:
                         self.logger.exception(f"{self.brand_name} Reached the bottom of the page or no more content loading")
-                        break
                 else:
                     scroll_back_amount=self.INITIAL_SCROLL_BACK_AMOUNT
                     no_changes_count = 0  # Reset count if height changed
@@ -619,7 +621,7 @@ class PageExpander:
         retry_count = 0
         scroll_back_amount = self.INITIAL_SCROLL_BACK_AMOUNT
         check_button_clicked=False
-        while True:
+        while retry_count < self.MAX_RETRIES:
             # Scroll to the bottom
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(self.GENERAL_WAIT_TIME)
