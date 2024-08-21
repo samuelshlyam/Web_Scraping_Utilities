@@ -805,7 +805,6 @@ class PageExpander:
         self.logger.info(f"Headers: {headers}")
         self.logger.info(f"Deleting Logging file:{self.logging_file_path}\nOutput directory: {self.output_dir}\nFor {self.job_id}")
         os.remove(self.html_filepath)
-        os.remove(self.logging_file_path)
         self.logger.info(f"Sending output to {send_out_endpoint} with params {params}")
         requests.post(f"{send_out_endpoint}/job_complete", params=params, headers=headers)
         
