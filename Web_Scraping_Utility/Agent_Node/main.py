@@ -23,9 +23,9 @@ import csv
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, BackgroundTasks
 import uvicorn
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 app = FastAPI()
 class PageExpander:
 
@@ -888,5 +888,5 @@ async def health_check():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8105 ,log_level="info")
+    uvicorn.run("main:app", port=8080, host="0.0.0.0" ,log_level="info")
 

@@ -33,21 +33,18 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 # Verify installation of unixODBC
 RUN which odbcinst
 
-# Now copy the rest of the application into the container
-
-COPY icon_image_lib/ icon_image_lib/
-
 COPY main.py .
 # COPY install_sql_server_dev.sh .
 
 # # Make the install script executable and run it
 # RUN chmod +x install_sql_server_dev.sh
 # RUN ./install_sql_server_dev.sh
-
 # Verify ODBC installation
 RUN odbcinst -j
 # Upgrade all Python packages to the latest versions
 #RUN pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
+
+ENV
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080

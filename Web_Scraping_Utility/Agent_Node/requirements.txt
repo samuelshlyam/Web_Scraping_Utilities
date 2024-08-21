@@ -5,5 +5,4 @@ beautifulsoup4
 fastapi
 uvicorn
 ray
-python-dotenv
 sendgrid
