@@ -39,7 +39,13 @@ def update_sql_job(job_id, resultUrl,logUrl,count):
         connection.close()
 
 
-
+def fetch_endpoint(endpoint_id):
+    sql_query = (f"Select EndPointValue from utb_SettingsEndpoints Where ID = {endpoint_id}")
+    print(sql_query)
+    df = pd.read_sql_query(sql_query, con=engine)
+    engine.dispose()
+    endpoint_url = df['EndPointValue'].iloc[0]
+    return endpoint_url
 
 @app.post("/job_complete")
 async def brand_batch_endpoint(job_id: str, resultUrl:str,logUrl:str,count:int,background_tasks: BackgroundTasks):
@@ -61,8 +67,9 @@ def procces_brand_single(job_id):
     brand_id = str(df.iloc[0,0])
     print(brand_id,url)
     print(f"Processing job {job_id} with URL: {url}")
-    
-    response_status = submit_job_post(job_id,brand_id,url)
+    send_in_endpoint=fetch_endpoint(7)
+    send_out_endpoint=fetch_endpoint(11)
+    response_status = submit_job_post(job_id,brand_id,url,send_in_endpoint,send_out_endpoint)
 
 
 
@@ -111,7 +118,7 @@ def fetch_job_details(job_id):
     print(df)
     return df
 
-def submit_job_post(job_id,brand_id,url):
+def submit_job_post(job_id,brand_id,url,send_in_endpoint,send_out_endpoint):
 
     headers = {
         'accept': 'application/json',
@@ -122,9 +129,10 @@ def submit_job_post(job_id,brand_id,url):
         'job_id': f"{job_id}",
         'brand_id':f"{brand_id}",
         'scan_url':f"{url}",
+        'send_out_endpoint':f"{send_out_endpoint}"
     }
 
-    response = requests.post(f"{os.environ.get('AGENT_BASE_URL')}/run_html", params=params, headers=headers)
+    response = requests.post(f"{send_in_endpoint}/run_html", params=params, headers=headers)
     return response.status_code
 
 if __name__ == "__main__":

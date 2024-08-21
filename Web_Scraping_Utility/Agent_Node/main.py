@@ -805,7 +805,7 @@ class PageExpander:
         os.remove(self.html_filepath)
         os.remove(self.logging_file_path)
         os.rmdir(self.output_dir)
-        self.logger.info(f"Sending output to {os.getenv('MANAGER_ENDPOINT')} with params {params}")
+        self.logger.info(f"Sending output to {send_out_endpoint} with params {params}")
         requests.post(f"{os.getenv('MANAGER_ENDPOINT')}/job_complete", params=params, headers=headers)
         
 
@@ -878,9 +878,10 @@ def send_email(message_text, to_emails='samuel@shlyam.com', subject="Error - HTM
     except Exception as e:
         print(e)
 @app.post("/run_html")
-async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str, background_tasks: BackgroundTasks):
+async def brand_batch_endpoint(job_id:str, brand_id: str, scan_url:str,send_out_endpoint_local:str, background_tasks: BackgroundTasks):
+    global send_out_endpoint
+    send_out_endpoint=send_out_endpoint_local
     background_tasks.add_task(process_remote_run,job_id,brand_id,scan_url)
-
     return {"message": "Notification sent in the background"}
 @app.post("/")
 async def health_check():
