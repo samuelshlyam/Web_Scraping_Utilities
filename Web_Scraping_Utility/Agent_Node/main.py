@@ -48,18 +48,18 @@ class PageExpander:
 
         #Set ChromeOptions for driver
         options = webdriver.ChromeOptions()
-        # options.add_argument("--auto-open-devtools-for-tabs")
+        options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
         options.add_argument("--start-maximized")
         options.add_argument("--incognito")
         options.add_argument("--enable-javascript")
-        # options.add_argument('--no-sandbox')
-        # options.add_argument('--disable-setuid-sandbox')
-        # options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-setuid-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         options.add_argument("--disable-blink-features=AutomationControlled")
-        # options.add_argument("--headless=new")
-        # options.add_argument("--disable-extensions")
-        # options.add_argument("--disable-gpu")
+        options.add_argument("--headless=new")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--disable-gpu")
         self.driver = webdriver.Chrome(options=options)
 
         #Get and Load Data
@@ -806,7 +806,6 @@ class PageExpander:
         self.logger.info(f"Deleting Logging file:{self.logging_file_path}\nOutput directory: {self.output_dir}\nFor {self.job_id}")
         os.remove(self.html_filepath)
         os.remove(self.logging_file_path)
-        os.rmdir(self.output_dir)
         self.logger.info(f"Sending output to {send_out_endpoint} with params {params}")
         requests.post(f"{send_out_endpoint}/job_complete", params=params, headers=headers)
         
