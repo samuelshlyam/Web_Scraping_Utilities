@@ -1,0 +1,7 @@
+pandas
+requests==2.31.0
+fastapi==0.95.2
+uvicorn==0.22.0
+SQLAlchemy==2.0.15
+sendgrid
+pyodbc

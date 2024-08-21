@@ -1,0 +1,16 @@
+2024-08-05 17:39:37,454 [INFO] This is a log message from the gg script
+2024-08-05 17:39:37,513 [INFO] Brunello_Cucinelli The click method is being used
+2024-08-05 17:39:37,515 [DEBUG] POST http://localhost:46047/session/6138f599ceaf8100125ec835a37ad916/url {'url': 'https://shop.brunellocucinelli.com/en-it/women/ready-to-wear/'}
+2024-08-05 17:39:47,156 [DEBUG] http://localhost:46047 "POST /session/6138f599ceaf8100125ec835a37ad916/url HTTP/1.1" 200 0
+2024-08-05 17:39:47,156 [DEBUG] Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-08-05 17:39:47,157 [DEBUG] Finished Request
+2024-08-05 17:39:47,157 [DEBUG] POST http://localhost:46047/session/6138f599ceaf8100125ec835a37ad916/element {'using': 'tag name', 'value': 'body'}
+2024-08-05 17:39:47,801 [DEBUG] http://localhost:46047 "POST /session/6138f599ceaf8100125ec835a37ad916/element HTTP/1.1" 200 0
+2024-08-05 17:39:47,801 [DEBUG] Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.9966B01F0EAA140AFB2B13ABB84818A4.d.4D3D3F4FDA5E7522F820AC731E167E00.e.8"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-08-05 17:39:47,802 [DEBUG] Finished Request
+2024-08-05 17:39:47,802 [INFO] This is the currently used element locator a#loadMoreButtonPLP.cc-button-secondary.cc-load-more-button
+2024-08-05 17:39:47,802 [DEBUG] POST http://localhost:46047/session/6138f599ceaf8100125ec835a37ad916/element {'using': 'css selector', 'value': 'a#loadMoreButtonPLP.cc-button-secondary.cc-load-more-button'}
+2024-08-05 17:39:48,085 [DEBUG] http://localhost:46047 "POST /session/6138f599ceaf8100125ec835a37ad916/element HTTP/1.1" 200 0
+2024-08-05 17:39:48,088 [DEBUG] Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.9966B01F0EAA140AFB2B13ABB84818A4.d.4D3D3F4FDA5E7522F820AC731E167E00.e.466"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-08-05 17:39:48,089 [DEBUG] Finished Request
+2024-08-05 17:39:48,100 [DEBUG] POST http://localhost:46047/session/6138f599ceaf8100125ec835a37ad916/execute/sync {'script': '/* isDisplayed */return (function(){return (function(){var g=this||self;\nfunction aa(a){var b=typeof...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.9966B01F0EAA140AFB2B13ABB84818A4.d.4D3D3F4FDA5E7522F820AC731E167E00.e.466'}]}
