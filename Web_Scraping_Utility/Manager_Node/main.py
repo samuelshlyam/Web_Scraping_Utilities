@@ -129,12 +129,12 @@ def submit_job_post(job_id,brand_id,url,send_in_endpoint,send_out_endpoint):
         'job_id': f"{job_id}",
         'brand_id':f"{brand_id}",
         'scan_url':f"{url}",
-        'send_out_endpoint':f"{send_out_endpoint}"
+        'send_out_endpoint_local':f"{send_out_endpoint}"
     }
 
     response = requests.post(f"{send_in_endpoint}/run_html", params=params, headers=headers)
     return response.status_code
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8080, host="0.0.0.0", log_level="info")
+    uvicorn.run("main:app", port=8080,host="0.0.0.0", log_level="info")
 

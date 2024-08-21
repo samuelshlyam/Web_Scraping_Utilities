@@ -40,7 +40,6 @@ RUN chromedriver --version
 
 COPY main.py .
 
-ENV
 
 EXPOSE 8080
 CMD ["python", "main.py"]
