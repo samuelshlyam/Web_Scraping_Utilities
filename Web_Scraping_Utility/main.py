@@ -30,7 +30,7 @@ class PageExpander:
         print("I made it in here")
         popup_closed = False
         retries = 0
-        max_retries = 4
+        max_retries = 8
         while not popup_closed and retries < max_retries:
             try:
                 if popup_text:
@@ -494,7 +494,7 @@ def process_brand(expander, brand_name, data, current_directory):
 if __name__ == "__main__":
     with open("settings.json", "r") as file:
         jsonData = json.load(file)
-    brand="Aquazzura"
+    brand="Manolo Blahnik"
     data=jsonData[brand]
     expander=PageExpander()
     process_brand(expander,brand,data,current_directory)

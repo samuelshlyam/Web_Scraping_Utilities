@@ -182,7 +182,7 @@
   "Aquazzura": {
     "METHOD": "Click",
     "DIRECTORY": "Aquazzura",
-    "ELEMENT_LOCATOR": "button-show-more-pagination",
+    "ELEMENT_LOCATOR": "#grid-products > div.sc-APcvf.sc-dZxRDy.kjngok.ciXyOZ.pagination-div-4.pagination-wrapper > button",
     "POPUP_TEXT": ["Reject (x)"],
     "POPUP_ID": ["CybotCookiebotDialogBodyButtonDecline"],
     "POPUP_CLASS": [null],
@@ -207,10 +207,10 @@
     "METHOD": "Click",
     "DIRECTORY": "Manolo_Blahnik",
     "ELEMENT_LOCATOR": "button#load-more",
-    "POPUP_TEXT": ["Reject all"],
-    "POPUP_ID": [null],
-    "POPUP_CLASS": ["button.text-xs.lg\\:w\\[170px\\]"],
-    "POPUP_XPATH": [null],
+    "POPUP_TEXT": [null,null,null,null,"Reject all"],
+    "POPUP_ID": ["gle_selectedCountry",null,null,null,null],
+    "POPUP_CLASS": [null,null,"saveBtn","backToShop",null],
+    "POPUP_XPATH": ["//*[@id=\"gle_selectedCountry\"]","//*[@id=\"gle_selectedCountry\"]/option[79]",null,null,null],
     "DOMAIN": "manoloblahnik.com",
     "PRODUCTS_PER_HTML_TAG": "item product product-item flex flex-col w-full"
   },
