@@ -182,7 +182,7 @@
   "Aquazzura": {
     "METHOD": "Click",
     "DIRECTORY": "Aquazzura",
-    "ELEMENT_LOCATOR": "div.load-more-items button.btn.btn-primary",
+    "ELEMENT_LOCATOR": "button-show-more-pagination",
     "POPUP_TEXT": ["Reject (x)"],
     "POPUP_ID": ["CybotCookiebotDialogBodyButtonDecline"],
     "POPUP_CLASS": [null],
