@@ -29,6 +29,8 @@ class PageExpander:
             return
         print("I made it in here")
         popup_closed = False
+        webdriver.ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
+        webdriver.ActionChains(self.driver).move_by_offset(1, 1).click().perform()
         retries = 0
         max_retries = 8
         while not popup_closed and retries < max_retries:
@@ -95,7 +97,7 @@ class PageExpander:
             retries=0
             max_retries=5
             page_number=1
-
+            load_more_button=None
             while True:
                 # Closing Popups
                 for text, id_, class_, xpath in zip(popup_text, popup_id, popup_class, popup_xpath):
@@ -494,7 +496,7 @@ def process_brand(expander, brand_name, data, current_directory):
 if __name__ == "__main__":
     with open("settings.json", "r") as file:
         jsonData = json.load(file)
-    brand="DSquared2"
+    brand="Moose Knuckles"
     data=jsonData[brand]
     expander=PageExpander()
     process_brand(expander,brand,data,current_directory)

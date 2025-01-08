@@ -253,10 +253,10 @@
   "Moose Knuckles": {
     "METHOD": "Click",
     "DIRECTORY": "Moose_Knuckles",
-    "ELEMENT_LOCATOR": "div.Plp_load-more-wrapper__3HheE div.Button_secondary__xOtDg",
-    "POPUP_TEXT": ["No, thanks"],
+    "ELEMENT_LOCATOR": "button.ais-InfiniteHits-loadMore",
+    "POPUP_TEXT": [null],
     "POPUP_ID": [null],
-    "POPUP_CLASS": ["ltkpopup-close ltkpopup-close-button"],
+    "POPUP_CLASS": ["onetrust-close-btn-handler"],
     "POPUP_XPATH": [null],
     "BY_XPATH": false,
     "DOMAIN": "mooseknuckles.com",
@@ -287,13 +287,13 @@
     "PRODUCTS_PER_HTML_TAG": "col col--auto lazy-pag__item product-grid__item"
   },
   "Stella McCartney": {
-    "METHOD": "Click",
+    "METHOD": "Pages",
     "DIRECTORY": "Stella_McCartney",
-    "ELEMENT_LOCATOR": ["a.btn.btn-outline-primary.more","button.btn.btn-outline-primary.more"],
-    "POPUP_TEXT": [null],
-    "POPUP_ID": ["onetrust-reject-all-handler"],
-    "POPUP_CLASS": [null],
-    "POPUP_XPATH": [null],
+    "ELEMENT_LOCATOR": ".page-item .page-link[aria-label=\"Next\"]",
+    "POPUP_TEXT": [],
+    "POPUP_ID": [],
+    "POPUP_CLASS": [],
+    "POPUP_XPATH": [],
     "BY_XPATH": false,
     "DOMAIN": "stellamccartney.com",
     "PRODUCTS_PER_HTML_TAG": "col-6 col-sm-4 col-md-3 product-wrapper"
@@ -474,5 +474,4 @@
     "DOMAIN": "chloe.com",
     "PRODUCTS_PER_HTML_TAG": "searchProduct-wrapper"
   }
-
 }
