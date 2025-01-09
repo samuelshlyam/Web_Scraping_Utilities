@@ -496,7 +496,7 @@ def process_brand(expander, brand_name, data, current_directory):
 if __name__ == "__main__":
     with open("settings.json", "r") as file:
         jsonData = json.load(file)
-    brand="Moose Knuckles"
+    brand="Versace"
     data=jsonData[brand]
     expander=PageExpander()
     process_brand(expander,brand,data,current_directory)

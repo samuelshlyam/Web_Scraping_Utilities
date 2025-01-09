@@ -473,5 +473,17 @@
     "BY_XPATH": false,
     "DOMAIN": "chloe.com",
     "PRODUCTS_PER_HTML_TAG": "searchProduct-wrapper"
+  },
+  "Versace": {
+    "METHOD": "Click",
+    "DIRECTORY": "Versace",
+    "ELEMENT_LOCATOR": "button.desktop-load-more",
+    "POPUP_TEXT": ["Reject All"],
+    "POPUP_ID": ["onetrust-reject-all-handler"],
+    "POPUP_CLASS": [null],
+    "POPUP_XPATH": [null],
+    "BY_XPATH": false,
+    "DOMAIN": "versace.com",
+    "PRODUCTS_PER_HTML_TAG": "product-tile-wrapper"
   }
 }
